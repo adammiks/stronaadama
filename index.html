@@ -164,7 +164,36 @@ body.dark .menu {
 .tekst {
   flex: 1;
 }
+.obraz {
+  position: relative;
+  display: inline-block;
+}
 
+.obraz img {
+  width: 250px;
+  border-radius: 10px;
+  display: block;
+}
+
+/* ukryty wiersz */
+.tekst {
+  position: absolute;
+  top: 0;
+  left: 260px;
+
+  width: 250px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.3s ease;
+
+  white-space: pre-line;
+}
+
+/* pokazanie przy najechaniu */
+.obraz:hover .tekst {
+  opacity: 1;
+  transform: translateY(0);
+}
 	
 </style>
 </head>
@@ -2271,30 +2300,34 @@ Niemoc wydania jednego tomiku w formie papierowej, przerodził się zatem w wyda
 <img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/output%20(1).jpg" width="400" height="400">
 		</p>
 
-<h3>Z KRAJOBRAZÓW POET</h3>
+<h3>Z KRAJOBRAZÓW POETY</h3>
 
+<div class="wiersz">
+  <div class="obraz">
 
-	<div class="wiersz">
-  <div class="obraz">		
     <img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/Wstaj%C4%99%2C%20si%C3%B3dma%20rano.png" alt="Obraz 1">
-    <div class="tekst"> WSTAJĘ, SIÓDMA RANO</h1>
 
-Krzywa wieża naczyń <br>
-   rama palników gazu  <br>
-   samoobsługowa płaszczyzna stół–ściana  <br>
-   Próbuję uwolnić świat <br>
-   parujący czajnik  <br>
-   koronki zasłon <br>
-   obłoki zza mokrej szyby <br>
-   Jedyna chwila jakiejkolwiek <br>
-   poezji <br>
-   W kuchni o siódmej rano <br>
-   tuż przed śniadaniem  <br>
-	</div>
+    <div class="tekst">
+      <h3>WSTAJĘ, SIÓDMA RANO</h3>
+
+      Krzywa wieża naczyń<br>
+      rama palników gazu<br>
+      samoobsługowa płaszczyzna stół–ściana<br>
+      Próbuję uwolnić świat<br>
+      parujący czajnik<br>
+      koronki zasłon<br>
+      obłoki zza mokrej szyby<br>
+      Jedyna chwila jakiejkolwiek<br>
+      poezji<br>
+      W kuchni o siódmej rano<br>
+      tuż przed śniadaniem
     </div>
-  </div>
 
-</section>
+  </div>
+</div>
+
+
+
 <footer class="footer">
   <div class="footer-container">
 

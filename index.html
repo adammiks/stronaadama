@@ -202,6 +202,110 @@ body.dark .menu {
   border-top: 1px solid #eee;
   margin: 40px 0;
 
+	/* ====== GLOBAL ====== */
+body {
+  margin: 0;
+  background: #f4f1ea; /* delikatny papier */
+  color: #1a1a1a;
+
+  font-family: "Georgia", "Playfair Display", serif;
+  font-size: 18px;
+  line-height: 1.85;
+
+  text-align: left;
+}
+
+/* ====== GŁÓWNY KONTENER TEKSTU ====== */
+.slide {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* ====== TYTUŁY ====== */
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 40px 0 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+/* ====== AKAPITY ====== */
+p {
+  margin: 0 0 1.2em 0;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ====== EFEKT „KSIĄŻKOWY” ====== */
+.proza {
+  font-size: 18px;
+  line-height: 1.9;
+  text-align: justify;
+  text-indent: 1.5em; /* wcięcie jak w książkach */
+}
+
+/* pierwsze zdanie bez wcięcia */
+.proza:first-of-type {
+  text-indent: 0;
+}
+
+/* ====== SPIS TREŚCI ====== */
+.toc-book {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.toc-book ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc-book li {
+  margin: 10px 0;
+}
+
+.toc-book a {
+  text-decoration: none;
+  color: #333;
+}
+
+.toc-book a:hover {
+  text-decoration: underline;
+}
+
+/* ====== SEPARACJA ROZDZIAŁÓW ====== */
+.slide + .slide {
+  margin-top: 120px;
+}
+
+/* ====== DELIKATNE ODDZIELENIE STRON ====== */
+.title-page {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* ====== MOBILE ====== */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  .slide {
+    padding: 60px 16px;
+  }
+}
+
 </style>
 </head>
 

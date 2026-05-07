@@ -11,36 +11,93 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 <meta name="google-site-verification" content="ePpz0OIGaytD0Hg9bam5Eke2MuyhDWxxzb14hix7eZg" />
 <style>
+
+/* =========================
+   RESET
+========================= */
 * {
   box-sizing: border-box;
 }
 
+/* =========================
+   PODSTAWA STRONY (EBOOK)
+========================= */
 body {
   margin: 0;
-  font-family: 'Playfair Display', serif;
-  font-size: 14px;
-  line-height: 1.8;
-  padding-top: 60px;
-  background: #fff;
-  color: #111;
-  text-align: center;
+  background: #f4f1ea; /* papier */
+  color: #1a1a1a;
+
+  font-family: Georgia, "Playfair Display", serif;
+  font-size: 18px;
+  line-height: 1.85;
+
+  text-align: left;
   overflow-x: hidden;
+  padding-top: 60px; /* pod navbar */
 }
 
-body.dark {
-  background: #111;
-  color: #eee;
+/* =========================
+   STRONA / SEKCJE
+========================= */
+.slide,
+.title-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px;
 }
 
-/* NAVBAR */
+/* odstęp między rozdziałami */
+.slide {
+  margin-bottom: 120px;
+}
+
+/* =========================
+   TYTUŁY
+========================= */
+h1, h2, h3 {
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 40px 0 20px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+/* =========================
+   TEKST (NAJWAŻNIEJSZE)
+========================= */
+p {
+  margin: 0 0 1.2em 0;
+  text-align: justify;
+  hyphens: auto;
+
+  text-indent: 1.5em;
+}
+
+/* pierwszy akapit bez wcięcia */
+.slide p:first-of-type {
+  text-indent: 0;
+}
+
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
+
   width: 100%;
   height: 60px;
 
-  display: flex; 
+  display: flex;
   justify-content: space-between;
   align-items: center;
 
@@ -56,33 +113,28 @@ body.dark {
   margin-left: 15px;
 }
 
-/* HAMBURGER */
-.hamburger {
-  font-size: 28px;
-  cursor: pointer;
-  display: block;
-}
-
-/* MENU */
+/* =========================
+   MENU HAMBURGER
+========================= */
 .menu {
   list-style: none;
   margin: 0;
   padding: 10px;
+
   position: absolute;
   top: 60px;
   right: 10px;
+
   background: #fff;
   border: 1px solid #ddd;
+
   display: none;
   flex-direction: column;
   gap: 10px;
+
   z-index: 9999;
 }
 
-.menu {
-  display: none;
-}
- 
 .menu.open {
   display: flex;
 }
@@ -92,174 +144,9 @@ body.dark .menu {
   border-color: #333;
 }
 
-.menu a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* SEKCJE */
-.slide {
-  padding: 100px 20px;
-  margin-bottom: 120px;
-}
-
-/* POEZJA */
-.poem {
-  white-space: pre-wrap;
-  max-width: 600px;
-  font-size: 22px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.justify {
-  text-align: justify;
-}
-
-/* LEPSZE ODSTĘPY */
-#kontakt {
-  margin-bottom: 120px;
-}   
-
-#krajobrazy {
-  margin-top: 120px;
-}
-
-.toc-book ul {
-  padding-left: 20px;
-  text-align: left;
-  display: inline-block;
-}	
-.separator {
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.separator svg {
-  display: block;
-  width: 100%;
-  height: 100px;
-}
-
-.galeria {
-  display: flex;
-  flex-direction: column;
-  gap: 30px; /* odstęp między wierszami */
-}
-
-.wiersz {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.wiersz img {
-  width: 200px;   /* możesz zmienić */
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-.tekst {
-  flex: 1;
-}
-.obraz {
-  position: relative;
-  display: inline-block;
-}
-
-.obraz img {
-  width: 250px;
-  border-radius: 10px;
-  display: block;
-}
-
-/* ukryty wiersz */
-.tekst {
-  position: absolute;
-  top: 0;
-  left: 260px;
-
-  width: 250px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: 0.3s ease;
-
-  white-space: pre-line;
-}
-
-/* pokazanie przy najechaniu */
-.obraz:hover .tekst {
-  opacity: 1;
-  transform: translateY(0);
-}
-	.spacer {
-    height: 100px;
-}
-
-.separator {
-  border-top: 1px solid #eee;
-  margin: 40px 0;
-
-	/* ====== GLOBAL ====== */
-body {
-  margin: 0;
-  background: #f4f1ea; /* delikatny papier */
-  color: #1a1a1a;
-
-  font-family: "Georgia", "Playfair Display", serif;
-  font-size: 18px;
-  line-height: 1.85;
-
-  text-align: left;
-}
-
-/* ====== GŁÓWNY KONTENER TEKSTU ====== */
-.slide {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 80px 24px;
-}
-
-/* ====== TYTUŁY ====== */
-h1, h2, h3 {
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin: 40px 0 20px;
-  text-align: center;
-}
-
-h1 {
-  font-size: 32px;
-}
-
-h3 {
-  font-size: 22px;
-  text-transform: uppercase;
-}
-
-/* ====== AKAPITY ====== */
-p {
-  margin: 0 0 1.2em 0;
-  text-align: justify;
-  hyphens: auto;
-}
-
-/* ====== EFEKT „KSIĄŻKOWY” ====== */
-.proza {
-  font-size: 18px;
-  line-height: 1.9;
-  text-align: justify;
-  text-indent: 1.5em; /* wcięcie jak w książkach */
-}
-
-/* pierwsze zdanie bez wcięcia */
-.proza:first-of-type {
-  text-indent: 0;
-}
-
-/* ====== SPIS TREŚCI ====== */
+/* =========================
+   SPIS TREŚCI
+========================= */
 .toc-book {
   max-width: 600px;
   margin: 0 auto;
@@ -269,6 +156,8 @@ p {
 .toc-book ul {
   list-style: none;
   padding: 0;
+  text-align: left;
+  display: inline-block;
 }
 
 .toc-book li {
@@ -284,97 +173,83 @@ p {
   text-decoration: underline;
 }
 
-/* ====== SEPARACJA ROZDZIAŁÓW ====== */
-.slide + .slide {
-  margin-top: 120px;
+/* =========================
+   GALERIA
+========================= */
+.galeria {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-/* ====== DELIKATNE ODDZIELENIE STRON ====== */
-.title-page {
-  text-align: center;
-  margin-bottom: 60px;
+.wiersz {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
-/* ====== MOBILE ====== */
-@media (max-width: 600px) {
-  body {
-    font-size: 16px;
-  }
-
-  .slide {
-    padding: 60px 16px;
-  }
-}
-/* ====== KSIĄŻKOWA TYPOGRAFIA ====== */
-body {
-  margin: 0;
-  background: #f4f1ea;
-  color: #1a1a1a;
-
-  font-family: Georgia, "Playfair Display", serif;
-  font-size: 18px;
-  line-height: 1.85;
-
-  text-align: left;
+.wiersz img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-/* ====== OGRANICZENIE SZEROKOŚCI TEKSTU ====== */
-.slide,
-.title-page {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 80px 24px;
+.tekst {
+  flex: 1;
 }
 
-/* ====== AKAPITY (NIE DOTYKAM HTML) ====== */
-p {
-  margin: 0 0 1.2em 0;
-  text-align: justify;
-
-  /* „książkowy efekt” */
-  text-indent: 1.5em;
-  hyphens: auto;
+/* =========================
+   HOVER TEKST PRZY OBRAZKU
+========================= */
+.obraz {
+  position: relative;
+  display: inline-block;
 }
 
-/* pierwszy akapit w sekcji bez wcięcia */
-.slide p:first-of-type {
-  text-indent: 0;
+.obraz img {
+  width: 250px;
+  border-radius: 10px;
+  display: block;
 }
 
-/* ====== NAGŁÓWKI JAK W KSIĄŻCE ====== */
-h1, h2, h3 {
-  text-align: center;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin: 40px 0 20px;
+.obraz .tekst {
+  position: absolute;
+  top: 0;
+  left: 260px;
+
+  width: 250px;
+  opacity: 0;
+
+  transform: translateY(10px);
+  transition: 0.3s ease;
+
+  white-space: pre-line;
 }
 
-h3 {
-  font-size: 22px;
-  text-transform: uppercase;
+.obraz:hover .tekst {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* ====== SPIS TREŚCI ====== */
-.toc-book {
-  max-width: 600px;
-  margin: 0 auto;
+/* =========================
+   SEPARATOR
+========================= */
+.separator {
+  width: 100%;
+  overflow: hidden;
+  margin: 40px 0;
 }
 
-.toc-book ul {
-  list-style: none;
-  padding: 0;
+.separator svg {
+  display: block;
+  width: 100%;
+  height: 100px;
 }
 
-.toc-book li {
-  margin: 10px 0;
-}
-
-/* ====== SEPARACJA „ROZDZIAŁÓW” ====== */
-.slide + .slide {
-  margin-top: 120px;
-}
-
-/* ====== LEPSZA CZYTELNOŚĆ NA MOBILE ====== */
+/* =========================
+   MOBILE
+========================= */
 @media (max-width: 600px) {
   body {
     font-size: 16px;
@@ -384,8 +259,19 @@ h3 {
   .title-page {
     padding: 60px 16px;
   }
-}
 
+  .wiersz {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .obraz .tekst {
+    position: static;
+    opacity: 1;
+    transform: none;
+    width: auto;
+  }
+}
 	
 </style>
 </head>

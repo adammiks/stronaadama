@@ -11,266 +11,68 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 <meta name="google-site-verification" content="ePpz0OIGaytD0Hg9bam5Eke2MuyhDWxxzb14hix7eZg" />
 <style>
-
-/* =========================
-   RESET
-========================= */
+/* RESET */
 * {
   box-sizing: border-box;
 }
 
-/* =========================
-   PODSTAWA STRONY (EBOOK)
-========================= */
+/* TŁO + TEKST */
 body {
   margin: 0;
-  background: #f4f1ea; /* papier */
+  background: #f4f1ea;
   color: #1a1a1a;
 
-  font-family: Georgia, "Playfair Display", serif;
+  font-family: Georgia, serif;
   font-size: 18px;
-  line-height: 1.85;
+  line-height: 1.8;
 
   text-align: left;
-  overflow-x: hidden;
-  padding-top: 60px; /* pod navbar */
+  padding-top: 60px;
 }
 
-/* =========================
-   STRONA / SEKCJE
-========================= */
+/* STRONY */
 .slide,
 .title-page {
   max-width: 720px;
   margin: 0 auto;
-  padding: 80px 24px;
+  padding: 60px 20px;
 }
 
-/* odstęp między rozdziałami */
-.slide {
-  margin-bottom: 120px;
-}
-
-/* =========================
-   TYTUŁY
-========================= */
-h1, h2, h3 {
-  text-align: center;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin: 40px 0 20px;
-}
-
-h1 {
-  font-size: 32px;
-}
-
-h3 {
-  font-size: 22px;
-  text-transform: uppercase;
-}
-
-/* =========================
-   TEKST (NAJWAŻNIEJSZE)
-========================= */
+/* TEKST */
 p {
-  margin: 0 0 1.2em 0;
   text-align: justify;
-  hyphens: auto;
-
-  text-indent: 1.5em;
+  margin: 0 0 1em 0;
 }
 
-/* pierwszy akapit bez wcięcia */
-.slide p:first-of-type {
-  text-indent: 0;
-}
-
-/* =========================
-   NAVBAR
-========================= */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 60px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 0 20px;
-  background: #222;
-  color: white;
-  z-index: 1000;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin-left: 15px;
-}
-
-/* =========================
-   MENU HAMBURGER
-========================= */
+/* MENU (ŻEBY NA PEWNO DZIAŁAŁO) */
 .menu {
-  list-style: none;
-  margin: 0;
-  padding: 10px;
-
+  display: none;
   position: absolute;
   top: 60px;
   right: 10px;
-
-  background: #fff;
+  background: white;
+  padding: 10px;
   border: 1px solid #ddd;
-
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-
-  z-index: 9999;
 }
 
 .menu.open {
   display: flex;
-}
-
-body.dark .menu {
-  background: #222;
-  border-color: #333;
-}
-
-/* =========================
-   SPIS TREŚCI
-========================= */
-.toc-book {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.toc-book ul {
-  list-style: none;
-  padding: 0;
-  text-align: left;
-  display: inline-block;
-}
-
-.toc-book li {
-  margin: 10px 0;
-}
-
-.toc-book a {
-  text-decoration: none;
-  color: #333;
-}
-
-.toc-book a:hover {
-  text-decoration: underline;
-}
-
-/* =========================
-   GALERIA
-========================= */
-.galeria {
-  display: flex;
   flex-direction: column;
-  gap: 30px;
 }
 
-.wiersz {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.wiersz img {
-  width: 200px;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-.tekst {
-  flex: 1;
-}
-
-/* =========================
-   HOVER TEKST PRZY OBRAZKU
-========================= */
-.obraz {
-  position: relative;
-  display: inline-block;
-}
-
-.obraz img {
-  width: 250px;
-  border-radius: 10px;
-  display: block;
-}
-
-.obraz .tekst {
-  position: absolute;
+/* NAVBAR */
+.navbar {
+  position: fixed;
   top: 0;
-  left: 260px;
-
-  width: 250px;
-  opacity: 0;
-
-  transform: translateY(10px);
-  transition: 0.3s ease;
-
-  white-space: pre-line;
-}
-
-.obraz:hover .tekst {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========================
-   SEPARATOR
-========================= */
-.separator {
+  left: 0;
+  height: 60px;
   width: 100%;
-  overflow: hidden;
-  margin: 40px 0;
-}
-
-.separator svg {
-  display: block;
-  width: 100%;
-  height: 100px;
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media (max-width: 600px) {
-  body {
-    font-size: 16px;
-  }
-
-  .slide,
-  .title-page {
-    padding: 60px 16px;
-  }
-
-  .wiersz {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .obraz .tekst {
-    position: static;
-    opacity: 1;
-    transform: none;
-    width: auto;
-  }
+  background: #222;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 	
 </style>

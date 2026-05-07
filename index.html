@@ -305,7 +305,88 @@ p {
     padding: 60px 16px;
   }
 }
+/* ====== KSIĄŻKOWA TYPOGRAFIA ====== */
+body {
+  margin: 0;
+  background: #f4f1ea;
+  color: #1a1a1a;
 
+  font-family: Georgia, "Playfair Display", serif;
+  font-size: 18px;
+  line-height: 1.85;
+
+  text-align: left;
+}
+
+/* ====== OGRANICZENIE SZEROKOŚCI TEKSTU ====== */
+.slide,
+.title-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* ====== AKAPITY (NIE DOTYKAM HTML) ====== */
+p {
+  margin: 0 0 1.2em 0;
+  text-align: justify;
+
+  /* „książkowy efekt” */
+  text-indent: 1.5em;
+  hyphens: auto;
+}
+
+/* pierwszy akapit w sekcji bez wcięcia */
+.slide p:first-of-type {
+  text-indent: 0;
+}
+
+/* ====== NAGŁÓWKI JAK W KSIĄŻCE ====== */
+h1, h2, h3 {
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 40px 0 20px;
+}
+
+h3 {
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+/* ====== SPIS TREŚCI ====== */
+.toc-book {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.toc-book ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc-book li {
+  margin: 10px 0;
+}
+
+/* ====== SEPARACJA „ROZDZIAŁÓW” ====== */
+.slide + .slide {
+  margin-top: 120px;
+}
+
+/* ====== LEPSZA CZYTELNOŚĆ NA MOBILE ====== */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  .slide,
+  .title-page {
+    padding: 60px 16px;
+  }
+}
+
+	
 </style>
 </head>
 

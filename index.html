@@ -11,68 +11,134 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 <meta name="google-site-verification" content="ePpz0OIGaytD0Hg9bam5Eke2MuyhDWxxzb14hix7eZg" />
 <style>
-/* RESET */
+/* ===== RESET ===== */
 * {
   box-sizing: border-box;
 }
 
-/* TŁO + TEKST */
 body {
   margin: 0;
   background: #f4f1ea;
   color: #1a1a1a;
 
-  font-family: Georgia, serif;
+  font-family: Georgia, "Playfair Display", serif;
   font-size: 18px;
   line-height: 1.8;
 
-  text-align: left;
   padding-top: 60px;
+  text-align: left;
 }
 
-/* STRONY */
-.slide,
-.title-page {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 60px 20px;
+/* ===== NAWIGACJA ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+
+  background: #222;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+  z-index: 1000;
 }
 
-/* TEKST */
-p {
-  text-align: justify;
-  margin: 0 0 1em 0;
-}
-
-/* MENU (ŻEBY NA PEWNO DZIAŁAŁO) */
 .menu {
   display: none;
   position: absolute;
   top: 60px;
   right: 10px;
-  background: white;
-  padding: 10px;
+
+  background: #fff;
   border: 1px solid #ddd;
+  padding: 10px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .menu.open {
   display: flex;
-  flex-direction: column;
 }
 
-/* NAVBAR */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 60px;
-  width: 100%;
-  background: #222;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
+/* ===== STRONY (EBOOK) ===== */
+.slide,
+.title-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* ===== TEKST PROZY ===== */
+p {
+  margin: 0 0 1.2em 0;
+  text-align: justify;
+  hyphens: auto;
+
+  text-indent: 1.5em;
+}
+
+/* pierwszy akapit bez wcięcia */
+.slide p:first-of-type {
+  text-indent: 0;
+}
+
+/* ===== WIERSZE (NAJWAŻNIEJSZE) ===== */
+.poem {
+  white-space: pre-wrap;
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.6;
+
+  text-indent: 0;
+}
+
+.poem p {
+  text-indent: 0 !important;
+  text-align: center !important;
+}
+
+/* ===== TYTUŁY ===== */
+h1, h2, h3 {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+h3 {
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+/* ===== SPIS TREŚCI ===== */
+.toc-book ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.toc-book li {
+  margin: 10px 0;
+}
+
+/* ===== SEKCJE ODSTĘPY ===== */
+.slide + .slide {
+  margin-top: 100px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  .slide,
+  .title-page {
+    padding: 50px 16px;
+  }
 }
 	
 </style>

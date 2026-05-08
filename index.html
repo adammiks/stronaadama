@@ -141,7 +141,6 @@ footer {
 </head>
 
 <body>
-
 <header>
 <div class="container header-inner">
 
@@ -149,49 +148,29 @@ footer {
 
     <div class="hamburger" id="menuToggle">☰</div>
 
-    <ul class="menu" id="menu">
+    <nav>
+        <ul class="menu" id="menu">
 
-  
+            <li><a href="#o-mnie">O mnie</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#krajobrazy">Z krajobrazów poety</a></li>
+            <li><a href="#tomik-1">Ze stadionów świata</a></li>
+            <li><a href="#tomik-2">Dzień dobry, do widzenia</a></li>
+            <li><a href="#tomik-4">Fraszki</a></li>
+            <li><a href="#tomik-5">Wiersze z lat 90</a></li>
+            <li><a href="#opowiadania">Opowiadania</a></li>
+            <li><a href="#felietony">Felietony</a></li>
+            <li><a href="#anegdoty">Anegdoty</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
 
-        <li><a href="#o-mnie">O mnie</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-        <li><a href="#krajobrazy">Z krajobrazów poety</a></li>
-        <li><a href="#tomik-1">Ze stadionów świata</a></li>
-        <li><a href="#tomik-2">Dzień dobry, do widzenia</a></li>
-        <li><a href="#tomik-4">Fraszki</a></li>
-        <li><a href="#tomik-5">Wiersze z lat 90</a></li>
-        <li><a href="#opowiadania">Opowiadania</a></li>
-        <li><a href="#felietony">Felietony</a></li>
-        <li><a href="#anegdoty">Anegdoty</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+            <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
 
-    </ul>
+        </ul>
+    </nav>
 
-</nav>
-
-  
-
-        <li>
-            <a href="https://facebook.com" target="_blank">
-                Facebook
-            </a>
-        </li>
-
-        <li>
-            <a href="https://instagram.com" target="_blank">
-                Instagram
-            </a>
-        </li>
-
-    </ul>
-
-</nav>       
-
-     
-
-    </div>
-
+</div>
 </header>
 
 
@@ -200,10 +179,8 @@ footer {
 
 </body>
 </html>
-<body>
-<div class="hamburger" onclick="toggleMenu()">
-☰
-</div>
+
+
 <!-- NAVBAR -->
 <div class="title-panel">
   <h1 class="main-title">Miks twórczości Adama</h1> 
@@ -2462,5 +2439,20 @@ function toggleMenu() {
   menu.classList.toggle("open");
 }
 </script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const btn = document.getElementById("menuToggle");
+    const menu = document.getElementById("menu");
+
+    btn.addEventListener("click", function () {
+        menu.classList.toggle("active");
+    });
+
+});
+
+</script>
+		
 </body>
 </html>	

@@ -216,11 +216,11 @@
       color: #534f45;
     }
 
-    .books-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 24px;
-    }
+   .books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 28px;
+}
 
     .book-card {
       transition: all 0.3s ease;
@@ -230,8 +230,10 @@
       transform: translateY(-8px);
     }
 
-    .book-cover {
-      aspect-ratio: 0.7;
+   .book-cover {
+  aspect-ratio: 0.68;
+  max-width: 190px;
+  margin: 0 auto 18px; 
       border-radius: 12px;
       padding: 22px;
       display: flex;

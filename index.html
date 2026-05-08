@@ -127,6 +127,48 @@
 
         }
 
+		.navbar {
+    position: relative;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+}
+
     </style>
 </head>
 

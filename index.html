@@ -1,2599 +1,676 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteka Adama Miksa</title>
 
-<title>Miks twórczości Adama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Serif+4:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<meta name="description" content="Twórczość literacka — poezja, opowiadania, felietony i blog.">
-
-<style>
-
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-    background: #f5f5f5;
-    color: #222;
-}
-
-/* DARK MODE */
-body.dark {
-    background: #111;
-    color: #eee;
-}
-
-body.dark section {
-    background: #1c1c1c;
-    color: #eee;
-}
-
-/* LAYOUT */
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
-}
-
-/* HEADER */
-header {
-    background: #111;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-}
-
-/* LOGO */
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* MENU */
-.menu {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-}
-
-.menu a {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.menu a:hover {
-    color: #ffd166;
-}
-
-/* HAMBURGER */
-.hamburger {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: white;
-}
-
-/* SECTIONS */
-section {
-    background: white;
-    padding: 25px;
-    margin: 25px 0;
-    border-radius: 10px;
-}
-
-/* POETRY */
-.poem {
-    white-space: pre-line;
-    background: #f0f0f0;
-    padding: 15px;
-    border-left: 4px solid #333;
-}
-
-/* FOOTER */
-footer {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-
-    .hamburger {
-        display: block;
+  <style>
+    :root {
+      --bg: #f7f3ec;
+      --paper: #fffdf9;
+      --text: #26231f;
+      --muted: #6f685e;
+      --olive: #5f6432;
+      --border: #ddd4c7;
     }
 
-    .menu {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Source Serif 4', serif;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1280px, 92%);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 243, 236, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 2px solid #7f7b72;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .logo-text h1 {
+      font-size: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .logo-text p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 1.1rem;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 90px 0 70px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-subtitle {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #74705e;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    .hero h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 6rem;
+      line-height: 0.92;
+      font-weight: 600;
+      margin-bottom: 34px;
+    }
+
+    .hero p {
+      font-size: 1.45rem;
+      max-width: 560px;
+      color: #433f39;
+      margin-bottom: 36px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--olive);
+      color: white;
+      padding: 18px 30px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      transition: all 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.1);
+    }
+
+    .hero-image {
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+    }
+
+    .hero-image img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* BOOKS */
+
+    .books {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 46px;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #74705e;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.4rem;
+      font-weight: 600;
+    }
+
+    .all-link {
+      font-size: 1.1rem;
+      color: #534f45;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+
+    .book-card {
+      transition: all 0.3s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .book-cover {
+      aspect-ratio: 0.7;
+      border-radius: 12px;
+      padding: 22px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+      margin-bottom: 18px;
+    }
+
+    .book-cover h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      line-height: 1.1;
+      font-weight: 600;
+    }
+
+    .cover-1 { background: #ebe6d7; }
+    .cover-2 { background: #bfc09c; }
+    .cover-3 { background: #e8dfcf; }
+    .cover-4 { background: #eadfca; }
+    .cover-5 { background: #b6c0c7; }
+    .cover-6 { background: #c79f6f; }
+
+    .book-title {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .book-type {
+      color: var(--muted);
+    }
+
+    /* QUOTE */
+
+    .quote {
+      padding: 90px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quote-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-style: italic;
+      color: #4f5631;
+      max-width: 850px;
+    }
+
+    .quote-image {
+      width: 280px;
+      opacity: 0.95;
+    }
+
+    /* AUTHOR */
+
+    .author {
+      padding: 90px 0;
+    }
+
+    .author-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .author-card {
+      display: flex;
+      gap: 30px;
+    }
+
+    .author-image {
+      width: 220px;
+      height: 280px;
+      border-radius: 14px;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    .author-content h3,
+    .newsletter h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      margin-bottom: 24px;
+    }
+
+    .author-content p,
+    .newsletter p {
+      font-size: 1.15rem;
+      color: #4b4842;
+      margin-bottom: 18px;
+    }
+
+    .read-more {
+      margin-top: 20px;
+      display: inline-block;
+      color: #4f5631;
+      font-size: 1.1rem;
+    }
+
+    .newsletter {
+      border-left: 1px solid var(--border);
+      padding-left: 50px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 26px;
+      gap: 14px;
+    }
+
+    .newsletter input {
+      flex: 1;
+      border: 1px solid var(--border);
+      background: var(--paper);
+      border-radius: 10px;
+      padding: 18px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .newsletter button {
+      background: var(--olive);
+      border: none;
+      color: white;
+      padding: 18px 28px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .footer-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 2px solid #7f7b72;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    .footer-note {
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1200px) {
+      .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hero h2 {
+        font-size: 4.8rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav {
         display: none;
+      }
+
+      .hero-grid,
+      .author-grid,
+      .quote-box {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .newsletter {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .hero h2 {
+        font-size: 4rem;
+      }
+
+      .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .books-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+      }
+
+      .section-title,
+      .author-content h3,
+      .newsletter h3 {
+        font-size: 2.5rem;
+      }
+
+      .author-card {
         flex-direction: column;
-        background: #111;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        padding: 15px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
     }
-
-    .menu.active {
-        display: flex;
-    }
-}
-body {
-    overflow-x: hidden;
-}
-
-/* hamburger */
-.hamburger {
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 2001;
-}
-
-/* overlay (ciemne tło) */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    z-index: 2000;
-}
-
-.overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* SIDE MENU */
-.side-menu {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 280px;
-    height: 100%;
-    background: #111;
-    padding: 60px 20px;
-    transition: 0.3s ease;
-    z-index: 2002;
-}
-
-.side-menu.active {
-    left: 0;
-}
-
-/* close button */
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 22px;
-    color: white;
-    cursor: pointer;
-}
-
-/* links */
-.side-menu ul {
-    list-style: none;
-    padding: 0;
-}
-
-.side-menu li {
-    margin: 20px 0;
-}
-
-.side-menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.side-menu a:hover {
-    color: #ffd166;
-}
-.side-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100%;
-    background: #111;
-    padding: 60px 20px;
-
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-
-    z-index: 1001;
-}
-
-.side-menu.active {
-    transform: translateX(0);
-}
-	
-</style>
+  </style>
 </head>
-
 <body>
 
+  <header>
+    <div class="container navbar">
+
+      <div class="logo">
+        <div class="logo-circle">AM</div>
+
+        <div class="logo-text">
+          <h1>Biblioteka Adama Miksa</h1>
+          <p>wiersze i opowiadania</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#">Biblioteka</a>
+        <a href="#">O autorze</a>
+        <a href="#">Aktualności</a>
+        <a href="#">Kontakt</a>
+
+        <div class="search">
+          🔍 <span>Szukaj</span>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+
+      <div>
+        <div class="hero-subtitle">Biblioteka Adama Miksa</div>
+
+        <h2>
+          Miks Twórczości<br>
+          Adama
+        </h2>
+
+        <p>
+          Wiersze, fraszki i opowiadania pisane z zachwytu nad światem,
+          z uważności na człowieka i z potrzeby serca.
+        </p>
+
+        <a href="#" class="button">
+          Przejdź do biblioteki →
+        </a>
+      </div>
+
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=1600&auto=format&fit=crop" alt="Biblioteka autora">
+      </div>
+
+    </div>
+  </section>
+
+  <section class="books">
+    <div class="container">
+
+      <div class="section-top">
+        <div>
+          <div class="section-label">Biblioteka</div>
+          <h3 class="section-title">Moje książki</h3>
+        </div>
+
+        <a href="#" class="all-link">Zobacz wszystkie →</a>
+      </div>
+
+      <div class="books-grid">
 
 
-<div class="overlay" id="overlay"></div>
 
-<nav class="side-menu" id="sideMenu">
-    <div class="close-btn" id="closeMenu">✖</div>
+          <div class="book-title">Z krajobrazów poety</div>
+          <div class="book-type">tomik wierszy</div>
+        </div>
 
-    <ul>
-        <li><a href="#o-mnie">O mnie</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-        <li><a href="#krajobrazy">Z krajobrazów poety</a></li>
-        <li><a href="#tomik-1">Ze stadionów świata</a></li>
-        <li><a href="#tomik-2">Dzień dobry, do widzenia</a></li>
-        <li><a href="#tomik-4">Fraszki</a></li>
-        <li><a href="#tomik-5">Wiersze z lat 90</a></li>
-        <li><a href="#opowiadania">Opowiadania</a></li>
-        <li><a href="#felietony">Felietony</a></li>
-        <li><a href="#anegdoty">Anegdoty</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
+        <div class="book-card">
+          <div class="book-cover cover-2">
+            <h4>Ze stadionów świata</h4>
+          </div>
 
-        <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
-        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-    </ul>
-</nav>
+          <div class="book-title">Ze stadionów świata</div>
+          <div class="book-type">tomik wierszy</div>
+        </div>
+
+        <div class="book-card">
+          <div class="book-cover cover-3">
+            <h4>Dzień dobry,<br>do widzenia</h4>
+          </div>
+
+          <div class="book-title">Dzień dobry, do widzenia</div>
+          <div class="book-type">tomik wierszy</div>
+        </div>
+
+      <div class="book-card">
+          <div class="book-cover cover-6">
+            <h4>Łóżko i inne opowiadania</h4>
+          </div>
+
+          <div class="book-title">Łóżko i inne opowiadania</div>
+          <div class="book-type">zbiór opowiadań</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="quote">
+    <div class="container quote-box">
+
+      <div class="quote-text">
+        “Twórczość jednostki jest dźwignią życia zbiorowego.”
+      </div>
+
+      <div class="quote-image">
+        ✒️
+      </div>
+
+    </div>
+  </section>
+
+  <section class="author">
+    <div class="container author-grid">
+
+      <div class="author-card">
+
+        <img
+          class="author-image"
+          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop"
+          alt="Autor"
+        >
+
+        <div class="author-content">
+          <h3>O autorze</h3>
+
+          <p>
+            Od lat obserwuję świat z czułością i ciekawością.
+            Zapisuję to, co mnie porusza — w wierszach,
+            fraszkach i opowiadaniach.
+          </p>
+
+          <p>
+            Ta strona jest biblioteką moich słów.
+          </p>
+
+          <a href="#" class="read-more">
+            Czytaj więcej →
+          </a>
+        </div>
+
+      </div>
+
+      <div class="newsletter">
+        <h3>Bądź na bieżąco</h3>
+
+        <p>
+          Zapisz się, aby otrzymywać informacje
+          o nowych tekstach i aktualnościach.
+        </p>
+
+        <form class="newsletter-form">
+          <input type="email" placeholder="Twój adres e-mail">
+          <button type="submit">Zapisz się</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+
+      <div class="footer-left">
+        <div class="footer-logo">AM</div>
+
+        <div>
+          © 2026 Biblioteka Adama Miksa<br>
+          Wszelkie prawa zastrzeżone
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <a href="#">Biblioteka</a>
+        <a href="#">O autorze</a>
+        <a href="#">Aktualności</a>
+        <a href="#">Kontakt</a>
+      </div>
+
+      <div class="footer-note">
+        Projekt inspirowany bibliotekami cyfrowymi.
+      </div>
+
+    </div>
+  </footer>
 
 </body>
+</html>
 
-
-
-<!-- NAVBAR -->
-<div class="title-panel">
-  <h1 class="main-title">Miks twórczości Adama</h1> 
-  <p class="motto">Twórczość jednostki jest dźwignią życia zbiorowego</p>
-</div>
-
-
-
-<!-- SEKCJE -->
-<section id="o-mnie" class="slide">
-  <h1>O mnie</h1>
-	<p class="justify">
-   Nazywam się Adam Miks i jestem  polskim poetą ( a od czasu do czasu i prozaikiem) a tak naprawdę blogerem literackim urodzonym w 1967 roku w Warszawie. Z wykształcenia archiwista, pracowałem jako bibliotekarz. Tworzę głównie poezję, publikowałem w czasopismach literackich i jestem autorem papierowego wydania tomiku „Z krajobrazów poety”. Stworzyłem  również dwa inne tomiki, "Ze stadionów świata" i "Dzień dobry, do widzenia i spacery między", których wydania internetowe, z miłą chęcią, przekazuję Drogim Czytelnikom.
-	Prowadzę również działalność w internecie, gdzie recenzuję książki i dzielę się swoją pasją do literatury. W mojej twórczości często pojawiają się refleksje o życiu, codzienności i Warszawie.
-	</p>
-</section>
-
-<section id="kontakt" class="slide">
-
-  <p>    <h2>Kontakt</h2>
-
- <form action="https://formspree.io/f/xbdqokpq" method="POST">
-  <input type="text" name="name" placeholder="Imię" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <textarea name="message" placeholder="Wiadomość" required></textarea>
-  <button type="submit">Wyślij</button>
-</form>                
-</section>
-</p>
-<section id="krajobrazy" class="slide">
- <div class="poem justify">
-    <section class="title-page">
-	 <h1><class="author">Adam Miks</h1>
-  <h3>Z KRAJOBRAZÓW POETY</h3>
-		<p>Wydanie papierowe: Warszawska Firma Wydawnicza, 2018</p>
-  <p class="meta">wydanie internetowe<br>2026</p>
-		
-</section>
- 
-  
-
-  <!-- OKŁADKA + SPIS TREŚCI = STRONA OTWARCIA -->
-  <img src="https://s.lubimyczytac.pl/upload/books/4872000/4872295/707344-352x500.jpg" alt="Z krajobrazów poety"> 
-
-  <nav class="toc-book">
-    <p class="toc-title">Spis treści</p>
-   <a id="top"></a>
-    <ul>
-      <li><a href="#wiersz1">Wstaję, siódma rano</a></li>
-      <li><a href="#wiersz2">Komunikaty</a></li>
-      <li><a href="#wiersz3">Przystanek</a></li>
-      <li><a href="#wiersz4">Akant życia</a></li>
-        <li><a href="#wiersz5">Ta cisza</a></li>
-      <li><a href="#wiersz6">Struktura</a></li>
-      <li><a href="#wiersz7">Poeta i filozof</a></li>
-      <li><a href="#wiersz8">Oddechy poety</a></li>
-      <li><a href="#wiersz9">Spacer jesienny</a></li>
-        <li><a href="#wiersz10">Nagła chmura</a></li>
-     <li><a href="#wiersz11">Koliber</a></li>
-      <li><a href="#wiersz12">Zachód słońca</a></li>
-      <li><a href="#wiersz13">Wytłumaczę</a></li>
-      <li><a href="#wiersz14">Krajobraz człowieka I</a></li>
-        <li><a href="#wiersz15">Krajobraz człowieka II</a></li>
-        <li><a href="#wiersz16">Krajobraz cukierni</a></li>
-     <li><a href="#wiersz17">Krajobraz z przystankiem</a></li>
-      <li><a href="#wiersz18">Lód nie pęka</a></li>
-        <li><a href="#wiersz19">Krajobraz czterdziestolatka</a></li>
-     <li><a href="#poslowie">Posłowie</a></li>
-        </ul>
-  </nav>
-
-<!-- MENU (SLIDE 1) -->
-<section class="slide active" id="wiersz1">
-   <h1 class="poem-title">WSTAJĘ, SIÓDMA RANO</h1>
-<p>
-Krzywa wieża naczyń 
-   rama palników gazu
-   samoobsługowa płaszczyzna stół–ściana
-   Próbuję uwolnić świat
-   parujący czajnik 
-   koronki zasłon
-   obłoki zza mokrej szyby
-   Jedyna chwila jakiejkolwiek
-   poezji
-   W kuchni o siódmej rano
-   tuż przed śniadaniem 
-
-</p>
-</section>
-<section class="slide" id="wiersz2">
- <h1 class="poem-title">KOMUNIKATY</h1>
-<p> Koła autobusu 
-   rozbryzgują śnieg 
-   Zima 
-   robi notatki
-   na nogawkach 
-   Wiosną pojawią się 
-   kwiaty – neony 
-   
-   Komunikaty słońca
-    
-
-</p> </section>
-
-
-<!-- WIERSZ 3 -->
-<section class="slide" id="wiersz3">
- <h1 class="poem-title">PRZYSTANEK</h1>
-    <p>
-Idę w kierunku przystanku
-Śnieg
-zdyszane działanie białych płatków
-
-Spotykam znajomą
-
-Oddychamy światłem, bawimy się łąką
-oglądamy fotografie mandarynek
-rozkoszujemy się pąkami drzew
-
-Przechodzimy przez labirynt kropel flirtu
-
-Tymczasem
-    
-    </p>
-</section>
-
-
-
-  
-    <section class="slide" id="wiersz4">
-  <h1 class="poem-title">AKANT ŻYCIA</h1>
-  <p>
-Nie mów
-raczej spójrz, raczej podziękuj w milczeniu
-Oto rumieniec wiewiórki
-spada na nas
-Chwila jesieni wokół
-tu na ścieżce ku domowi
-Aż zobaczymy jeszcze jeden akant życia
-dym
-  </p>
-</section>
-
-<section class="slide" id="wiersz5">
-  <h1 class="poem-title">TA CISZA</h1>
-  <p>
-Poruszam się na obrzeżach
-fioletu
-Doskwiera ta cisza
-żądna wieczoru
-Nieskończona linia papilarna
-nieba
-
-  </p>
-</section>
-
-<section class="slide" id="wiersz6">
-  <h1 class="poem-title">
-STRUKTURA</h1>
-  <p>
-Wiosło westchnienia
-Jezioro
-odpływa
-bez nas
-Zostajemy
-obok w, nad, za
-i poza
-wierszem
-Stajemy się wyspą
- 
-</p>
-</section>
-
-<section class="slide" id="wiersz7">
-  <h1 class="poem-title">
-POETA I FILOZOF</h1>
-  <p>
-Umarł las w złocie
-korzeni, brąz, błękitu barwy
-Poeta i filozof piszą wiersze
-w anioły się przemienili
-Korzeni barwy brąz w błękicie
-umarł las w złocie
-
-  </p>
-</section>
-
-<section class="slide" id="wiersz8">
-  <h1 class="poem-title">
-ODECHY POETY</h1>
-  <p>
-Jestem nieporadny
-w tej wąskiej alejce
-w strumieniu liści
-Nieznany nagi świt
-rośnie bez mojego udziału
-wiatr żyje cicho z tajemnicą głębszą
-od mojego ciała
-Niewiele rozumiem, jestem
-nieporadny, przeszyty nasieniem
-Szaleństwo, kac
-czas – krótka chwila
-zatem milczę
-Nie boję się
-To tylko jesień
-
-  </p>
-</section>
-
-<section class="slide" id="wiersz9">
-  <h1 class="poem-title">
-  SPACER JESIENNY</h1>
-
-  <p>
-Rotunda wierzby płaczącej
-gubi liście
-
-Cicho
-oddychamy spokojnie
-Szkielet drzewa
-pojawia się na skórze
-
-Nazwiemy go tatuażem
-jesiennym
-
-Tymczasem
-szelest liści przenika ziemię
-aż do pierwszego śniegu
-Korzenie naszego życia
-będą nazywane zimą
-a my sami
-
-jej opuszkami
-  
-  </p>
-  </section>
-
-
-<section class="slide" id="wiersz10">
-  <h1 class="poem-title">
-NAGŁA CHMURA</h1>
-  <p>
-Tańczy na oliwkowej zieleni
-błękit żwir
-Świerszcze na klepisku
-Kobieta
-wciąż tańczy
-co przywołuje czerwień ubrania
-Wyprostowana
-w głos myśląca
-obramowana nagłą chmurą
-Jeszcze żyje
-
-  </p>
-</section>
-
-<section class="slide" id="wiersz11">
-  <h1 class="poem-title">
-KOLIBER</h1>
-  <p>
-Zwięzłe
-nie małe barwy kolibra
-dlatego świt u gałęzi
-
-Koliber pije kwiaty
-z nich pije swą naturę
-
-I nagle wstaje dzień
-a przecież doskonale przygotowany
-oparty na
-
-płomienistych skrzydłach i otwartym kwiecie
-  
-  </p>
-</section>
-
-<section class="slide" id="wiersz12">
-  <h1 class="poem-title">
-    ZACHÓD SŁOŃCA</h1>
-  <p>
-Zachód słońca
-rozpostarł barwy
-
-Codzienność i struktury wieczności
-
-Fiolet w kształcie embrionu
-
-wzruszył mnie
- 
-  </p>
-</section>
-
-<section class="slide" id="wiersz13">
-  <h1 class="poem-title">
-WYTŁUMACZĘ</h1>
-  <p>
-Poezja jest niepokojem
-poruszeniem góry gdy wokół same myszy
-napięciem Ziemi jednocześnie terapią dla ludzkości
-szukaniem blasku w kominie popiołu
-
-Jest jednak pewien korytarz w głębi domu
-w kształcie litery L
-tu odpoczywam
-pochylając długopis nad kartką
-jak szybowiec zlatujący nad łąką
-
-Za oknem zwyczajnie
-wybuchają bomby pada deszcz pędzą samochody
-
-Na placu Unii Lubelskiej młoda dziewczyna (licealistka)
-rozpłakała się w głos nikt nie wie
-dlaczego
-nawet poeta
-
-Tylko atrament drży bez słowa
-  
-  </p>
-</section>
-<section class="slide" id="wiersz14">
-  <h1 class="poem-title">    
-KRAJOBRAZ CZŁOWIEKA I</h1>
-
-  <p>
-1.
-Nie przeżyliśmy jeszcze wszystkiego
-co może przeżyć człowiek
-Wychodzimy dopiero z bram odsuwając zdziwionych
-przechodniów
-zostawiając utuloną w spastycznych dłoniach poduszkę
-bezpieczeństwa
-Nie tylko ocaleni ale także wpisani w świat z fałszywym
-olśnieniem
-zdrowej części ciała zawierzywszy umiejętność chodzenia
-samym sobie
-Budowanie kroków
-bez aparatów wspomagających lecz z pasją weryfikującą
-natężenie mięśni
-
-Nie
-trzeba schodzić do piwnicy aby uchronić
-w czarnych dłoniach światło
-Gdy upadniemy
-a to jest wpisane w zbyt dużą samodzielność
-jak wślizgująca w ciało samobójcy trucizna
-światło nie zaginie owoc nie zgnije
-Upadek to nie ruina
-ni popiół ani cienie zabitych
-jesteśmy tylko przez chwilę
-w obszarze bezdechu ziemi
-Jesteśmy tylko przez chwilę niepełnosprawni
-
-2.
-Człowiek opowiada
-
-7.00
-Budzę się bez rąk jako własny cień
-przedłużam życie bez gestykulacji
-
-13.00
-Nie bój się
-dlaczego zastanawiasz się przed wejściem do windy
-czy za drzwiami jest skocznia narciarska a może pojedynczy
-schodek
-nie bój się trwaj przy swoim ciele
-przy swoich niedoskonałościach
-czas upływa bez ciebie
-gdy nie zrobisz kroku w odpowiednim momencie
-mięśnie nóg stracą blask chodzenia
-i nie zablokujesz drzwi kurczowością mechanizmu
-
-23.00
-Lampkę nocną wyłączam
-instynktownie własny cień znika
-inwalidztwo ukrywa się
-pod kołdrą bez żadnego ruchu
-
-3.
-Nie przeżyliśmy jeszcze wszystkiego co powinniśmy poznać
-ale czy wolno nam
-odwracać głowę od tych
-którzy wyrażają swoje życie inaczej
-gdy szczytem uprawnionej ufności jest Kopiec Kościuszki
-nie maksimum konfrontacji z K2
-gdy
-zachwytem obserwatora na płaszczyźnie chodnik–autobus
-jest podskok dziewięćdziesięcioletniej aktorki
-która w zupełnie innej przestrzeni w krajobrazie
-kamery filmowej odpowie pielęgniarce
-niech się pocałuje w dupę
-gdy brakiem rozsądku jest sięganie do lodówki nogą
-chociaż ciało zostało
-przygniecione samochodem w czasie awarii świateł
-na skrzyżowaniu
-Nie schodźmy do piwnic niepamięci
-aby przeciw inwalidom wyhodować korzeń arogancji
-pierwiastek buty
-Inwalida potknie się
-ale nie powinien odczuć zapachu skrzydeł
-anioła śmierci
-ocal do jasności słońca do księgi urodzaju
-wstań z kolan otrzep pył w krótkim istnieniu swym poczuj
-stabilność
-poczuj pomoc obcej/wiadomej dłoni
-nie myśl że mózg jest prostym
-mechanizmem który nie uczy się historii
-mając argument życia w nie matematycznych
-lecz ludzkich wzorach
-tańczymy nawet po upadku
-aby zaznać zrównoważonej postawy nóg
-
-4.
-Człowiek opowiada
-
-5.00
-Wstać aby bez ruchu rąk
-zdjąć kołdrę z ciała
-A na drugim końcu korytarza
-spodenki nad muszlą klozetową
-Pierwsze w tym dniu schody do pokonania
-oto świat w ciemności jeszcze
-bez ulubionego sygnału radiowego
-a już z dzwonieniem w rurach
-Buty stoją i czekają
-na światło
-na odwagę
-  </p>
-</section>
-
-
-<section class="slide" id="wiersz15">
-  <h1 class="poem-title">
-KRAJOBRAZ CZŁOWIEKA II</h1>
-
-  <p>
-1.
-Człowiek
-Pokój w którym przebywał podobny był do właściciela
-nie brak łóżka
-szafa również odpowiednio wypełniona
-lecz przecież szkice niektórych obrazów książki należą do
-półek i stołu
-przez duże okna słońce nad ogrodem
-(furtka otwarta na uśmiech i prośbę
-droga tak prosta)
-
-2.
-Furtka
-Tutaj czekałem mówię
-wstąp i nadal przeobrażaj moje krajobrazy
-przedziera się serce wytwarza się bliskość
-miły mój
-Bracie miły
-
-3.
-Człowiek
-Gdy pracuje
-cicho jest
-(cząstka połączy nurt słuchu i wyżłobienia oczu)
-Tylko
-koty mogły wejść do pokoju
-kładą ciało w jasności ogrodu
-ten zewnętrzny wręcz dywanowy fresk
-daje inspiracje swoistą przerwę w lekturze
-
-4.
-Myśl i krajobraz to jedno?
-Czy mogę powiedzieć
-ta cząstka w pewnych sytuacjach łączy nurt słuchu
-i wyżłobienia oczu
-aż ból fizyczny dociera do nas i poprzez to powinniśmy
-odłączać
-skłonność w podstępach od pogodnego macierzyństwa
-Od czystości
-(szeroko pojmowane komórki naturalnego zapachu)
-sybarytyzm?
-tak
-ogarniajmy całej ludzkości serce
-termometr
-ale bądźmy czujni poprzez drzewo
-i nie tylko odłączajmy ZŁO od DOBRA
-nadal łódź nieśmy
-w kierunku
-w ten sposób pokazujmy
-skłonność (inaczej zasadę) do omijania mielizn
-każdy ma płachty ziemi wyłożone na dnie
-bardzo często przy brzegach równinnych bicia życia
-(ból to sytuacja jednostkowa
-jest przemijaniem
-wykorzystajmy ruch
-cierpienie jest wyższe
-stanowcze)
-
-5.
-Człowiek
-Wracał do ogrodu gdy był naprawdę zmęczony
-obserwował
-słońce cieplej pokrywa komórki dane mu
-ptak
-moment dla gałęzi
-zauważył Biblię w dłoni
-Amen
-
-6.
-(Wejdę do zacisza
-spytam Boga o zdanie na temat dzisiejszych spotkań myśli pracy
-poproszę aby doskonalił
-podziękuję
-amen amen amen)
-
-  </p>
-</section>
-
-
-<section class="slide" id="wiersz16"> 
-  <h1 class="poem-title">
-KRAJOBRAZ CUKIERNI</h1>
-
-  <p>
-Gdy patrzyłem na
-pięty muszelki przed liftingiem
-kobieta odwróciła się
-jadła pączka
-brązowe oczy były dopełnieniem koloru ciastka
-sukienka lekko zakrywała
-fasolkę pękniętego naczynka
-lewa noga czy prawa
-w notatniku brak precyzji
-
-Piszę ten wiersz z oddalenia
-widzę tylko ideę fix cień krajobrazu plan miasta
-nie trójwymiarowe budynki wydarzenia
-
-mam nadzieję że kobieta
-nie ogłosi erraty nie sprowokuje glosy
-
-Tymczasem
-jeszcze jedno ciastko dłoń przecież na poręczy schodów
-sukienka nad pierwszym stopniem do wyjścia
-
-Torebka eleganckie przyzwyczajenie
-balejaż jako niuans powieki
-pamiętam jeszcze
-pasemka włosów za uchem
-Wycieczka
-Kozienice
-Nieznajoma
-Westchnienie które pieczętuje wiersz
-
-  </p>
-
-</section>
-
-<section class="slide" id="wiersz17">
-  <h1 class="poem-title">
-KRAJOBRAZ Z PRZYSTANKIEM</h1>
-
-  <p>
-pamięci Marka Hłaski
-
-Więc nie ma plastikowego zadaszenia
-stoimy pod gałęziami drzew
-Tak naprawdę klaustrofobia miasteczka
-jedyny hydrant w okolicy fragment
-zapisanej strony nieznanej książki
-Park pięć przystanków dalej
-hotel w granicach gwiazdek Paris Hilton
-Mostek nad sitowiem alejka
-prowadzi do remontu muzeum osiedla
-30-lecia PRL
-Wracamy pod drzewa
-lato dobry dzień dla 27 stopni
-jeszcze większa klaustrofobia
-Jeszcze większy ból
-przystanku autobusowego
-  
-  </p>
-
-</section>
-
-<section class="slide" id="wiersz18">
-  <h1 class="poem-title">
-LÓD NIE PĘKA</h1>
-
-  <p>
-Położyłem zaschnięty kwiat róży
-w głębinie wózka inwalidzkiego
-okręcę go wokół
-małego palca tylko dwa razy
-
-A ocenę wystawię
-jak za cały konkurs
-Telewizor na wszelki wypadek
-wyłączyłem nie lubię porównań
-między niepełnosprawnością a mistrzynią Aliną Zagitową
-
-Śnieg
-pada za oknem
-Lód nie pęka
-  </p>
-</section>
-  
-
-
-
-<section class="slide" id="wiersz19">
-  <h1 class="poem-title">
-KRAJOBRAZY CZTERDZIESTOLATKA</h1>
-
-  <p>
-Odjeżdżam
-nie martwcie się jednak
-tyle pociągów odjechało
-tylu pasażerów czeka na peronie
-
-Odjeżdżam
-pulsuje już bilet
-przydział w przedziale
-inni podobnej sytuacji życiowej
-a jednak
-z innym DNA z innym kręgiem światła
-
-Odjeżdżam
-nie martwcie się jednak
-powietrze jest przezroczyste
-aż do następnej stacji
-
-Odjeżdżam
-zabieram ze sobą
-kalendarz i Biblię
-dwa jedyne krajobrazy
-
-  </p>
-</section>
-
- 
-<section class="slide afterword">
-  <h2 id="poslowie">Posłowie</h2>
-
-  <p><em>Z życia poety, czyli impresje dnia codziennego.</em> Poeta, który podróżuje przez życie. Czy można o tej codziennej podróży w sposób ciekawy opowiedzieć w poezji? Tę próbę podjął autor tego tomiku wierszy.</p>
-
-  <p>Opowiedział o wielu rzeczach – słowem, skojarzeniem, metaforą. Ze słów wyłania się uważna obserwacja otoczenia. Zwykły podróżnik opowiada o niezwykłym cudzie życia. Takie połączenie codzienności i poezji.</p>
-
-  <p>Teraz nikt nie ma czasu na refleksję, zauważenie czegoś. Zbyt szybko biegnie czas, zbyt szybko mijają chwile. Te wiersze zatrzymują umykające chwile, zwracając na nie uwagę.</p>
-
-  <p>Każdy wiersz to właśnie takie chwytanie ulotności przemijania. W tomiku znajdują się dwa wiersze, na które chciałabym zwrócić uwagę – <em>Krajobrazy człowieka I</em> oraz <em>Krajobrazy człowieka II</em>.</p>
-
-  <p>To właśnie on zdobywa się w drugim wierszu na ważne słowa:</p>
-
-  <blockquote class="poem">
-    <p>
-      Wejdę do zacisza<br>
-      spytam Boga o zdanie na temat dzisiejszych spotkań<br>
-      myśli pracy<br>
-      poproszę, aby doskonalił<br>
-      podziękuję<br>
-      amen amen amen
-    </p>
-  </blockquote>
-
-  <p>Te słowa nasunęły mi pewną refleksję: czy my, ludzie „zdrowi”, mamy świadomość własnej ułomności?</p>
-
-  <p>W tym tomiku wierszy zwraca również uwagę metaforyka – skrót myślowy, bo nie ma czasu na opis. To przyciąga mnie, czytelniczkę.</p>
-
-  <footer class="author">
-    <p>Marzena Biernat</p>
-   
- 
-</footer>
-	</section>  
-  </div>
-</section>
-
-	<section id="krajobrazy" class="slide">
-  
-  <div class="poem justify">
-    <section class="title-page">
-	 <h1><class="author">Adam Miks</h1>
-  <h3>ZE STADIONÓW ŚWIATA</h3>
-  <p class="meta">wydanie internetowe<br>2026</p>
-</section>
-	<div class="section" id="tomik-1">
-  <img src="https://raw.githubusercontent.com/adammiks/miks-tw-rczo-ci/refs/heads/main/Adam%20Miks%20Ze%20stadion%C3%B3w%20%C5%9Bwiata.png" alt="Z krajobrazów poety" width="300" height="300">
-   <nav class="toc-book">
-    <p class="toc-title">Spis treści</p>
-   <a id="top"></a>
-    <ul>
-      <li><a href="#tomik1">BIEGACZ</a></li>
-       <li><a href="#tomik2">MINUTA ZEROWA MECZU</a></li>
-       <li><a href="#tomik3">W GŁĘBINIE</a></li>
-       <li><a href="#tomik4">DWIE ŁUCZNICZKI</a></li>
-       <li><a href="#tomik5">PROWOKACJA</a></li>
-    <li><a href="#tomik6">KOMBINEZON KOSMONAUTY</a></li>
-       <li><a href="#tomik7">TRENING</a></li>
-       <li><a href="#tomik8">PODANIE</a></li>
-		<li><a href="#tomik9">WARKOCZ</a></li>
-    </ul>
-
-   </nav> 
-
-
-  
-<section class="slide active" id="tomik1">
-  <h1 class="tomik-title">BIEGACZ</h1>
-    
-    <p>dokąd wyskakuję jako biegacz z wazy
-
-maraton jest małą archeologiczną wioską
-żadnej bitwy ni drogowskazu
-filippides zasnął pod swoim pomnikiem
-nie potrzebny władcy ani nikomu więcej
-
-zwłaszcza że waza przechowywana w muzeum
-a ja
-mam powidoki uruchomione
-przez zwykłą kolej wyobraźni
-
-nawet tu
-na kartoflisku
-przy łagodnym strumieniu dymu</p>
-  </section>
-
-  <section class="slide" id="tomik2">
-  <h1 class="tomik-title">MINUTA ZEROWA MECZU</h1>
-  <p>
-hymn narodowy
-zerowa minuta meczu piłkarskiego
-
-wymiana proporczyków
-gwizdek i siła pierwszego uderzenia
-
-kibice tworzą dach oklasków nad polską reprezentacją
-
-szum medialny zamieni się z szumem stadionu
-
-za chwilę minie
-kilkanaście sekund wiersza - komentarza
-
-wynik spotkania nie zmienił się na
-gwizdek sędziego i dyskusje obu trenerów
-
-sponsor zamknął oczy na rzut wolny
-
-ulga
-  </p>
-</section>
-
-<section class="slide" id="tomik3">
-  <h1 class="tomik-title">W GŁĘBINIE</h1>
-  <p>
-na palcu
-zakręciła się obrączka
-
-włączyłem telewizor
-za oknem zima i igrzyska olimpijskie
-łyżwiarka figurowa wkręca w lód piruet
-położyłem zaschnięty kwiat róży
-w głębinie wózka inwalidzkiego
-
-okręcę go 
-wokół małego palca 
-tylko dwa razy
-niech to będzie 
-program obowiązkowy
-
-telewizor
-na wszelki wypadek zasłoniłem 
-niepamięcią retransmisji
-
-nie lubię porównań
-między niepełnosprawnością a mistrzynią świata
-  </p>
-</section>
-
-<section class="slide" id="tomik4">
-  <h1 class="tomik-title">DWIE ŁUCZNICZKI</h1>
-  <p>
-Szpilka rwie tunel lokówki
-Strzała mknie ku tarczy
-Dwie łuczniczki
-  </p>
-</section>
-
-<section class="slide" id="tomik5">
-  <h1 class="tomik-title">PROWOKACJA</h1>
-  <p>
-piąta rano w Warszawie
-klaszczemy liniami papilarnymi 
-nie budzimy sąsiadów
-(aczkolwiek szczekanie psa Mopsa
-powinniśmy zignorować)
-
-i jednocześnie tworzymy falę dźwięku
-sprowokujemy tym zamieszaniem bramkę dla Tajwanu
-na 1:12
-  </p>
-</section>
-
-<section class="slide" id="tomik6">
-  <h1 class="tomik-title">KOMBINEZON KOSMONAUTY</h1>
-  <p>
-rysy twarzy przecinają się sieć połączeń wi-fi
-komórki rąk i nóg
-zanurzasz w linii życia elektrokardiogramu
-z tułowia zbierzesz 
-lustrzane odbicie 
-westchnień domysłów beknięć 
-
-nie dogoni cię nawet Usain Bolt 
-biegacz w kombinezonie kosmonauty
-  </p>
-</section>
-
-<section class="slide" id="tomik7">
-  <h1 class="tomik-title">TRENING</h1>
-  <p>
-muskuły zwinęły się w kłębek odpoczynku 
-przez dwie godziny były drapieżne 
-pazurem wyspanego lwa 
-teraz 
-ledwo dźwigają puch oddechów
-  </p>
-</section>
-
-<section class="slide" id="tomik8">
-  <h1 class="tomik-title">PODANIE</h1>
-  <p>
-suknie kobiet, białe koszule i wspaniałe krawaty mężczyzn widać 
-w kawiarniach i na stadionie
-
-a jednak na płytę boiska wyskakuje trener w dresie
-
-szczęsne pobrzękiwanie niestrzelonej bramki w głosie komentatora:
-Jezus Maria
-
-sponsorem meczu powinna zostać tak zwana laga
-  </p>
-</section>
-
-<section class="slide" id="tomik9">
-  <h1 class="tomik-title">WARKOCZ</h1>
-<p>
-Z warkocza zbudowałem 
-skocznię narciarską
-Pierwszym zawodnikiem niech zostanie 
-dłoń wskazująca
-
-Technika lotu
-nie będzie brana pod uwagę 
-Iluż przedskoczków
-marnuje talent przez niezdecydowanie
-Podróż będzie kąśliwa 
-a jednak niezbyt długa 
-
-Bolą mnie powieki
-jakbym chciał za dużo zobaczyć 
-jakby do oczu wlatywał mi tunel skoczni
-
-orgazm życia		
-</p>
-</section>
-  </div>
-</section>
-
-	<section id="krajobrazy" class="slide">
-
-  <div class="poem justify">
-   	 <section class="title-page">
-		 <div class="section" id="tomik-2">
-	 <h1> <class="author">Adam Miks</h1>
-  <h3>DZIEŃ DOBRY, DO WIDZENIA I SPACERY MIĘDZY </h3>
-  <p class="meta">wydanie internetowe<br>2026</p>
-</section>
- <img src="https://raw.githubusercontent.com/adammiks/miks-tw-rczo-ci/refs/heads/main/Adam%20Miks%20Dzie%C5%84%20dobry%2C%20do%20widzenia%2C%20spacery%20pomi%C4%99dzy.png " alt="Z krajobrazów poety" width="300" height="300">
-     <nav class="toc-book">
-    <p class="toc-title">Spis treści</p>
-   <a id="top"></a>
-  <ul>
-  <li><a href="#poezja1">Nastolatek</a></li>
-      <li><a href="#poezja2">Matura</a></li>
-      <li><a href="#poezja3">Przyszłość</a></li>
-      <li><a href="#poezja4">Poranek</a></li>
-        <li><a href="#poezja5">Kurz</a></li>
-      <li><a href="#poezja6">Światło</a></li>
-      <li><a href="#poezja7">Przez chwilę</a></li>
-	  <li><a href="#poezja8">Młody poeta</a></li>
-      <li><a href="#poezja9">Negacja</a></li>
-      <li><a href="#poezja10">Poród</a></li>
-        <li><a href="#poezja11">Wskazówki</a></li>
-     <li><a href="#poezja12">Metafora</a></li>
-      <li><a href="#poezja13">Zez</a></li>
-      <li><a href="#poezja14">Kłótnia</a></li>
-	  <li><a href="#poezja15">Tych parę bajek</a></li>   
-  </ul>
-
-<section class="slide" id="poezja1">
-  <h1 class="tomik-title">NASTOLATEK</h1>
-  <p>
-    taki teatr
-    w którym grasz 
-    kogo tam chcesz
-
-    a tak naprawdę  
-    otrzymałeś rolę 
-    nastolatka bez suflera
-  </p>
-</section>
-
-<section class="slide" id="poezja2">
-  <h1 class="tomik-title">MATURA</h1>
-  <p>
-    osiemnastoletnia dziewczyna
-    spacerująca w pobliżu
-    liceum ogólnokształcącego
-
-    w
-    dresach
-    z nadrukiem
-    postaci Walta Disneya
-
-    całuje o rok starszego kolegę
-  </p>
-</section>
-
-<section class="slide" id="poezja3">
-  <h1 class="tomik-title">PRZYSZŁOŚĆ</h1>
-  <p>
-    przyszłość 
-    jest
-    chusteczką opadającą
-    zanim schwycisz ją za rogi
-    tyle zdarzyć się powinno
-    zadowolenie przeinaczenie
-    zasianie rozmyślanie
-    kołysanie czekanie
-    jakże piękne są myśli
-    delikatnie drży podłoga
-    płaszczyzna przetrwania
-  </p>
-</section>
-
-<section class="slide" id="poezja4">
-  <h1 class="tomik-title">PORANEK</h1>
-  <p>
-    drzewo mało 
-    mówi o krewnych 
-
-    tylko od czasu do czasu 
-    spada gałąź dziecko poranka
-
-    szorstkość osuwania się 
-    powoduje niechęć nie pytamy o
-    dalsze i bliższe parantele 
-
-    jednak poranek rozprzestrzenia się
-    ma moc 
-  </p>
-</section>
-
-<section class="slide" id="poezja5">
-  <h1 class="tomik-title">KURZ</h1>
-  <p>
-    zaświeć zapomnieniem i wspomnieniem
-    daleka nieznajomo Nie jesteś jednak
-    owinięta mgłą jak prorokowała pieśń
-    ja jestem
-
-    kurz wygasi zapał i bezruch jednostajny
-    daleka nieznajomo jednak to nie ty
-    prześlizgniesz się przez tunel tęsknoty
-
-    gdzie jestem
-  </p>
-</section>
-<section class="slide" id="poezja6">
-  <h1 class="tomik-title">
-ŚWIATŁO</h1>
-<p>
-ktoś z okna rozsypał światło
-bruk zakwitł owocami powietrznymi
-karmię cię witaminami pocałunków
-poranek tęczuje niespokojną wyspą ciąży
-drży przy brzegu równinnym serce
-termometr miłości naszych spotkań
-z powodu spotkań myśli metafor pocałunków
-jest ten wiersz są te krajobrazy mosty słów
-dwojga ciał nurt pieszczot wyznań
-muszelka jest łagodnym wyobrażeniem nowego świtu
-żaru odwagi w przemijające lecz nie gnijące kroki
-energia nie rodzi popiołu ani cieni przodków
-tylko przez chwilę będziemy ukryci
-okryci w słabość wywędrujemy poza próg
-nie bójmy się zaczątku progu niemocy pierwszych dni
-gdy wyspa brzemienności zamienia się w myśl
-a jeszcze potem w czyn
-rodzi się kołysanie pieszczoty
-atomy inkubatora zewnętrznego
-ktoś z okna rozsypał pobłysk życia
-z tęczy i rąk zbudujmy nową
-kładkę
-</p>
-</section>
-<section class="slide" id="poezja7">
-  <h1 class="tomik-title">
-PRZEZ CHWILĘ</h1>
-<p>
-Nie przeżyliśmy jeszcze wszystkiego co może przeżyć człowiek
-wychodzimy dopiero z bram odsuwając zdziwionych przechodniów
-zostawiając utuloną w spastycznych dłoniach poduszkę bezpieczeństwa
-Nie tylko ocaleni ale także wpisani w świat z fałszywym olśnieniem
-zdrowej części ciała zawierzywszy umiejętność chodzenia samym sobie
-Budowanie kroków bez aparatów wspomagających lecz z pasją weryfikującą natężenie mięśni
-Nie trzeba schodzić do piwnicy aby uchronić w czarnych dłoniach światło
-Gdy upadniemy a to jest wpisane w zbyt dużą samodzielność
-światło nie zaginie owoc nie zgnije
-Upadek to nie ruina ni popiół
-Jesteśmy tylko przez chwilę w obszarze bezdechu ziemi
-Jesteśmy tylko przez chwilę niepełnosprawni
-</p>
-</section>
-<section class="slide" id="poezja8">
-  <h1 class="tomik-title">
-MŁODY POETA</h1>
-<p>
-Bo widzi pani
-w moim życiu jest dużo nieuzasadnionego niepokoju
-takiego który rozumiem tylko ja i 
-poezja przetaczająca przez pokój o wymiarach jamnika długowłosego
-
-Sto wulkanów
-nie koniecznie koniec świata
-Zadrapanie na plecach 
-maleńka rana kłuta
-
-Dlatego
-rzucam zaledwie cień porządku na papier
-</p>
-</section>
-<section class="slide" id="poezja9">
-  <h1 class="tomik-title">
-NEGACJA</h1>
-<p>
-Nie popełnię samobójstwa Życie nie zapętli się 
-Żadnego wspomagania
-ani reinkarnacji ni zapisu w Konstytucji Rzeczpospolitej Polskiej
-tym bardziej głosu z Unii Europejskiej
-Nie widzę także znaku stop
-
-Jedynie co mogę to poprosić Pana Boga o rychłą śmierć
-Przeżyję autodestrukcję z błogosławieństwem
-</p>
-</section>
-<section class="slide" id="poezja10">
- <h1 class="tomik-title">
-PORÓD</h1>
-<p>
-Jestem powietrzem
-Przytulasz mnie 
-Oddalam się
-Multiplikujemy
-Widzisz mnie
-</p>
-</section>
-<section class="slide" id="poezja11">
- <h1 class="tomik-title">WSKAZÓWKI</h1>
-<p>
-Całuję cię od rana do południa
-
-pędzącymi autobusami  
-bez przesiadki zbędnego oddechu
-
-Niektóre mają na dachu anielskie skrzydła
-
-Całuję cię od południa do wieczora
-
-pomnożonymi tramwajami 
-balansującymi na okręgach zajezdni 
-
-Dopóki wskazówki zegara ściennego 
-nie zasłonią słońca i naszych ciał
-</p>
-</section>
-<section class="slide" id="poezja12">
- <h1 class="tomik-title">METAFORA</h1>
-<p>
-Jak to z metaforą bywa,
-mężczyzna tłumaczy kobiecie życie między wierszami.
-Wieczorami odnajduje słowa niedokończonych obrazów.
-Kobieta dopisuje jednak wyobrażenie ciągu dalszego.
-</p>
-</section>
-<section class="slide" id="poezja13">
- <h1 class="tomik-title">ZEZ</h1>
-<p>
-Lewe oko ma swój punkt widzenia
-Prawe jeszcze szuka krajobrazu
-Razem omawiają chwiejne umysły
-Skoki w bok ludzkości
-</p>
-</section>
-<section class="slide" id="poezja14">
- <h1 class="tomik-title">KŁÓTNIA</h1>
-<p>
-Ziołami ufarbowałaś włosy,
-ja tylko chmielem.
-Siedzę w fotelu,
-wypatruję Cię przez odwrotną lunetę szklanki.
-
-Kłótnia między nami zatem również milczy.
-</p>
-</section>
-<section class="slide" id="poezja15">
- <h1 class="tomik-title">TYCH PARĘ BAJEK</h1>
-<p>
-Przede wszystkim wiersz o jesieni,
-lombard pełen szelestu liści.
-
-Przerwij na moment oglądanie filmu,
-okryj nogi wełnianym swetrem.
-
-Nie bój się – mgła pokryje wszelkie koszty,
-tych parę bajek.
-</p>
-</section>
-
-</div> 
- 
-<section id="konkursy" class="slide">
- <div class="poem justify">
-  <section class="title-page">
-    <h1 >class="author">Adam Miks</h1>
-    <h3>Z RÓŻNYCH PÓŁEK</h3>
-    <p class="meta">wydanie internetowe<br>2026</p>
-  </section>
-
-	 <img src="https://raw.githubusercontent.com/adammiks/miks-tw-rczo-ci/refs/heads/main/2d394d70-953f-4eb3-943f-644acc50fded.png" alt="" width="300" height="200">
-
-  <!-- Konkurs 1995 -->
- 
-    <p>Konkurs imienia Marii Konopnickiej, 1995, I Nagroda</p>
-
-    <nav>
-      <ul>
-        <li><a href="#wspomnienia1">xxx</a></li>
-        <li><a href="#wspomnienia2">TRISTAN</a></li>
-        <li><a href="#wspomnienia3">wa ŻABKI</a></li>
-      </ul>
-    </nav>
-
-    <section class="slide" id="wspomnienia1">
-  <h1 class="tomik-title">xxx</h1>
-      <p>
-        Z kapliczek<br>
-        ostrożnie wypadł<br>
-        zmierzch<br><br>
-
-        W drodze<br>
-        do wodopoju<br>
-        nieustraszona skarga<br><br>
-
-        Usta
-      </p>
-    </section>
-
-    <section class="slide" id="wspomnienia2">
- <h1 class="tomik-title">TRISTAN</h1>
-      <p>
-        O Izoldzie ani słowa<br>
-        w tym wierszu<br>
-        jakby jej nigdy nie było<br>
-        ani tego naręcza róż<br><br>
-
-        Ten wiersz taki bez skazy wieków<br>
-        gdy na bazarek wchodzi<br>
-        kochanek niegodnych barw myśli<br><br>
-
-        O Izoldzie ani słowa<br>
-        w tym wierszu<br><br>
-
-        Ten wiersz taki bez skazy wieków<br><br>
-
-        Chodzi Tristan<br>
-        między budkami bazarku<br>
-        Błoto ma na butach<br>
-        muzykę na uszach<br><br>
-
-        Chodzi Tristan sobie<br>
-        Sokół lata nad ruczajem<br>
-        W ruczaju kąpie się cień sokoła
-      </p>
-    </section>
-
-    <section class="slide" id="wspomnienia3">
-  <h1 class="tomik-title">wa ŻABKI</h1>
-      <p>
-        Wąż<br>
-        zakręcił się<br>
-        wokół żabki<br><br>
-
-        płaszczyzna miła<br><br>
-
-        powiedziała<br>
-        świtem kołującym<br><br>
-
-        Nie mam żalu Zwłaszcza do niego<br>
-        Ciekawe jednak czy pamięta<br><br>
-
-        W drodze powrotnej<br>
-        przejdzie przez pokrzywy<br><br>
-
-        ga-dzi-nka<br>
-        jed-na
-      </p>
-      <p>
-        W języku japońskim „wa” pełni funkcję partykuły gramatycznej, która zaznacza temat zdania.
-      </p>
-    </section>
-  </section>
-
-  <!-- Konkurs 1996 -->
-  <section id="konkurs-1996">
-	  <div class="poem justify">
-    <p>Konkurs poetycki im. Marii Konopnickiej, 1996, III nagroda</p>
-
-    <nav>
-      <ul>
-        <li><a href="#wspomnienia4">Trucie</a></li>
-        <li><a href="#wspomnienia5">Kontakt</a></li>
-      </ul>
-    </nav>
-
-    <section class="slide" id="wspomnienia4">
-   <h1 class="tomik-title"> TRUCIE</h1>
-      <p>
-        Pierwsza wiedźma głosowała w systemie audio-tele<br>
-        na grupę rockową WRZOSOWISKO I KOŃSKIE SPLOTY<br><br>
-
-        Druga wiedźma kupiła smoczą łuskę<br>
-        po bardzo korzystnej cenie<br><br>
-
-        Trzecia wiedźma zMIKSowała ucho Tatarzyna z kciukiem Kapitana<br><br>
-
-        Hekate budzi Makbeta: „One coś knują”<br><br>
-
-        „A co mnie to obchodzi?”<br>
-        odpowiada prestidigitator śmierci
-      </p>
-    </section>
-
-    <section class="slide" id="wspomnienia5">
-      <h1>KONTAKT</h1>
-      <p>
-        Adam wygładza lampę<br>
-        Ewa modeluje abażur<br>
-        Bóg prosi o kontakt
-      </p>
-    </section>
-  </section>
-
-</section>
-
-  
-<section id="konkursy" class="slide">
- <div class="poem justify">
-  <section class="title-page">
-    <h1><class="author">Adam Miks</h1>
-    <h3>FRASZKI</h3>
-    <p class="meta">wydanie internetowe<br>2026</p>
-  </section>
-		 <div class="section" id="tomik-4">
-<h1>Fraszki pisane w latach 90 - tych xx wieku, w okresie uczestnictwa w Konkursie im. Marii Konopnickiej</h1>
-	<li><a href="#wspomnienia6">WYJAŚNIENIE</a></li>
-		 <li><a href="#wspomnienia7">WIDOK Z DACHU</a></li>
-      <li><a href="#wspomnienia8">GRÓB</a></li>	
-	<li><a href="#wspomnienia9">ZA(SZCZYTY)</a></li>
-      <li><a href="#wspomnienia10">Z PÓŁKI BIBLIOTECZNEJ</a></li>	
-	
-		<li><a href="#wspomnienia11">W GŁĘBOKOŚCI KIESZENI</a></li>
-		 <li><a href="#wspomnienia12">PORZĄDKI</a></li>
-      <li><a href="#wspomnienia13">OGÓREK</a></li>	
-	<li><a href="#wspomnienia14">TRZY WARSTWY JESIENI</a></li>
-      <li><a href="#wspomnienia15">xxx</a></li>	
-		<li><a href="#wspomnienia16">NOE</a></li>
-	<li><a href="#wspomnienia17">RÓZNICA</a></li>
-	<li><a href="#wspomnienia18">RADA</a></li>
-	
-
-	
-
-	<section class="slide" id="wspomnienia6">
- <h1 class="tomik-title">WYJAŚNIENIE</h1>
-<p>
-Apacz -  
-skalpów drapacz.
-</p>
-	</section>
-
-	<section class="slide" id="wspomnienia7">
- <h1 class="tomik-title">WIDOK Z DACHU</h1>
-<p>
-Kominarz -  
-dymu ceremoniarz.
-</p>
-	</section>
-
-	<section class="slide" id="wspomnienia8">
- <h1 class="tomik-title">GRÓB</h1>
-<p>
-Ja, kamikadze -  
-na grobie samolot posadzę.
-</p>
-	</section>
-
-	<section class="slide" id="wspomnienia9">
-	 <h1 class="tomik-title">ZA (SZCZYTY)</h1>
-<p>
-Księgarz -  
-po najwyższe półki sięgacz.
-</p>
-	</section>
-
-
-	<section class="slide" id="wspomnienia10">
- <h1 class="tomik-title">Z PÓŁKI BIBLIOTECZNEJ</h1>
-<p>
-Czytacz -  
-książek chwytacz.
-</p>
-	</section>
-
-	<section class="slide" id="wspomnienia11">
-	 <h1 class="tomik-title">W GŁĘBOKOŚCI KIESZENI</h1>
-<p>
-Złodziej -  
-a w kieszeni czadziej i bladziej.
-</p>
-	</section>
-
-
-
-	<section class="slide" id="wspomnienia12">	
- <h1 class="tomik-title">PORZĄDKI</h1>
-<p>
-Dałem jej kosz -  
-a. Odpowiedziała:  
-A, dam? a, kosz.  
-
-Czas zamieść sień.  
-Jesień, jesień, je.
-</p>
-	</section>
-
-
-	<section class="slide" id="wspomnienia13">
- <h1 class="tomik-title">OGÓREK</h1>
-<p>
-Liść  
-skisł;  
-
-jesienny twist,  
-w słoik świst.
-</p>
-</div>
-
-<section class="slide" id="wspomnienia14">
- <h1 class="tomik-title">TRZY WARSTWY JESIENI</h1>
-<p>
-Gdzieś  
-deszcz.  
-
-Tutaj  
-liście wymiataj.  
-
-Tędy i tamtędy  
-poznawaj wiatru swędy.
-</p>
-</section>
-
-<section class="slide" id="wspomnienia15">
- <h1 class="tomik-title">xxx</h1>
-<p>
-Sucha  
-mucha.  
-
-Słomka -  
-ziomka.  
-
-Tomka -  
-ułomka.  
-
-Dzban -  
-caban,  
-
-snuł,  
-osnuł  
-
-laski -  
-mlaski.  
-
-Objął,  
-podjął  
-
-muszkę,  
-goryczkę.  
-
-Tomkę,  
-załamkę.  
-
-Słomkę,  
-chamkę.  
-
-Seks grupowy,  
-bezpardonowy.
-</p>
-</section>
-
-<section class="slide" id="wspomnienia16">
- <h1 class="tomik-title">NOE</h1>
-<p>
-Deszcz pada,  
-bez łódki i wódki  
-Noe persona non grata.
-</p>
-</section>
-<section class="slide" id="wspomnienia17">
- <h1 class="tomik-title">RÓŻNICA</h1>
-<p>
-Spływ  
-liści,  
-
-odpływ  
-bujności,  
-
-koniec  
-różnorodności,  
-
-kulawiec  
-nagich gałęzi i kości.
-</p>
-</section>
-
-<section class="slide" id="wspomnienia18">
- <h1 class="tomik-title">RODZAJE WIATRU JESIENNEGO</h1>
-<p>
-Spływ,  
-poryw,  
-przepływ,  
-pokryw.
-</p>
-</section>
-
-
-<section class="slide" id="wspomnienia19">
- <h1 class="tomik-title">RADA</h1>
-<p>
-Nie pluj  
-na jesień.  
-Ślinę na wargach anuluj,  
-wczoraj był mżysty dzień.
-</p>
-</section>
-	<section id="tomik-5" class="slide"> 
-<h3>Wiersze z lat dziewięćdziesiątych</h3>
-		
-<li><a href="#wspomnienia20">ROK 66</a></li>
-      <li><a href="#wspomnienia21">LAS</a></li>	
-		<li><a href="#wspomnienia22">NIEPEŁNOSPRAWNOŚĆ</a></li>
-	<li><a href="#wspomnienia23">EROTYK</a></li>
-	<li><a href="#wspomnienia24">ŚWITEM</a></li>
-		<li><a href="#wspomnienia25">MUFKA</a></li>           
-
-<section class="slide" id="wspomnienia20">
-	 <h1 class="tomik-title"> ROK 66</h1>
-	<p>
-		Jeszcze 
-		mnie nie ma
-
-		Jeszcze rośnie trawa 
-		na ścieżkach życia
-
-		Ktoś słucha Vivaldiego, kto inny
-		Czajkowskiego
-        
-		W tej samej kawiarni
-		chłopak pisze list 
-		dziewczyna je ciastko
-
-		66 
-		Jeszcze mnie nie ma
-		Trawa rośnie 
-	</p>
-</section>
-	
-<section class="slide" id="wspomnienia21">	
- <h1 class="tomik-title">LAS</h1>
-	<p>Las napełnia 
-	róg 
-        liścmi 
-   
-    Spływ rudych włosów </p>
-	</section>
-
-		
-		<section class="slide" id="wspomnienia22">	
-			 <h1 class="tomik-title"> NIEPEŁNOSPRAWNOŚĆ</h1>
-<p>
-			Tańczymy.
-	                  Patrzą na nas
-	                  zazdrośnie
-	                  meble wplątywane.
-	        Siniaki. 
-</p>
-		</section>
-<section class="slide" id="wspomnienia23">	
-		 <h1 class="tomik-title"> EROTYK</h1>
-	<p>
-             Latarnia
-			 Brzeg
-			 Łódka
-
-			Falujące włosy
-
-		</p>
-</section>
-			
-	<section class="slide" id="wspomnienia24">		
-		 <h1 class="tomik-title"> ŚWITEM</h1>
-		<p>
-
-			Krzyczały żurawie
-			Znowu prawie wszystkie
-			tylko o tobie
-
-			A tu 
-			ballada idzie ku 
-			lasowi </p>
-	</section>
-	   
-
-
-
-	<section id="opowiadania" class="slide">
-<section class="title-page">
-  <h1 class="author">Adam Miks</h1>
-  <h3>OPOWIADANIA</h3>
-  <p class="meta">wydanie internetowe<br>2026</p>
-</section>
-<section class="title-page">
-  <nav class="toc-book">
-    <p class="toc-title">Spis treści</p>
-    <a id="top"></a>
-    <ul>
-      <li><a href="#opowiesc1">TĘSKNOTA</a></li>
-      <li><a href="#opowiesc2">LATARNIK.SEN</a></li>
-      <li><a href="#opowiesc3">NAPIWEK</a></li>
-      <li><a href="#opowiesc4">ZMĘCZENIE</a></li>
-      <li><a href="#opowiesc5">MODLITWA</a></li>
-      <li><a href="#opowiesc6">STOŁECZEK</a></li>
-      <li><a href="#opowiesc7">OPERACJA</a></li>
-      <li><a href="#opowiesc8">BAJKA O SŁOWIE</a></li>
-      <li><a href="#opowiesc9">BIBLIOTEKARKA</a></li>
-      <li><a href="#opowiesc10">ŁÓŻKO</a></li>
-    </ul>
-  </nav>
-</section>
-
-	
-<h3>TĘSKNOTA</h3>
-	</section>
-		<section class="slide active" id="opowiesc1">
-  <p style="text-align: justify;">
-    Leżała na łóżku. Przed chwilą obudziła się. Zamrugała oczyma. Usiadła na krawędzi łózka.
-    Posiedziała, podumała. Wstała. Podumała. Zatęskniła, do człowieka, jego wad i zalet.
-    Podreptała w miejscu, wciąż tęskniąc. Uklękła na kolana. Położyła się na brzuchu.
-    Rozpłakała się.
-  </p>
-
-  <p style="text-align: justify;">
-    Wybiegła na korytarz. Przy klamce od drzwi przystanęła, podumała. Otarła łzy z policzka.
-    Postała, ciągle tęskniła do człowieka.
-  </p>
-
-  <p style="text-align: justify;">
-    Weszła do łazienki. Usiadła na skraju wanny. Podumała. Westchnęła. Znowu podumała.
-    Od tej chwili tęskniła dwójnasób. Przeszła do umywalki. Popatrzyła w lustro wiszące nad.
-    Zalała się łzami, po chwili śmiała się histerycznie. Upadła na podłogę.
-  </p>
-
-  <p style="text-align: justify;">
-    Obudziła się. Od razu zatęskniła, choć w niewygodnej pozycji. Stopy utkwione na krawędzi
-    umywalki, głowa oparta na przeciwległej ścianie. I jeszcze ten ból w okolicy lędźwi.
-  </p>
-
-  <p style="text-align: justify;">
-    Po jakimś czasie wyszła z łazienki. Wykrzywiając usta z cierpienia, wsunęła się w ciasne drzwi
-    kuchni. Usiadła na stołeczku. Ręce oparła na blacie stołu. Westchnęła parokrotnie.
-    Zatęskniła jeszcze bardziej.
-  </p>
-
-  <p style="text-align: justify;">
-    Wstawiła brudne talerze, kubki, łyżki do zmywarki. Wczoraj obchodziła kolejne urodziny.
-  </p>
-
-  <p style="text-align: justify;">
-    Przeszła do pokoju gościnnego. Podeszła szybkim krokiem do telewizora. Włączyła go.
-    Obraz był mglisty, bez przyszłości.
-  </p>
-
-  <p style="text-align: justify;">
-    - Oj, ja nieszczęsna! Co mam robić, dokąd się udać?
-  </p>
-
-  <p style="text-align: justify;">
-    Tęskniła do człowieka. Do jego wad, do zalet. Dreptała w miejscu.
-  </p>
-
-</section>
-
-		<p style="margin-top: 60px;"></p>
-<section class="slide active" id="opowiesc2">
-    <section class="title-page">
-		
-<h3>LATARNIK. SEN</h3>
-	</section>
-		<section>
-<p style="text-align: justify;">
-Leżałem na plaży i opalałem się w promieniach słonecznych. Przede mną bulgotało niebieskie morze, zakryte częściowo białymi, lżejszymi od powietrza, rosnącymi falami. Na piasku leżało dużo ludzi. W pewnej chwili zobaczyłem latarnię, a w niej  człowieka-potwora z olbrzymią  głową i garbem. Człowiek ten świecił swoimi oczami, dając kapitanom statków mylne sygnały i wyprowadzając je na skały. Śmiał się, pełen zadowolenia, a konający marynarze przerażeni wykrzykiwali przekleństwa i wzywali wszystkich świętych ku pomocy.
-</p>
-<p style="text-align: justify;">
-Był to widok obrzydliwy i pełen cierpienia. Jednak nadal wpatrywałem się w stronę monstrum. Za pokraką dostrzegłem przepiękną dziewczynę. Tańczyła topless przy dźwiękach arii „Habanera” z „Carmen”. Nie wiem, czy uwierzycie, lecz miała twarz Normy Jeane Mortenson, zanim przybrała pseudonim MM. Zamiast nóg miała syreni ogon, powiewający pięć centymetrów nad ziemią. Dopiero po kilku minutach oderwałem od niej wzrok. Wróciłem do mojego brzegu. Wszystko było jak dawniej. Ludzie opalali się, cieszyli słońcem i życiem. Słychać było rozmowy dorosłych i śmiech dzieci. Jak za dziecięcych lat w Juracie czy w Sopocie.
-</p>
-<p style="text-align: justify;">
-Tymczasem człowiek o wyglądzie potwora zniknął z latarni. Pojawił się za to tuż przy mnie. Siedział jak gdyby nigdy nic na kocu ozdobionym biało-czerwonym orłem. Już nie świecił oczami.  Trzymał w ręku jakąś książkę i najspokojniej w świecie ją czytał. Nie potrafiłem jednak dostrzec tytułu. Okładka była zawinięta w obrzydliwie wyglądający papier. Poza tym wszystkim człowieczek zwinął się w sobie, broniąc dostępu do siebie. Zanim jednak stał się introwertyczny, spojrzał na mnie. Zdawał się być mniej paskudny niż na początku naszej dziwnej relacji. Kogoś przypominał. „Ta bródka” - myślałem uporczywie - „skąd ją znam?”
-</p>
-<p style="text-align: justify;">
-Dziewczyna z syrenim ogonem nie zmieniła ani miejsca, ani czasu akcji. Nadal tkwiła w obrębie latarni, nadal tańczyła topless przy melodii „Habanery”. W lewej ręce trzymała małą bateryjną latarenkę. Snop światła kierowała w różne strony świata. To ona teraz sterowała ruchem morskim! Nie wiedziałem, co robić. Zawiadomić policję? I co im powiem? Że najpierw bestia w ludzkim ciele, a potem śmiertelna bogini – że ci oboje doprowadzili do śmierci setek istnień ludzkich? Popatrzyłem wokoło. Nic złego, ani dobrego się nie działo. Młode dziewczęta utworzyły kółko i podawały piłkę z rąk do rąk. Wśród nich zobaczyłem klon Normy Mortenson tuż po pierwszych sukcesach MM. W koszu naprzeciwko siedział żigolak bawiący się muszelkami. 
-Człowiek – potwór skarłowaciał, następnie czmychnął przez dziurkę od klucza w kocu. Zostawił po sobie książkę. „Latarnik” Henryka Sienkiewicza. 
-</p>
-</section>
-
-	<p style="margin-top: 60px;"></p>	
-<section class="slide active" id="opowiesc3">
-    <section class="title-page">
-		<section>
-<h3>NAPIWEK</h3>
-	</section>
-		<section>
-<p style="text-align: justify;">
-Nazywa się Bartłomiej Stasiak. Jest listonoszem. Przynosi rentę, a od czasu do czasu także paczuszki z książkami. Lubię czytać biografie, eseje historyczne, obyczajówki. Od czasu do czasu pożyczam poczciarzowi jedną, dwie lektury. Głównie życiorysy znanych pisarzy.
-<p style="text-align: justify;">
-–Wie pan, panie Adamku – tłumaczy – to dla żony. Bardzo lubi czytać o ludziach pióra. A wie pan, nie ma czasu biegać po bibliotekach, księgarniach. Pani Stasiakowa skończyła pedagogikę i uczy w szkole podstawowej dzieci z najniższych klas.
-<p style="text-align: justify;">
-Wieczorami siedzą na tapczanie, z dala od telewizora. Czytają. Pierwszy fragment ona, potem on. Tak na przemian. Co najmniej godzinę dziennie. W ten sposób okazują sobie miłość i szacunek. Znam go od ponad dziesięciu lat, zatem takich wieczorów z pewnością przeżyli nie mało. Aż do tego czwartku. Jest to ostatni taki wieczór w ich życiu.
-<p style="text-align: justify;">
-Następnego dnia on jak co dzień wychodzi do pracy o szóstej, ona godzinę później. Nie ma zbyt daleko – byle przejść przez ruchliwą ulicę. Lecz on wsiada do zasłużonej Skody i gna na sąsiednie osiedle. Nieświadomy pewnego wydarzenia związanego z żoną, odbiera pocztę i po szybkiej kawce szykuje się do obchodu osiedla. Tymczasem niedaleko szkolnego budynku zbierają się ludzie, słychać sygnał karetki pogotowia.
-<p style="text-align: justify;">
-Kto zawiadomił go o wypadku – nie jest w stanie powiedzieć. W szpitalu był najszybciej, jak tylko mógł. Lekarze mieli tylko jedną wiadomość. Żona nie żyje.
-<p style="text-align: justify;">
-– Panie Adamku – mówi teraz głuchym głosem – pogrzeb odbył się w poprzednim tygodniu. Nie zdążyliśmy przeczytać tej książki – z torby wyjął biografię Williama Szekspira.
-– Proszę doczytać to opracowanie, przecież niedokończona lektura tak naprawdę nie istnieje.
-Zamyślił się. Zaczął płakać.
-<p style="text-align: justify;">
-Nie wiedziałem, co zrobić. Wyjąłem z kupki banknot dziesięciozłotowy, podałem do zimnej, trzęsącej ręki. Zawsze dawałem mu „za fatygę”, ale tym razem podarowałem podwójną moc napiwku.
-<p style="text-align: justify;">
-Ku memu zaskoczeniu uśmiechnął się, chociaż przez łzy:
-<p style="text-align: justify;">
-– Zacznę chyba zbierać na pomnik dla mojej Zosi.
-</p>
-</section>
-
-<p style="margin-top: 60px;"></p>	
-<section class="slide active" id="opowiesc4">
-    <section class="title-page">
-		<section>
-<h3>ZMĘCZENIE</h3>
-	</section>
-		<section>
-
-<p style="text-align: justify;">
-- Zmęczona jestem, panie Wacławie. A to dopiero trzeci dzień roku szkolnego! – Katarzyna, nauczycielka języka angielskiego, wykrzywia usta.
-</p>
-<p style="text-align: justify;">
-- We Władysławowie nie da się odpocząć? -  pyta, chociaż zna odpowiedz, która brzmi:
-</p>
-<p style="text-align: justify;">
--Ja całe życie mam pod górkę, kochany kolego. 
-</p>
-<p style="text-align: justify;">
-Stoją na przystanku a ich wymianę zdań słyszy tych kilka osób, które, jak oni, czeka na autobus.  Chichocące trzy nastolatki, młoda kobieta trzymająca kurczowo sześcioletnią córkę. Dwudziestolatek gapiący się bez entuzjazmu w smartfon. Urzędnik państwowy, teraz na emeryturze. 
-</p>
-<p style="text-align: justify;">
-Katarzyna wciąż mówi:
-- Zmęczenie jest z natury uczciwe, panie Wacławie. Zalążków buntu jeszcze nie dostrzegłam, a to dobrze. Samo zmęczenie.
-</p>
-<p style="text-align: justify;">
-Młody człowiek nie był zmęczony, ale niepokojące myśli krążyły mu po głowie. Nauczyciele tylko wrzeszczą, tupią, próbując przemówić uczniom do rozumu. A gdy widzą że uczeń opiera się im wysiłkom, wymierzają bolesne, bezterminowe kary. Już samo przekroczenie progu szkoły wymaga potwornego wysiłku, fizycznego, ale również psychicznego. Wielu rzeczy uczono na pamięć, nie pytając nawet, czy ktokolwiek rozumie co nauczyciel mówi. Może wstyd powiedzieć, ale wiele informacji do egzaminu maturalnego czerpał z tictoka. Zresztą nie tylko on. 
-</p>
-<p style="text-align: justify;">
-Młoda kobieta trzymająca kurczowo sześcioletnią córkę zastanawia się nad przyszłością syna, młodszego od siostry o dwa lata: „Justynkę już zapisałam do pierwszej klasy, za rok pora na Jasia. Ta dyrektorka to raczej fajna babka. Jeśli ułożymy się ze sobą, to moje dzieci też nie zginą”. 
-</p>
-<p style="text-align: justify;">
-Urzędnik państwowy na emeryturze zastanawiał  się nad prezentem który dostał od dzieci. Wykupiły kurs pisania.  Próbował, owszem, w młodości, pisać utwory dramatyczne. Z mizernym skutkiem. Znalazły się w koszu zapomnienia. Nikt nie pamięta o tym incydencie, nawet on sam wyparł z pamięci.  Pewno nie ma talentu czy jak to się nazywa. Poza tym w całym swoim życiu przewalił tyle papierzysk z lewa na prawo, że już ma dosyć widoku jakichkolwiek kartek, karteluszek, wszelkiej drukowanej makulatury. I po co mu to, owszem, owszem. 
-<p style="text-align: justify;">
-Trzy nastolatki wciąż chichotały. W pewnym momencie najwyższa z nich pyta:
-- Ej, kumpele, nie wiecie skąd pochodzi nazwa mojej ulicy? Cały wczorajszy wieczór nad tym dumałam, i nic. A starych wstydziłam się zapytać.  Skąd ta nazwa – Burgaska? Ja nie znam żadnej kobiety o takim imieniu czy nazwisku. - Dziewczyna wzruszyła ramionami i zaśmiała się histerycznie. Koleżanki zaczęły jej wtórować.
-</p>
-<p style="text-align: justify;">
-Ktoś, kto zbliżał się do przystanku, pogroził im palcem. 
-- Ojej, geografica – jęknęły jednocześnie.
-</p>
-</section>
-
-<p style="margin-top: 60px;"></p>	
-<section class="slide active" id="opowiesc5">
-    <section class="title-page">
-		<section>
-<h3>MODLITWA</h3>
-	</section>
-		<section>	
-
-<p style="text-align: justify;">
-Zostań moją książką. Tak jak inne zostają muzami poetów, walentynkami zakochanych. Żyję w wolnym kraju, tak wolnym że już niczemu nie należy się dziwić. Na Boże Narodzenie kakaowi Mikołaje, na Wielkanoc czekoladowe zajączki. Dyniowe strachy mające ambicje wystraszyć dziadowską ponoć uroczystość by Adam Mickiewicz. Mamy memy o każdym prawie wydarzeniu, swoich idoli na kwadrans lub mniej minut. Ulotki oddziałujące na mózg tak jak zatęchła kawa w filiżance działa na serce. Nie chciałbym, aby zwyciężyła społeczna atrofia, chociaż nie widać nawet na horyzoncie światełka nadziei. Nie umiem inaczej, powiem prosto z mostu: „Kocham Cię, o ty moja maleńka. Zostań zatem moją książką, moją walentynką”. Nie chcę Cię od razu czytać, głaskać każdym słowem, smakować akapity, pobudzać wyobraźnię wątkami. Na sam początek chciałbym być po prostu miłym i ugrzecznionym. A potem … 
-</p>
-<p style="text-align: justify;">
-Nie, nie napiszę przecież co się wydarzy potem. Nie mam na tyle sił, słów, motywacji. Nie jestem oratorem, ani przystojnym aktorem. Mam błagać, nieomalże na kolanach? Zachowywać się irracjonalnie, jak jakiś zakochany szczeniak? Obiecać to co niemożliwe? Jedwabną miłość, choć za oknem ponura rdza wojny? Taniec Justyny Steczkowskiej w słoiku po dżemie? Muzykę Bacha pod gołym niebem, ale w sowieckim kołchozie? Że do końca moich dni, a i po tamtej stronie furtki …? 
-</p>
-<p style="text-align: justify;">
-Elementy modelowania książki najlepiej znaleźć w bibliotece. Przystępuję zatem próg, za którym Eliza Orzeszkowa siedzi nad wierną rzeką, Henryk Sienkiewicz wsłuchuje się w życzliwe pomruki Niemna, Stefan Żeromski śni o obrazach wsi ułożonych z kunsztownych szeregów zdań. Władysław Stanisław Reymont pielęgnuje w szklanym ogrodzie różę Umberto.
-</p>
-<p style="text-align: justify;">
-
-Dużo się zatem dzieje, pomimo że jest już dwudziesta druga czterdzieści dwie minuty. W innym zakątku mieszkania oglądamy „Szkło kontaktowe” czy inny serial. Oglądamy dopóki miłość trwa, do północy, a może zatem do emerytury. A jednak przenikanie się wzajemne powieści jest o wiele ciekawsze niż dialog między Julią a Romeo z warszawskiego podwórka. Pobudza wyobraźnie, rozbudza także słownictwo, osadza czytelnika w konkretnym miejscu i czasie, a jednocześnie pozwala mu na przekraczanie wszelkich granic.
-</p>
-<p style="text-align: justify;">
-Ale cóż z tego? Ciebie nie ma w tych wszystkich grach i zabawach bibliotekarza – pisarza. Bo być nie możesz. A jednak proszę Cię nieustannie „Zostań moją książką”. Istotę zbudowaną w ten sposób, że lustra aż wzdychają, że one również by tak chciały wyglądać – nic, tylko trzeba pokochać. I chcieć poślubić.
-</p>
-<p style="text-align: justify;">
-Lecz Ciebie nie ma. Jeszcze nie ma. A wszyscy o tobie mówią. Wiedzą. Znają Cię. To magia słów. Wypowiedzianych, ale niedokonanych. Bez ciała, chociaż z duchem.  Siadam przy biurku, włączam komputer, i zaczynam pisać. Ciebie, książko.  
-</p>
-
-			
-			<p style="margin-top: 60px;"></p>	
-			
-		<section>	
-<h3>STOŁECZEK</h3>
-	</section>
-		<section class="slide active" id="opowiesc6">
-  <p style="text-align: justify;">
-Pan Anastazy jest malutki. A jednak lubi skakać. Przez krótką chwilę czuje się wyższy. Dziś rano postanawia tę chwilę przedłużyć. Kupi stołeczek. I kiedy będzie miał ochotę, wejdzie na ten stołeczek. Ma się rozumieć, że nawet najkrótsze stanie na stołeczku jest o niebo lepsze niż skakanie, nawet na dwóch nogach. Lepsze i bardziej miarodajne. Dłuższe.
-</p>
-
-  <p style="text-align: justify;">
-W podróży do sklepu, chociaż to tylko pięćset metrów, pan Anastazy przemyśliwa wszystkie aspekty nowego zakupu. Znajduje tylko jedno „ale”, wyrażone w pytaniu. A te brzmi: jeśli już stanie na stołeczku – ile nóg mu policzą? Tylko jego dwie? Czy jednak dodadzą cztery stołeczkowe? A jeśli dodadzą – będzie miał przecież nadliczbowe dwie pary nóg. Człowiek jednak nigdy nie będzie miał sześciu nóg! Zwłaszcza tak malutki, jak pan Anastazy. To sprzeczne z teorią ewolucji! 
-</p>
-
-  <p style="text-align: justify;">
-Przekracza próg sklepu, w momencie, gdy poczuł się jeszcze bardziej niepełnosprawny. Chce zawrócić, ale nagle czuje odpływ sił. Upada. Taki jest malutki, że pewien przechodzień, nie wiedząc o tym, wykopał Anastazego w kierunku siódmego nieba. Niestety, w tamtym rejonie Wszechświata, ciągły tłum, taki tłum, że niestety nie potrafię Państwu wskazać jego sylwetki. Ponoć w tym dniu założył t-shirt z napisem „Spoko! Mam czas!”. Pod napisem widnieje bramkarz leżący na murawie. Bramkarz śpi, nie zdając sobie sprawy z tego, co za chwilę się wydarzy.
-</p>
-</section>	
-
-	<section>	
-<h3>OPERACJA</h3>
-	</section>
-		<section class="slide active" id="opowiesc7">
-  <p style="text-align: justify;">
-W transformator uderzył piorun. Przez krótką chwilę nie działałem. Na całe szczęście pod ręką znalazłem ogniskowe baterie gotowe do współpracy. Wystarczy tylko włożyć je do koszyka zasilania. Między mózgiem a sercem, między wątrobą a pęcherzykiem żółciowym.
-
-  <p style="text-align: justify;">
-Warto spróbować. Oczywiście, żyć z rurką oddechową przypiętą do sztabu lekarskiego, to nie to samo co spacerować szeroką aleją wokół przystojnych kobiet. W wieku pięćdziesięciu dwóch lat kruchość życia staje się powoli synonimem turpizmu. Czuć powiew wierszy Stanisława Grochowiaka, gdy operacja trwa, pacjent wytrzeszcza oczy z powodu nie tego wnętrza do którego był przyzwyczajony na co dzień. Zawirowania. Odwirowania. Krew przelewa się z lewej na prawo, wokół równika ciała. Wepchnięto mnie do pudełka. Zasnąłem.
-
-  <p style="text-align: justify;">
-Ulga, gdy usłyszałem śpiew dzieci. Żyję. Poczułem że wyszedłem na balkon. Spokój, brak nowych wiadomości. Wypiłem szklankę coca – coli. Zastanawiałem się tylko czy w mojej sytuacji pooperacyjnej to normalne zachowanie. Nie myślałem zbyt długo o tym, sen skończył się. Wróciłem do salonu życia, zapytałem o laptopa. Czas zacząć pisać nowy rozdział.
-</p>
-</section>		
-
-	<section>	
-<h3>BAJKA O SŁOWIE</h3>
-	</section>
-		<section class="slide active" id="opowiesc8">
-  <p style="text-align: justify;">
-
-Wiatr niesie słowo. Przez pola? Owszem, przez pola. Przez łąki? A niech tam, przez łąki. Przez próg chałupy Babci Leoni? Ma się rozumieć – przez próg chałupy Babci. Wiatr niesie słowo. Usiadło na parapecie. Zastukało raz i drugi w szybę. Chciało coś powiedzieć, wyrazić swoją osobowość. Jednak w drodze i gdzieś po drodze zgubiło. Zadławiało się, pluło dookoła, gorączkowało.
-</p>
-  <p style="text-align: justify;">
-A zatem podupadło na zdrowiu. Zwinęło się w kłębek, przykryło kocykiem, i przez pierwszy tydzień udawało że go nie ma. W poniedziałek rano, a może we wtorek w południe wychyliło się zza rogu pledziku i zawołało niemym krzykiem:
-</p>
- <p style="text-align: justify;">
-- Pić!!!
-</p>
- <p style="text-align: justify;">
-Ktoś zaproponował, aby przypiąć kroplówkę. 
-</p>
- <p style="text-align: justify;">
-- A jeść? - upomniało się po chwili.
-</p>
- <p style="text-align: justify;">
-- Może żywić się sobą – zasugerowano. To nic że blade, że z przekrwionymi oczami. Z pewnością jest w nim odpowiednia ilość białka, aby zbudować zdrowy organizm.
-</p>
- <p style="text-align: justify;">
-Przez kolejne dwa tygodnie słowo budowało istotę, istotę rzeczy i istnienia. Nikt nie zastanawiał się co z tego formowania skonstruujemy. Nie było planu, ni tak naprawdę wykonawcy. Każdy pchał swe łapska do pomocy. Jeden tylko, bezrobotny stryj Alojzy, chociaż miał czasu co niemiara, nie ruszył żadnym paluchem u nogi ku słowu. Mówił, że nie ma wystarczająco dużo pieniędzy, aby pomagać komukolwiek. Nie wytłumaczył jednak co brak gotówki ma do rozwiązania problemów zdrowotnych słowa.
-</p>
- <p style="text-align: justify;">
-Za to ciocia Aniela tuliła, pieściła, opowiadała bajki. Podobne do tej, którą teraz czytacie. Aż reszta rodziny przestraszyła się. Toż w twoich bieluchnych rączętach trzymasz słowo, malutką istotę zdania. Gdy nasłucha się ogromu cudzych słów, być może napęcznieje z bólu przesytu i wybuchnie pewnego dnia. I czym wybuchnie? Epigonami i plagiatami, co nie daj Bóg, podsumowała siostrzenica Józia. Bo dość przecież publikacji na półkach księgarskich i bibliotecznych, potwierdziła Babcia Leonia dotąd siedząca cicho pod miotłą. W przypadku naszego słowa trzeba zastosować zupełnie inną metodę leczenia.
-</p>
- <p style="text-align: justify;">
--Lewacką? - wyrwało się siostrzenicy Wioli. Komuś się przypomniało:
-<p>
- <p style="-align: justify;">
-- Chyba masz, drogie dziecko, na myśli lewatywę. Dobry Wojak Szwejk zażywał, i nic. Jak był, tak pozostał idiotą. Musisz się jeszcze wiele nauczyć, moja droga.
-</p>
- <p style="text-align: justify;">
-- A to może – Wiola podjęła nowy wątek – pomyślimy o … 
-</p>
- <p style="text-align: justify;">
-Tym razem prychnięto ze złością. Ktoś z zaciśniętymi zębami odparował:
-</p>
- <p style="text-align: justify;">
-- Nie wspominaj ...
-</p>
- <p style="text-align: justify;">
-Zatem przestała wspominać. W ogóle przestała wspominać o czymkolwiek. Reszta rodziny również zaprzestała dyskusji o leczeniu słowa.
-</p>
- <p style="text-align: justify;">
-I tak minął covid, i następna zima. Słowo zostało na przypiecku, wydobrzało samo z siebie i wydoroślało. Nauczyło się wymawiać swoje imię i poznawać resztę słów. Dobrze byłoby gdyby jeszcze wyszczotkowało wymowę zgłoski „r” i resztkę puchu dziecięcego. Dobranoc.
-</p>
-</section>
-		
-<section>	
-<h3>BIBLIOTEKARKA</h3>
-	</section>
-		<section class="slide active" id="opowiesc9">
-  <p style="text-align: justify;">
-Przeglądam książki biblioteki przy ulicy Bonifacego 90 w dziale fantasy, przełykam co raz nerwowo ślinę. Boję się podejść do stołu przy którym siedzi bibliotekarka. Pół roku temu wypożyczyłam trzy niewielkie książczyny i jak dotąd nie oddałam. Tydzień po wizycie w bibliotece złamałam nogę na wycieczce. Najpierw skomplikowana operacja w Szpitalu Czerniakowskim. Następnie kilka miesięcy wyczerpującej rehabilitacji. Mogłam zapomnieć o tomiczkach prozy wypożyczonych z braku innych zajęć, prawda?
- </p>
- 
- <p style="text-align: justify;">
-W czasie, gdy rehabilitowałam się, reszta moich rodaków śledziła wygraną Obcych w wyborach parlamentarnych. Czterdzieści lat temu dwudziestu mieszkańców planety XXNX przybyło na Ziemię z pokojową misją. Misja zakończyła się, jednak Obcy nie odlecieli na ojczystą Planetę. Zbudowali trzy, a może nawet cztery miasta - społeczność, której mógłby pozazdrościć niejeden polski magnat. Uzyskali status uchodźców, a następnie obywatelstwo polskie. Cztery lata temu założyli partię polityczną, w tegorocznych wyborach postanowili wystartować w wyborach do Sejmu i Senatu. I wygrali! Utworzono rząd większościowy, premierem został przywódca Obcych. Po przyjeździe z sanatorium, odrabiałam zaległości w tym temacie. Zaczęłam śledzić wszystkie możliwe kanały polityczne w kraju i zagranicą. Po kilku tygodniach mogłam zdawać egzamin z wiedzy obywatelskiej. 
-</p>
- <p style="text-align: justify;">
-Po jakimś kwadransie bezsensownego stania w jednym miejscu przemogłam się i  podeszłam do bibliotekarki. Gdy byłam kilka metrów od niej, zauważyłam przedziwną asymetrię jej twarzy. W  lewy policzek wbudowano wejście USB, z którego wychodził kabel, z drugiej  strony podłączony do laptopa. W prawy policzek została wkomponowana miniaturowa kasetka z dziesięcioma przyciskami ułożonymi szeregowo. Z pewnością przedstawicielka Obcych. 
-Położyłam książki na biurku, westchnęłam, chrząknęłam, jeszcze raz westchnęłam. Wypuściłam powietrze z ust, i dopiero wtedy odważyłam się powiedzieć znaną mi od lat formułkę:
-</p>
- <p style="text-align: justify;">
-- Przyniosłam egzemplarze do oddania.
-</p>
- <p style="text-align: justify;">
-Bibliotekarka podnosi głowę, wpatruje się we mnie zielonymi oczyma. Zamrugała dwa razy; dałabym rękę sobie uciąć, że usłyszałam odgłos migawki aparatu fotograficznego. Jakby miała zdolność robienia zdjęć wzrokiem. 
-</p>
- <p style="text-align: justify;">
-- Właśnie widzę. Właśnie słyszę. Właśnie czuję. Właśnie otwieram, właśnie zamykam. Właśnie analizuję – za każdym słowem zapalała się lampka innego przycisku. Przez chwilę czułam się jak na dyskotece lat osiemdziesiątych dwudziestego wieku. Tylko muzyki brakowało. Migające ample drażniły jednak wypustki mózgu. Do tego stopnia drażniły, że miałam chęć zatańczyć  niby Scarlett O’Hara w dniach fałszywej żałoby po Charlesie Hamiltonie. Ciało chciało poruszać się w rytmie tanga, ale nie wypadało zamanifestować radości życia. Nigdy nie kochała Charlesa, tak jak ja nie cierpiałam niepewności.
-</p>
- <p style="text-align: justify;">
-Pół roku temu wypożyczyłam trzy niewielkie książczyny i tak dalej, a ta opowiada o skanowaniu słów, myśli, obrazów. Ale mam ciekawy dzień, nie ma co! 
- Pobłyskiwały  ponownie przyciski w kasetce na policzku bibliotekarki. Bibliotekarka zaczęła beznamiętnie recytować:
-- Dziś jest osiemnasty czerwca 2025  roku, sto sześćdziesiąty dziewiąty dzień roku, Międzynarodowy Dzień Sushi,  imieniny obchodzą Amanda, Elżbieta, Marek ...
-</p>
- <p style="text-align: justify;">
-O, nie! Potrafi czyta w myślach!!! Przemknęło mi przez głowę, że jeżeli posłowie Obcych mają  podobne zdolności,  dotychczasowe afery podsłuchowe mogą schować się w najdalszy kąt. 
-</p>
- <p style="text-align: justify;">
-Bibliotekarka patrząc gdzieś w bok,  odpowiedziała moim myślom:
-</p>
- <p style="text-align: justify;">
-- Żadnych afer nie będzie, żadnych!
-</p>
- <p style="text-align: justify;">
-Bałam się o czymkolwiek pomyśleć. Mogłaby to przecież wykorzystać. Poza tym przyszłam do biblioteki, aby wytłumaczyć półroczne przetrzymywanie egzemplarzy książek. A nie na dyskusje polityczne.
-</p>
- <p style="text-align: justify;">
-Bibliotekarka wyraźnie westchnęła, czyżby był to komentarz do moich rozważań?  Zainteresowała się wreszcie książkami, które położyłam na stole. Zeskanowała kody przypisane egzemplarzom, przeniosła dane do laptopa. W czasie wykonywania tych czynności mruczała coś pod nosem, jakby:
-</p>
- <p style="text-align: justify;">
-- … tak myślałam, wiedziałam …
-</p>
- <p style="text-align: justify;">
-Podniosła głowę i powiedziała:
-</p>
- <p style="text-align: justify;">
-- Niepotrzebnie przyniosłaś te przedwojenne wypociny. Są one na liście książek do wrzucenia w ogień. Mamy zamiar zredukować zbiory biblioteki o dwie trzecie. Potrzebujemy miejsca na sklep mięsny. A to promocja tego sklepu ...
-</p>
- <p style="text-align: justify;">
-Podaje mi, nie wiadomo skąd, księgę oprawioną w płótno. Z obojętnym błogosławieństwem patrzy na mnie, kiedy ją otwieram. W środku, równo przycięty do okładek, leży kawał słoniny. 
-</p>
-
-</section>
-			
-	
-<section>	
-<h3>ŁÓŻKO</h3>
-	</section>
-		<section class="slide active" id="opowiesc10">
-<p class="justify">Osiemnastoletnia dziewczyna biegnie labiryntem korytarzy, szukając jakiekolwiek rozwiązania. Od czasu do czasu potykając się, zgubiwszy lewy kapeć, dociera do białej ściany bez drzwi. W tej samej chwili słyszy kobiecy głos dobiegający z głośników zamontowanych we framudze każdego okna:</p>
-
-<p class="justify">– Szukaj mnie, cierpliwie dzień po dniu … Szukaj mnie…</em></p>
-
-<p class="justify">A niech to! Prześladowca włączył adapter z zepsutą płytą gramofonową. Igła wraca uparcie w to samo miejsce:</p>
-
-<p class="justify">– Szukaj mnie … szukaj mnie … szukaj mnie …</p>
-
-<p class="justify">To głos Edyty Geppert, w chwilach świetności uwielbianej przez tłumy polskiej piosenkarki, w roku 2030 zupełnie zapomnianej.</p>
-
-<p class="justify">W pułapce, w której się znalazła, nie było to aż tak istotne. Oczywiście, przemknął przez głowę tekst piosenki, który znała dzięki babci i wszystkowiedzącego YouTube, ale co z tego? Przebój muzyczny sprzed lat nie mówi nic o tym, gdzie znaleźć klucz do wyjścia z niebezpiecznej sytuacji. Prześladowca nie po to włączył akurat to nagranie, aby umilić jej czas. Miało przypominać zdarzenie sprzed lat, a tym samym upokarzać.</p>
-
-<p class="justify">Edyta Geppert uparcie prosiła ukochanego:</p>
-
-<p class="justify">– Mnie … dzień po dniu … szukaj mnie…</p>
-
-<p class="justify">Zaczęła się wpatrywać w plamę brudu na ścianie. Jej kształt przypominał serce z rysunków dziesięcioletniej Oli. Uśmiechnęła się. „Zaciek, a jednak bijącym życiem”. Zasłoniła oczy:</p>
-
-<p class="justify"><strong>– Raz … dwa … trzy …</strong> – zaczęła liczyć. Przez moment wydawało jej się, że ktoś za nią stoi, ktoś dotyka pleców i szyi, ktoś odbiega od niej. Odwróciła się:</p>
-
-<p class="justify">	– Szuuuukaaaam!!! …</p>
-
-<p class="justify">Zaczyna biec, ale już po chwili potyka się.</p>
-
-<p class="justify">Gdy spada, słyszy jeszcze własny głos:</p>
-
-<p class="justify">– … ukaaaaaaammm!!! ...</p>
-
-<p class="justify">Leży przez chwilę bez ruchu, z zamkniętymi oczyma, ale przytomna. Trzy grube materace zamortyzowały zsunięcie z piętrowego łóżka. Dziesięcioletnia Ola miała brata, Jaśka, który spał na poziomie zero. W dniu jedenastych urodzin utopił się w pobliskim jeziorku. Siostra nie pozwalała wyrzucić łóżka. Noc spędzała, jakby nigdy nic, na pierwszym pięterku wyrka. I jakby nigdy nic, rozmawiała z Jankiem. W kim się zakochała; że matematyca nie rozumie potrzeb dziecka, bo sama jest starą panną; jaką książkę przeczytała; że budują nowy dom przy głównej ulicy. Rodzice pozwolili Oli na takie zachowanie, rozumieli, że w ten sposób pracuje nad stratą brata.</p>
-
-<p class="justify">Tydzień temu obchodziliby oboje osiemnaste urodziny. Brat był nie tylko bratem, ale także bratem bliźniakiem. Od czasu do czasu śnił się jako Prześladowca, który zamknął siostrę w labiryncie niepokojących zdarzeń. Zawsze pod koniec snu ześlizguje się z łóżka. Materace tłumiące upadek leżały od niepamiętnych czasów, błogosławiona chwilo! Ojciec wpadł na ten pomysł, aby dzieci miały komfort skorzystania z łóżka.</p>
-
-<p class="justify">Otworzyła oczy:</p>
-
-<p class="justify">– Oj, braciszku, braciszku. Następnego takiego upadku raczej nie przeżyję. Powinnam porozmawiać z rodzicami o zmianie łóżka. Poza tym dostaję dziś kolejną dawkę somatotropiny i zaczynam rosnąć. Żegnajcie sto trzydzieści centymetrów wzrostu!</p>
-
-		</p>
-		</section>
-</section> 
-
-		
-<div class="separator">
-  <svg viewBox="0 0 1440 100"> 
-    <path fill="#ffffff" d="M0,50 C300,100 1100,0 1440,50 L1440,0 L0,0 Z"></path> 
-  </svg>
-</div>		
-
-
-<section class="title-page">
-	<section id="felietony" class="slide">
-  <h1 class="author">Adam Miks</h1>
-  <h3>FELIETONY</h3>
-  <p class="meta">wydanie internetowe<br>2026</p>
-</section>	
-
-
-	<h3>NINIEJSZY FELIETON czyli DA CAPO </h3>
-<p class="justify">	
-Zubin Mehta, światowej klasy dyrygent, mający pieczę nad koncertem Trzech Tenorów, po zakończeniu jednego z wielu gal, zapytał z beztroskim uśmiechem:
-</p>
-	<p class="justify">	
-- Da capo? [ Od początku?]
-	</p>
-Żart równie inteligentny, jak i pobudzający wyobraźnię. Jednocześnie nie do udźwignięcia. Publiczność domagała się bisów, lecz bisować cały koncert? Panowie Carreras, Domingo, Pavarotti to już raczej nie młodzieńcy, i zapewne sił im zabraknie, aby powtórzyć wszystko od nowa.
-Z drugiej strony, już byłby znany początek. Nikt by się nie przejmował, nie stresował pytaniem: „Jak zacząć?” Wszystko byłoby już ustalone, ustalone z góry.
-	<p class="justify">		
-Niestety nie jestem w tej komfortowej sytuacji, co Zubin Mehta. Jeszcze nie skończyłem, i nie słyszę oklasków. Ba, nawet nie zacząłem, nie otworzyłem książki na tytułowej stronie. I nawet nie wiem co nastąpi po tym dłuższym wstępie.
-To wygląda jak jeden z odcinków „Szkła kontaktowego”, Jak wiadomo, jest dwóch prowadzących ten satyryczny program nadawany codziennie w TVN 24 o godzinie dwudziestej drugiej. Jeden przedstawia drugiego, i vice versa. Można sformułować te powitane krótko i banalnie. Któryś z prezenterów mówi: „Witają Państwa ten a ten i …”, a drugi dopowiada „ … i tamten a tamten”. Lecz można długo i do ostatka; barokowy twór ułożyć. Ale to na nasze czasy, czasy esemesów i krótkich e – maili. Zbyt obszernie byśmy opowiedzieli, zbyt pokaźnie. Jan Potocki, autor „Rękopisu znalezionego w Saragossie” już dawno nie żyje.
-Tak jak ja w tym oto felietonie. Naprawdę nie wiem co dalej powiedzieć. Powiedzieć w strefie znajdującej się poniżej tytułu. Jaką treścią wypełnić prostokąt kartki.
-	</p>
-		<p class="justify">	
-		Tuż przed siedemnastą, w studio TVN24 pojawia się dziennikarz sportowy, aby przekazać informacje ze wszystkich stadionów świata. Kilka dni temu pierwszą wiadomością było podpisanie przez Wojciecha Szczęsnego kontraktu z Barceloną. Gdy dziennikarz skończył, prowadzący studio zdecydował:
-	</p>
-	<p class="justify">	
-		-To teraz przejdźmy do piłki nożnej.
-	</p>
-<p class="justify">		
-Nie trzeba być prawdopodobnie znawcą futbolu, aby skojarzyć nazwisko Szczęsny i nazwę klubu z Hiszpanii z tą właśnie dyscypliną sportu. Dziennikarz powinien znać materię, w której się porusza. To dlaczego chciał przejść z wątku Szczęsnego do tematu piłki nożnej? Od dawna w nim był.
-Być może i ja, autor tego, pożal się Boże, felietonu, dawno jestem w autobusie jadącym we właściwym kierunku. Tylko tego nie odczuwam, jeszcze wiele nauki przede mną.
-</p>
-<p class="justify">		
-Zaplątałem się już na początku, po stokroć, bez liku i likieru. Bo ja, proszę państwa, nie pije w ogóle. Tylko od czasu do czasu mam takie kłębowisko odczuć i myśli, że bardzo trudno w nich znaleźć początkową stację i jechać jak po sznurku. Jakbym bełkotał szumem alkoholowym. Nie jest wykluczone, że ogarnęła mną czkawka pijaczka. Po prostu, nie da się zrozumieć, co mówię.
-I właśnie, ku uciesze ( czyżby?) czytelników, a ku żałobie piszącego, taki stan zawładnął mną przed chwilą, właśnie wtedy, gdy zasiadłem do napisania niniejszego, pożal się Boże, felietoniku. Nie pytajcie mnie, drodzy ludkowie, dlaczego tak się dzieje z moją biedną głową. Być może nie tylko z głową. Z całym jestestwem, jeśli pozwolicie. Taki żywot mój: niespokojny, trwający w gorączce tworzenia.
-Chcę coś napisać, coś wyłupać z kamienia i atramentu, czegoś dokonać. I nie zawsze udaje się. Kupiłem niedawno mieszkanie. Mam kłopot z jedną ścianą. Ta ściana miała być pomalowana na biało, lecz widać smugi innej barwy. Powinienem wyremontować ją, zanim przyjdą goście na parapetówkę. A zaprosiłem całe osiedle, nieomalże pół dzielnicy Mokotów. Powiem, że obszar który zajmuje ta nasza kolonijka to pięćdziesiąt dwa hektary. I te pięćdziesiąt dwa hektary mają się teraz zmieścić w trzypokojowym mieszkaniu z loggią. Ludzie! Jak ja was pomieszczę? Dobrze że jest loggia. Tylko ta ściana, proszę ja was. Jak ja im pokaże coś niedokończonego, coś co miało być czymś zupełnie innym?
-</p>
-	<p class="justify">	
-	Niniejszy felieton, pożal się Boże, również miał być czymś zupełnie innym niż jest. Bez wątków zbytecznych czyli ubocznych. Bez jąkania, bez zaglądania na zapiski na marginesie. O jednolitym, zwartym temacie. A co wyszło? Kartka zdań.
-Aż westchnąłem z politowaniem. Nic nowego nie wymyślę, a nie chcę zamulać tekstu niepotrzebnymi didaskaliami. Raczej da capo napiszę felietonik, pożal się Boże.
-	</p>
-</section>
-	</section>
-
-	
-		
-<div class="separator">
-  <svg viewBox="0 0 1440 100">
-    <path fill="#ffffff" d="M0,50 C300,100 1100,0 1440,50 L1440,0 L0,0 Z"></path>
-  </svg>
-</div>
-
-<section id="anegdoty" class="slide">
-<section class="title-page">
-  <h1 class="author">Adam Miks</h1>
-  <h3>ANEGDOTY I INNE BLA BLA BLA WOKÓŁ LITERATURY</h3>
-  <p class="meta">wydanie internetowe<br>2026</p>
-</section>
- 
-<h3>KSIĄŻKĘ BYŚ PRZECZYTAŁ</h3>
-
-  <p style="text-align: justify;"> 
-	Był sobie syn. Po szkole rzucał teczkę, i na podwórko. 
-  </p>
- <p style="text-align: justify;">		
-	Ojciec, nie lubiący czytać, nie wytrzymał któregoś dnia, i powiedział "Zamiast włóczyć się, książkę byś przeczytał".
-  </p>
-	  <p style="text-align: justify;">		
-	  A syn: "A jaką książkę ojciec by polecił? "
-	  </p>
-<div class="separator"></div>
-<h3>A DUCHEM</h3>
-<p style="text-align: justify;">
-	Biblioteka.
-</p>
-	<p style="text-align: justify;">
-	Pukanie do drzwi.
-	</p>
-	<p style="text-align: justify;">
-		- Czy mogę wejść ciałem? - to kierownik gospodarczy. 
-	</p>
-	<p style="text-align: justify;">
-		Na to bibliotekarz:
-	</p>
-        <p style="text-align: justify;">
-			-Nawet duchem można ... 
-		</p>
-		
-	
-
-
-</section>
-<div class="separator">
-  <svg viewBox="0 0 1440 100">
-    <path fill="#ffffff" d="M0,50 C300,100 1100,0 1440,50 L1440,0 L0,0 Z"></path>
-  </svg>
-</div>
-		
-     
-	<section id="blog" class="slide">
-<section class="title-page">
-  <h1 class="author">Adam Miks</h1>
-  <h3>BLOG ADAMA</h3>
-  
-</section>
-
-  <p style="text-align: justify;">		
-3.05.2026	
-
-  <p style="text-align: justify;">
-Ta strona powstała z niemocy. W zeszłym roku, tuż przed świętami Bożego Narodzenia założyłem zbiórkę. Cel zbiórki - wydanie tomiku wierszy. Nie udało się zebrać przewidzidzianej kwoty.
-  </p>
-<p style="text-align: justify;">
-Długo zastanawiałem się - co zrobić. W końcu pojawił się pomysł. Znajoma otworzyła salon masażu, a żeby ten salon rozleklamować - zleciła zrobienie strony internetowej.
-</p>
-<p style="text-align: justify;">
-Jeśli Tania, to i ja - pomyślałem.  Poezję ( a czasami prozę) można potraktować jako towar do sprzedania, no może - do zaoferowania. Tania oferuje masaż ciała, ja - masaż duszy.
-</p>	
-<p style="text-align: justify;">
-Niemoc wydania jednego tomiku w formie papierowej, przerodził się zatem w wydanie aż trzech tomików online. Ale o tym potym. 
-		<div class="section" id="portfolio">
-<div class="separator">
-  <svg viewBox="0 0 1440 100">
-    <path fill="#ffffff" d="M0,50 C300,100 1100,0 1440,50 L1440,0 L0,0 Z"></path>
-  </svg>
-</div>
-			
-	<h2>Portfolio AI</h2>
-
-  <p style="text-align:center; max-width:600px; margin:auto;">
-    Obrazy powstałe z dialogu między słowem a algorytmem.
-  </p>
-
-  <h3>Autor</h3>
-  <img src="https://wfw.com.pl/media/filer_public_thumbnails/filer_public/51/f9/51f980a2-cd59-485c-ab64-9ac9dfcf2c08/adam_miks.jpg__480x0_q85_subsampling-2.jpg"
-       alt="Adam Miks" width="100" height="100">
-
-  <h3>Pierwsze próby</h3>
-  <div class="gallery">
-    <img src="https://cdn.pixabay.com/photo/2025/04/25/20/18/ex-libris-9559971_1280.jpg"  width="400" height="400">
-    <img src="https://cdn.pixabay.com/photo/2025/03/18/18/43/girl-9478914_1280.jpg"  width="400" height="400">
-    <img src="https://cdn.pixabay.com/photo/2025/03/28/21/26/flower-9499636_1280.png"  width="400" height="400">
-	  <img src="https://raw.githubusercontent.com/adammiks/miks-tw-rczo-ci/refs/heads/main/Wielka%20Czw%C3%B3rka.jpg" width="400" height="400">
-  <img src="https://raw.githubusercontent.com/adammiks/miks-tw-rczo-ci/refs/heads/main/%C5%9Bmier%C4%87%20w%20bibiotece.jpg"   width="400" height="400">             
-         
-  
-  </div>
-
-  <h3>Kobieta</h3>
-  <div class="gallery">
-    <img src="https://cdn.pixabay.com/photo/2025/04/05/17/32/girl-9515604_1280.jpg"  width="400" height="400">
-    <img src="https://cdn.pixabay.com/photo/2025/04/29/20/18/woman-9567868_1280.jpg"  width="400" height="400">
-	<img src="https://raw.githubusercontent.com/adammiks/miks-tw-rczo-ci/refs/heads/main/R%C3%B3%C5%BCa.jpg"  width="400" height="400">
-  <img src="https://raw.githubusercontent.com/adammiks/miks-tw-rczo-ci/refs/heads/main/dziewczyna.jpg" width="400" height="400">    
- <img src="https://raw.githubusercontent.com/adammiks/miks-tw-rczo-ci/refs/heads/main/Dziewczyna%20przy%20stole.jpg" width="400" height="400">
-  </div>
-  
-  <h3>Krajobrazy</h3>
-  <img src="https://raw.githubusercontent.com/adammiks/miks-tw-rczo-ci/refs/heads/main/output.jpg"  width="400" height="400">
-  <img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/070acc6b-b935-40fa-95cc-b25326ddca06.png"  width="400" height="400">
-			<img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/4f757257-c788-4cf6-96e9-dec14b82e4d9.png" width="400" height="400">
-<img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/5fb859ae-bec5-462b-99c8-2d6b9903a912.png"   width="400" height="400">
-<img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/output%20(1).jpg" width="400" height="400">
-		</p>
-
-<div class="separator"></div>
-
-<div class="footer-section">
-      <h3>O stronie</h3>
-      <p>Strona stworzona przez Adama Miksa. Tomiki wierszy, opowiadania, literackie anegdoty</p>
-    </div>
-
-    <div class="footer-section">
-      <h3>Tu jestem</h3>
-       <a href="#o-mnie">O mnie</a>
-      <a href="#kontakt">Kontakt</a>
-    </div>
-
-    <div class="footer-section">
-      <h3>Kontakt</h3>
-      <p>Email: adammiks@gmail.com</p>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 Strona Adama Miksa | Wszelkie prawa zastrzeżone
-  </div>
-</footer>
-
-			
-
-
-
-
-
-<!-- SKRYPT MAILERLITE -->
-<script src="https://assets.mailerlite.com/js/universal.js"></script>
-		
-<script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* =========================
-     🌙 THEME (dark/light)
-  ========================= */
-
-  function applyTheme(theme) {
-    document.body.classList.remove("dark", "light");
-    document.body.classList.add(theme);
-  }
-
-  function toggleTheme() {
-    const isDark = document.body.classList.contains("dark");
-    const newTheme = isDark ? "light" : "dark";
-
-    applyTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-  }
-
-  const savedTheme = localStorage.getItem("theme") || "light";
-  applyTheme(savedTheme);
-
-
-  /* =========================
-     📱 MENU
-  ========================= */
-
-  const menu = document.getElementById("menu");
-  const menuToggle = document.getElementById("menuToggle");
-
-  if (menu && menuToggle) {
-    menuToggle.addEventListener("click", () => {
-      menu.classList.toggle("open");
-    });
-  }
-
-
-  /* =========================
-     🌙 BUTTON - THEME TOGGLE
-  ========================= */
-
-  const themeToggle = document.getElementById("themeToggle");
-
-  if (themeToggle) {
-    themeToggle.addEventListener("click", (e) => {
-      e.preventDefault();
-      toggleTheme();
-    });
-  }
-
-
-  /* =========================
-     🖼️ GALLERY MODAL
-  ========================= */
-
-  const modal = document.getElementById("galleryModal");
-  const modalImg = document.getElementById("modalImg");
-  const images = document.querySelectorAll(".gallery img");
-  const closeBtn = document.querySelector(".close");
-
-  if (modal && modalImg) {
-    images.forEach(img => {
-      img.addEventListener("click", () => {
-        modal.style.display = "block";
-        modalImg.src = img.src;
-      });
-    });
-  }
-
-  if (closeBtn && modal) {
-    closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-  }
-
-<script>
-
-const menuToggle = document.getElementById("menuToggle");
-const menu = document.getElementById("menu");
-
-menuToggle.addEventListener("click", () => {
-    menu.classList.toggle("active");
-});
-
-</script>
-  /* =========================
-     🔞 AGE GATE
-  ========================= */
-
-  function enterSite() {
-    localStorage.setItem("ageVerified", "true");
-
-    const gate = document.getElementById("ageGate");
-    const content = document.getElementById("content");
-
-    if (gate) gate.style.display = "none";
-    if (content) content.classList.remove("hidden");
-  }
-
-  function exitSite() {
-    window.location.href = "index.html";
-  }
-
-  window.enter = enterSite;
-  window.exit = exitSite;
-
-  if (localStorage.getItem("ageVerified") === "true") {
-    enterSite();
-  }
-
-});
-	
-
-function toggleMenu() {
-  const menu = document.getElementById("menu");
-  menu.classList.toggle("open");
-}
-</script>
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const btn = document.getElementById("menuToggle");
-    const menu = document.getElementById("menu");
-
-    btn.addEventListener("click", function () {
-        menu.classList.toggle("active");
-    });
-
-});
-
-
-<script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const menu = document.getElementById("sideMenu");
-    const overlay = document.getElementById("overlay");
-    const openBtn = document.getElementById("menuToggle");
-    const closeBtn = document.getElementById("closeMenu");
-
-    function openMenu() {
-        menu.classList.add("active");
-        overlay.classList.add("active");
-    }
-
-    function closeMenu() {
-        menu.classList.remove("active");
-        overlay.classList.remove("active");
-    }
-
-    openBtn.addEventListener("click", openMenu);
-    closeBtn.addEventListener("click", closeMenu);
-    overlay.addEventListener("click", closeMenu);
-
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const menu = document.getElementById("sideMenu");
-    const overlay = document.getElementById("overlay");
-    const openBtn = document.getElementById("menuToggle");
-    const closeBtn = document.getElementById("closeMenu");
-
-    function openMenu() {
-        if (menu) menu.classList.add("active");
-        if (overlay) overlay.classList.add("active");
-    }
-
-    function closeMenu() {
-        if (menu) menu.classList.remove("active");
-        if (overlay) overlay.classList.remove("active");
-    }
-
-    if (openBtn) openBtn.addEventListener("click", openMenu);
-    if (closeBtn) closeBtn.addEventListener("click", closeMenu);
-    if (overlay) overlay.addEventListener("click", closeMenu);
-
-});	
-
-</script>	
-
-</script>
-</script>
-		
-</body>
-</html>	

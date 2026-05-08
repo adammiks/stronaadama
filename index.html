@@ -2451,7 +2451,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+<script>
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const btn = document.getElementById("menuToggle");
+    const menu = document.getElementById("menu");
+
+    btn.addEventListener("click", function () {
+        menu.classList.toggle("active");
+    });
+
+});
+
+</script>
 </script>
 		
 </body>

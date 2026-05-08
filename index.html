@@ -252,12 +252,48 @@
       font-weight: 600;
     }
 
+    body {
+  font-family: Georgia, serif;
+  background: #f5f5f5;
+}
+
+.shelf {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 60px auto;
+  padding: 40px 20px;
+  max-width: 900px;
+  border-bottom: 6px solid #8b5e3c; /* półka */
+  background: linear-gradient(#eee, #f5f5f5);
+}
+
+.book {
+  width: 90px;
+  height: 140px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 6px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-2deg);
+  transition: transform 0.3s;
+}
+
+.book:hover {
+  transform: rotate(0deg) translateY(-5px);
+}
+
     .cover-1 { background: #ebe6d7; }
     .cover-2 { background: #bfc09c; }
     .cover-3 { background: #e8dfcf; }
     .cover-4 { background: #eadfca; }
     .cover-5 { background: #b6c0c7; }
     .cover-6 { background: #c79f6f; }
+
+  
 
     .book-title {
       font-size: 1.4rem;
@@ -635,6 +671,14 @@ tuż przed śniadaniem
 
     </div>
   </section>
+       <h1>Tomik I</h1>
+
+<div class="shelf">
+  <div class="book">Okładka 1</div>
+  <div class="book">Okładka 2</div>
+  <div class="book">Okładka 3</div>
+  <div class="book">Okładka 4</div>
+</div>     
 
   <section class="author">
     <div class="container author-grid">

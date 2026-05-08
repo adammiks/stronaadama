@@ -2567,6 +2567,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("overlay");
+    const openBtn = document.getElementById("menuToggle");
+    const closeBtn = document.getElementById("closeMenu");
+
+    function openMenu() {
+        if (menu) menu.classList.add("active");
+        if (overlay) overlay.classList.add("active");
+    }
+
+    function closeMenu() {
+        if (menu) menu.classList.remove("active");
+        if (overlay) overlay.classList.remove("active");
+    }
+
+    if (openBtn) openBtn.addEventListener("click", openMenu);
+    if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+    if (overlay) overlay.addEventListener("click", closeMenu);
+
+});	
+
 </script>	
 
 </script>

@@ -169,7 +169,7 @@ h1{
   </p>
  </div>
 
-  <div class="separator"></div>
+
 <div class="page" id="p2">
     <h3>LATARNK</h3>
   <p style="text-align: justify;">
@@ -187,7 +187,6 @@ Człowiek – potwór skarłowaciał, następnie czmychnął przez dziurkę od k
 </p>
   </div>
 
-  <div class="separator"></div>
 		 <div class="page" id="p3">
     <h3>NAPIWEK</h3>
     
@@ -213,7 +212,7 @@ Ku memu zaskoczeniu uśmiechnął się, chociaż przez łzy:
 – Zacznę chyba zbierać na pomnik dla mojej Zosi.
 </p>
   </div>
- <div class="separator"></div>
+
   <h3>ZMĘCZENIE</h3>  
 <p style="text-align: justify;">
 - Zmęczona jestem, panie Wacławie. A to dopiero trzeci dzień roku szkolnego! – Katarzyna, nauczycielka języka angielskiego, wykrzywia usta.
@@ -248,7 +247,7 @@ Ktoś, kto zbliżał się do przystanku, pogroził im palcem.
 - Ojej, geografica – jęknęły jednocześnie.
 </p>
   </div>
- <div class="separator"></div>
+
  <div class="page" id="p4">
 <h3>MODLITWA</h3>
 <p style="text-align: justify;">
@@ -272,7 +271,7 @@ Lecz Ciebie nie ma. Jeszcze nie ma. A wszyscy o tobie mówią. Wiedzą. Znają C
 </p>
   </div>
 			
-		 <div class="separator"></div>
+	
 			
  <div class="page" id="p5">
 <h3>STOŁECZEK</h3>
@@ -302,7 +301,7 @@ Warto spróbować. Oczywiście, żyć z rurką oddechową przypiętą do sztabu 
 Ulga, gdy usłyszałem śpiew dzieci. Żyję. Poczułem że wyszedłem na balkon. Spokój, brak nowych wiadomości. Wypiłem szklankę coca – coli. Zastanawiałem się tylko czy w mojej sytuacji pooperacyjnej to normalne zachowanie. Nie myślałem zbyt długo o tym, sen skończył się. Wróciłem do salonu życia, zapytałem o laptopa. Czas zacząć pisać nowy rozdział.
 </p>
   </div>		
- <div class="separator"></div>
+
  <div class="page" id="p6">
 <h3>BAJKA O SŁOWIE</h3>
 	
@@ -353,8 +352,7 @@ Zatem przestała wspominać. W ogóle przestała wspominać o czymkolwiek. Reszt
 I tak minął covid, i następna zima. Słowo zostało na przypiecku, wydobrzało samo z siebie i wydoroślało. Nauczyło się wymawiać swoje imię i poznawać resztę słów. Dobrze byłoby gdyby jeszcze wyszczotkowało wymowę zgłoski „r” i resztkę puchu dziecięcego. Dobranoc.
 </p>
   </div>
-		
- <div class="separator"></div>
+
 	 <div class="page" id="p7"> 
 <h3>BIBLIOTEKARKA</h3>
 
@@ -413,7 +411,6 @@ Podaje mi, nie wiadomo skąd, księgę oprawioną w płótno. Z obojętnym błog
   </div>
 
 			
-	 <div class="separator"></div>
  <div class="page" id="p8">
 <h3>ŁÓŻKO</h3>
 	
@@ -460,24 +457,17 @@ Podaje mi, nie wiadomo skąd, księgę oprawioną w płótno. Z obojętnym błog
 </div>
 
 <div class="hint">Klikaj przyciski, aby przewracać strony</div>
-
-<script>
 let index = 0;
 
-const pages = [
-  document.getElementById("p1"),
-  document.getElementById("p2")
-];
+const pages = document.querySelectorAll(".book .page");
 
 function render() {
   pages.forEach((p, i) => {
-
     if (i < index) {
       p.classList.add("flipped");
     } else {
       p.classList.remove("flipped");
     }
-
   });
 }
 
@@ -496,4 +486,5 @@ function prev() {
 }
 
 render();
-</script>
+
+

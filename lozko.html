@@ -425,24 +425,32 @@ let index = 0;
 
 <div class="hint" style="text-align:center;">Klikaj przyciski, aby przewracać strony</div>
 
+<div class="controls">
+<button onclick="prev()">← Wstecz</button>
+<button onclick="next()">Dalej →</button>
+</div>
+
 <script>
 let index = 0;
-const pages = document.querySelectorAll(".book .page");
+const pages = document.querySelectorAll(".page");
 
-function render() {
-  pages.forEach((p, i) => {
-    if (i < index) p.classList.add("flipped");
-    else p.classList.remove("flipped");
+function render(){
+  pages.forEach((p,i)=>{
+    if(i < index){
+      p.classList.add("flipped");
+    } else {
+      p.classList.remove("flipped");
+    }
   });
 }
 
-function next() {
-  if (index < pages.length) index++;
+function next(){
+  if(index < pages.length) index++;
   render();
 }
 
-function prev() {
-  if (index > 0) index--;
+function prev(){
+  if(index > 0) index--;
   render();
 }
 
@@ -451,3 +459,6 @@ render();
 
 </body>
 </html>
+
+
+

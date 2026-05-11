@@ -131,25 +131,26 @@
 
 <script>
 let index = 0;
+
 const pages = [
   document.getElementById("p1"),
-  document.getElementById("p2"),
-  document.getElementById("p3"),
-  document.getElementById("p4")
+  document.getElementById("p2")
 ];
 
 function render() {
   pages.forEach((p, i) => {
-    if (i <= index) {
+
+    if (i < index) {
       p.classList.add("flipped");
     } else {
       p.classList.remove("flipped");
     }
+
   });
 }
 
 function next() {
-  if (index < pages.length - 1) {
+  if (index < pages.length) {
     index++;
     render();
   }
@@ -164,6 +165,3 @@ function prev() {
 
 render();
 </script>
-
-</body>
-</html>

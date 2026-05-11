@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anegdoty – książka</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e8e2d6;
+    font-family: Georgia, serif;
+  }
+
+  .scene {
+    width: 700px;
+    height: 450px;
+    perspective: 2000px;
+  }
+
+  .book {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  .page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: white;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    transform-origin: left;
+    transition: transform 1s ease;
+    backface-visibility: hidden;
+    overflow: hidden;
+  }
+
+  .page.right {
+    left: 50%;
+    transform-origin: right;
+  }
+
+  .page.flipped {
+    transform: rotateY(-180deg);
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .controls {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+  }
+
+  button {
+    padding: 10px 18px;
+    border: none;
+    background: #222;
+    color: white;
+    margin: 0 8px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  .hint {
+    position: absolute;
+    top: 20px;
+    opacity: 0.5;
+    font-size: 14px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+
+  <div class="book" id="book">
+
+    <!-- STRONA 1 -->
+    <div class="page" id="p1">
+      <h2>Biblioteka nocą</h2>
+      <p>
+        Biblioteka była pusta, ale nie cicha.
+        Książki wydawały się oddychać.
+      </p>
+      <p>
+        Zrozumiałem wtedy, że to one mnie obserwują.
+      </p>
+    </div>
+
+    <!-- STRONA 2 -->
+    <div class="page right" id="p2">
+      <h2>Poczytałbyś książkę</h2>
+      <p>
+        Był sobie syn. Po szkole rzucał teczkę, i na podwórko. 
+      </p>
+      
+        Ojciec, nie lubiący czytać, nie wytrzymał któregoś dnia: "Zamiast włóczyć się, książkę byś przeczytał". 
+        <p>
+        A syn: "A jaką by ojciec polecił?"
+      </p>
+      </div>
+
+
+  </div>
+
+</div>
+
+<div class="controls">
+  <button onclick="prev()">← Wstecz</button>
+  <button onclick="next()">Dalej →</button>
+</div>
+
+<div class="hint">Klikaj przyciski, aby przewracać strony</div>
+
+<script>
+let index = 0;
+const pages = [
+  document.getElementById("p1"),
+  document.getElementById("p2"),
+  document.getElementById("p3"),
+  document.getElementById("p4")
+];
+
+function render() {
+  pages.forEach((p, i) => {
+    if (i <= index) {
+      p.classList.add("flipped");
+    } else {
+      p.classList.remove("flipped");
+    }
+  });
+}
+
+function next() {
+  if (index < pages.length - 1) {
+    index++;
+    render();
+  }
+}
+
+function prev() {
+  if (index > 0) {
+    index--;
+    render();
+  }
+}
+
+render();
+</script>
+
+</body>
+</html>

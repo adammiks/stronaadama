@@ -196,23 +196,28 @@
       margin-bottom: 60px;
     }
 
-    .shelf-wrapper {
-      overflow-x: auto;
-      padding-bottom: 20px;
-    }
-
     .shelf {
-      display: inline-flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 20px;
-      padding: 40px 30px;
-      border-bottom: 8px solid var(--wood);
-      background: linear-gradient(#efefef, #f8f8f8);
-      border-radius: 8px;
-      width: fit-content;
-      margin: 0 auto;
-    }
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    /* DREWNO */
+    background: linear-gradient(180deg, #8b5e3c, #6b4f3a);
+    padding: 25px 20px 35px;
+
+    /* EFEKT 3D */
+    border-radius: 6px;
+    box-shadow: 
+        0 12px 25px rgba(0,0,0,0.35),
+        inset 0 -6px 10px rgba(0,0,0,0.25),
+        inset 0 6px 10px rgba(255,255,255,0.08);
+
+    margin-bottom: 60px;
+
+    /* „deska” półki */
+    border-bottom: 10px solid #4a3323;
+}
 
     .book-card {
       transition: transform .3s ease;

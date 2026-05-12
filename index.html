@@ -732,7 +732,37 @@ Poezja Adama Miksa nie próbuje krzyczeć. Raczej trwa w ciszy. I właśnie dlat
       
     </div>
   </footer>
+<script>
+const input = document.getElementById("search");
+const results = document.getElementById("results");
+const sections = document.querySelectorAll(".searchable");
 
+input.addEventListener("input", () => {
+  const query = input.value.toLowerCase().trim();
+  results.innerHTML = "";
+
+  if (!query) return;
+
+  sections.forEach(section => {
+    const text = section.textContent.toLowerCase();
+
+    if (text.includes(query)) {
+      const clone = section.cloneNode(true);
+
+      clone.innerHTML = clone.innerHTML.replace(
+        new RegExp(query, "gi"),
+        match => `<mark>${match}</mark>`
+      );
+
+      results.appendChild(clone);
+    }
+  });
+
+  if (results.innerHTML === "") {
+    results.innerHTML = "<p>Brak wyników</p>";
+  }
+});
+</script>
 </body>
 </html>
 ```

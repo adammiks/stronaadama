@@ -76,6 +76,8 @@ h1{
 </head>
 
 <body>
+  <input type="text" id="search" placeholder="Szukaj w poezji...">
+<div id="results"></div>
 <h1>Adam Miks</h1> 
 <h1>Z krajobrazów poety</h1>
   <h1>Wydanie papierowe, WFW, 2018<h1>
@@ -616,7 +618,38 @@ dwa jedyne krajobrazy
     allowfullscreen>
   </iframe>
 </div>
-  
+  <script>
+const input = document.getElementById("search");
+const results = document.getElementById("results");
+const poems = document.querySelectorAll(".poem");
+
+input.addEventListener("input", () => {
+  const query = input.value.toLowerCase().trim();
+  results.innerHTML = "";
+
+  if (!query) return;
+
+  poems.forEach(poem => {
+    const text = poem.innerText;
+
+    if (text.toLowerCase().includes(query)) {
+      const div = document.createElement("div");
+
+      const highlighted = text.replace(
+        new RegExp(query, "gi"),
+        match => `<mark>${match}</mark>`
+      );
+
+      div.innerHTML = highlighted.split("\n").join("<br>");
+      results.appendChild(div);
+    }
+  });
+
+  if (results.innerHTML === "") {
+    results.innerHTML = "<p>Brak wyników</p>";
+  }
+});
+</script>
 
 </body>
 </html>

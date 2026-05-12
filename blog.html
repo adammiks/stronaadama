@@ -138,46 +138,6 @@
 
 
 
-<div class="controls">
-  <button onclick="prev()">← Wstecz</button>
-  <button onclick="next()">Dalej →</button>
-</div>
-
-<div class="hint">Klikaj przyciski, aby przewracać strony</div>
-
-<script>
-let index = 0;
-
-const pages = [
-  document.getElementById("p1"),
-  document.getElementById("p2")
-];
-
-function render() {
-  pages.forEach((p, i) => {
-
-    if (i < index) {
-      p.classList.add("flipped");
-    } else {
-      p.classList.remove("flipped");
-    }
-
-  });
-}
-
-function next() {
-  if (index < pages.length) {
-    index++;
-    render();
-  }
-}
-
-function prev() {
-  if (index > 0) {
-    index--;
-    render();
-  }
-}
 
 render();
 </script>

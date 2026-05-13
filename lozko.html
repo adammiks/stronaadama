@@ -76,7 +76,9 @@ h1{
 </style>
 </head>
   <body>
-
+<body>
+  <input type="text" id="search" placeholder="Szukaj w poezji...">
+<div id="results"></div>
 
 <h1>Adam Miks</h1> 
 <h1>Łózko i inne opowiadania</h1>
@@ -418,3 +420,40 @@ Podaje mi, nie wiadomo skąd, księgę oprawioną w płótno. Z obojętnym błog
 <p class="justify">– Oj, braciszku, braciszku. Następnego takiego upadku raczej nie przeżyję. Powinnam porozmawiać z rodzicami o zmianie łóżka. Poza tym dostaję dziś kolejną dawkę somatotropiny i zaczynam rosnąć. Żegnajcie sto trzydzieści centymetrów wzrostu!</p>
   </p>
   </div>
+ <script>
+const input = document.getElementById("search");
+const results = document.getElementById("results");
+const poems = document.querySelectorAll(".poem");
+
+input.addEventListener("input", () => {
+  const query = input.value.toLowerCase().trim();
+  results.innerHTML = "";
+
+  if (!query) return;
+
+  poems.forEach(poem => {
+    const text = poem.innerText;
+
+    if (text.toLowerCase().includes(query)) {
+      const div = document.createElement("div");
+
+      const highlighted = text.replace(
+        new RegExp(query, "gi"),
+        match => `<mark>${match}</mark>`
+      );
+
+      div.innerHTML = highlighted.split("\n").join("<br>");
+      results.appendChild(div);
+    }
+  });
+
+  if (results.innerHTML === "") {
+    results.innerHTML = "<p>Brak wyników</p>";
+  }
+});
+</script>
+
+</body>
+</html>
+
+	

@@ -76,6 +76,9 @@ h1{
 </style>
 </head>
   <body>
+  <input type="text" id="search" placeholder="Szukaj w poezji...">
+<div id="results"></div>
+    
 <h1>Adam Miks</h1> 
 <h1>Dzień dobry, do widzenia i spacery pomiędzy</h1>
  
@@ -321,3 +324,40 @@ tych parę bajek<br>
 </div> 
  
 <p>Wiersz "Kurz" został nagrodzony w Konkursie zorganizowanym przez Gminny Urząd w Rabie Wyżnej</p>
+
+ <script>
+const input = document.getElementById("search");
+const results = document.getElementById("results");
+const poems = document.querySelectorAll(".poem");
+
+input.addEventListener("input", () => {
+  const query = input.value.toLowerCase().trim();
+  results.innerHTML = "";
+
+  if (!query) return;
+
+  poems.forEach(poem => {
+    const text = poem.innerText;
+
+    if (text.toLowerCase().includes(query)) {
+      const div = document.createElement("div");
+
+      const highlighted = text.replace(
+        new RegExp(query, "gi"),
+        match => `<mark>${match}</mark>`
+      );
+
+      div.innerHTML = highlighted.split("\n").join("<br>");
+      results.appendChild(div);
+    }
+  });
+
+  if (results.innerHTML === "") {
+    results.innerHTML = "<p>Brak wyników</p>";
+  }
+});
+</script>
+
+</body>
+</html>
+    

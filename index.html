@@ -466,6 +466,10 @@ section {
       Adama
     </h3>
 
+    <audio id="bgmusic" loop>
+  <source src="https://www.youtube.com/watch?v=2OEL4P1Rz04" type="audio/mpeg">
+</audio>
+
  <h3 style="text-align: justify;">
     Proponuję intelektualną zabawę ze skojarzeniem.<br>
     Chwile bez bełkotu i szumu słów.<br>
@@ -725,11 +729,17 @@ input.addEventListener("input", () => {
     }
   });
 
-  if (results.innerHTML === "") {
-    results.innerHTML = "<p>Brak wyników</p>";
-  }
-});
+ 
+  
 </script>
+
+ <script>
+const music = document.getElementById("bgmusic");
+
+document.addEventListener("click", () => {
+  music.play();
+}, { once: true });
+</script> 
 </body>
 </html>
 ```

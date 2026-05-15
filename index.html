@@ -425,11 +425,11 @@ section {
 </style>
 </head>
 
-<body>
+
 </body>
 </html>
 
-<body>
+
 
 
 
@@ -733,16 +733,17 @@ input.addEventListener("input", () => {
  <script>
 const music = document.getElementById("bgmusic");
 
-music.volume = 0.5;
-
 function startMusic() {
+  if (!music) return;
+
+  music.volume = 0.5;
   music.play().catch(() => {});
   document.removeEventListener("click", startMusic);
 }
 
 document.addEventListener("click", startMusic);
-</script> 
 
+ </script>
 </body>
 </html>
 ```

@@ -71,6 +71,13 @@ h1{
 
     z-index: -1;
 }
+body{
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+  font-family: Georgia, serif;
+  line-height: 1.8;
+}
 
 .tag {
   display: inline-block;
@@ -80,6 +87,7 @@ h1{
   border-radius: 10px;
   font-size: 12px;
 }
+
  
 </style>
 </head>
@@ -191,12 +199,9 @@ po za tm wskazywała własną książkę-wywiad „Niejedno przeszłam”, gdzie
 </div>
 <input type="text" id="search" placeholder="Szukaj...">
 <div id="results"></div>
-
 <script>
 const input = document.getElementById("search");
 const results = document.getElementById("results");
-
-// wszystkie Twoje akapity
 const items = document.querySelectorAll("p[data-subject]");
 
 input.addEventListener("input", () => {
@@ -207,16 +212,14 @@ input.addEventListener("input", () => {
 
   items.forEach(item => {
     const text = item.innerText.toLowerCase();
-    const tags = item.dataset.subject.toLowerCase();
+    const tags = (item.dataset.subject || "").toLowerCase();
 
-    // SZUKA zarówno w tekście, jak i w tagach
     if (text.includes(query) || tags.includes(query)) {
-
       const div = document.createElement("div");
 
       div.innerHTML = `
         <p>${item.innerText}</p>
-        <small>📚 ${item.dataset.subject}</small>
+        <small>${item.dataset.subject}</small>
         <hr>
       `;
 
@@ -230,7 +233,6 @@ input.addEventListener("input", () => {
 });
 </script>
 
-</script>
 </body>
 </html>
 

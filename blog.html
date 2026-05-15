@@ -196,7 +196,38 @@ paragrafy.forEach(p => {
   console.log(p.dataset.subject);
 });
 </script>
+<script>
+const input = document.getElementById("search");
+const results = document.getElementById("results");
+const poems = document.querySelectorAll("p[data-subject]");
 
+input.addEventListener("input", () => {
+  const query = input.value.toLowerCase().trim();
+  results.innerHTML = "";
+
+  if (!query) return;
+
+  poems.forEach(p => {
+    const tags = p.dataset.subject.toLowerCase();
+
+    if (tags.includes(query)) {
+      const div = document.createElement("div");
+
+      div.innerHTML = `
+        <p>${p.innerText}</p>
+        <small style="color:gray;">tagi: ${p.dataset.subject}</small>
+        <hr>
+      `;
+
+      results.appendChild(div);
+    }
+  });
+
+  if (results.innerHTML === "") {
+    results.innerHTML = "<p>Brak wyników</p>";
+  }
+});
+</script>
 </body>
 </html>
 

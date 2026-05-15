@@ -466,9 +466,11 @@ section {
       Adama
     </h3>
 
-    <audio id="bgmusic" loop>
+  <audio id="bgmusic" loop>
   <source src="https://raw.githubusercontent.com/adammiks/stronaadama/main/assets/music.mp3" type="audio/mpeg">
 </audio>
+
+<button onclick="startMusic()">▶ Play muzyka</button>
 
  <h3 style="text-align: justify;">
     Proponuję intelektualną zabawę ze skojarzeniem.<br>
@@ -730,20 +732,14 @@ input.addEventListener("input", () => {
   });
 });
 </script>
- <script>
+<script>
 const music = document.getElementById("bgmusic");
+music.volume = 0.5;
 
 function startMusic() {
-  if (!music) return;
-
-  music.volume = 0.5;
-  music.play().catch(() => {});
-  document.removeEventListener("click", startMusic);
+  music.play();
 }
-
-document.addEventListener("click", startMusic);
-
- </script>
+  </script>
 </body>
 </html>
 ```

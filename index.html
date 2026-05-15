@@ -467,7 +467,7 @@ section {
     </h3>
 
     <audio id="bgmusic" loop>
-  <source src=" https://raw.githubusercontent.com/adammiks/stronaadama/main/assets/music.mp3" type="audio/mpeg">
+  <source src="https://raw.githubusercontent.com/adammiks/stronaadama/main/assets/music.mp3" type="audio/mpeg">
 </audio>
 
  <h3 style="text-align: justify;">
@@ -729,17 +729,20 @@ input.addEventListener("input", () => {
     }
   });
 
- 
-  
-</script>
-
  <script>
 const music = document.getElementById("bgmusic");
 
-document.addEventListener("click", () => {
-  music.play();
-}, { once: true });
-</script> 
+music.volume = 0.5;
+
+function startMusic() {
+  music.play().catch(() => {});
+  document.removeEventListener("click", startMusic);
+}
+
+document.addEventListener("click", startMusic);
+</script>
+  
+
 </body>
 </html>
 ```

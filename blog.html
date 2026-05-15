@@ -1,12 +1,10 @@
-
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
 <title>Blogowisko anegdot</title>
 
-<style> 
-
+<style>
 body{
   max-width: 800px;
   margin: auto;
@@ -19,81 +17,58 @@ body{
 
 h1{
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
-/* BLOK WIERSZA */
-
-.poem{
-  background: #fcfcfc;
-  padding: 40px;
-  margin-bottom: 80px;
-
-  text-align: left; /* tekst do lewej */
+h2{
+  margin-top: 40px;
 }
 
-/* TYTUŁY */
-
-.poem h2,
-.poem h3{
-  text-align: left; /* tytuł nad tekstem i do lewej */
-  margin-bottom: 25px;
-  letter-spacing: 1px;
+/* WYSZUKIWARKA */
+#search{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
-/* LINIA ODDZIELAJĄCA */
+/* WYNIKI WYSZUKIWANIA */
+#results{
+  background: #f7f7f7;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+}
 
+/* SEPARATOR */
 .separator{
   width: 60px;
   height: 1px;
   background: #ccc;
   margin: 60px auto;
 }
-.poetry-bg {
-    position: relative;
-    overflow: hidden;
-}
 
-/* watermark jako wbudowany SVG */
-.poetry-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='0.8'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='1600' height='900' fill='white'/%3E%3Cpath d='M0 600 C300 500 600 500 900 600 C1200 700 1400 700 1600 600' fill='none' stroke='black' stroke-width='3' opacity='0.08' filter='url(%23b)'/%3E%3Cpath d='M200 650 C400 550 600 550 800 650' fill='none' stroke='black' stroke-width='2' opacity='0.06' filter='url(%23b)'/%3E%3Cpath d='M1200 750 C1190 650 1180 550 1200 450 C1220 350 1250 300 1280 250' fill='none' stroke='black' stroke-width='4' opacity='0.08'/%3E%3Cpath d='M1250 320 C1200 280 1150 250 1100 220' fill='none' stroke='black' stroke-width='2' opacity='0.07'/%3E%3C/svg%3E");
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-    opacity: 0.15;
-    pointer-events: none;
-
-    z-index: -1;
-}
-body{
-  max-width: 800px;
-  margin: auto;
-  padding: 40px;
-  font-family: Georgia, serif;
-  line-height: 1.8;
-}
-
-.tag {
+/* TAGI (opcjonalnie wizualnie) */
+.tag{
   display: inline-block;
   background: #eee;
-  padding: 4px 8px;
+  padding: 3px 7px;
   margin: 2px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 12px;
 }
-
- 
 </style>
 </head>
-  <body>
-    <input type="text" id="search" placeholder="Szukaj">
-<h1>Adam Miks</h1> 
+
+<body>
+
+<!-- 🔎 WYSZUKIWARKA -->
+<input type="text" id="search" placeholder="Szukaj...">
+<div id="results"></div>
+
+<h1>Adam Miks</h1>
 <h1>Blogowisko anegdot</h1>
  
     
@@ -199,22 +174,23 @@ po za tm wskazywała własną książkę-wywiad „Niejedno przeszłam”, gdzie
 </div>
 <input type="text" id="search" placeholder="Szukaj...">
 <div id="results"></div>
+
 <script>
 const input = document.getElementById("search");
 const results = document.getElementById("results");
 const items = document.querySelectorAll("p[data-subject]");
 
 input.addEventListener("input", () => {
-  const query = input.value.toLowerCase().trim();
+  const q = input.value.toLowerCase().trim();
   results.innerHTML = "";
 
-  if (!query) return;
+  if (!q) return;
 
   items.forEach(item => {
     const text = item.innerText.toLowerCase();
     const tags = (item.dataset.subject || "").toLowerCase();
 
-    if (text.includes(query) || tags.includes(query)) {
+    if (text.includes(q) || tags.includes(q)) {
       const div = document.createElement("div");
 
       div.innerHTML = `
@@ -235,6 +211,3 @@ input.addEventListener("input", () => {
 
 </body>
 </html>
-
-
-

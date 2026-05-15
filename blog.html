@@ -188,18 +188,15 @@ Stanisława Celińska dość często odwoływała się do literatury i konkretny
 po za tm wskazywała własną książkę-wywiad „Niejedno przeszłam”, gdzie opowiada o życiu, aktorstwie i swoich doświadczeniach.
     </p>
 </div>
+<input type="text" id="search" placeholder="Szukaj...">
+<div id="results"></div>
 
-<script>
-const paragrafy = document.querySelectorAll("p");
-
-paragrafy.forEach(p => {
-  console.log(p.dataset.subject);
-});
-</script>
 <script>
 const input = document.getElementById("search");
-const results = document.getElementById("results"); 
-const poems = document.querySelectorAll("p[data-subject]");
+const results = document.getElementById("results");
+
+// wszystkie Twoje akapity
+const items = document.querySelectorAll("p[data-subject]");
 
 input.addEventListener("input", () => {
   const query = input.value.toLowerCase().trim();
@@ -207,15 +204,18 @@ input.addEventListener("input", () => {
 
   if (!query) return;
 
-  poems.forEach(p => {
-    const tags = p.dataset.subject.toLowerCase();
+  items.forEach(item => {
+    const text = item.innerText.toLowerCase();
+    const tags = item.dataset.subject.toLowerCase();
 
-    if (tags.includes(query)) {
+    // SZUKA zarówno w tekście, jak i w tagach
+    if (text.includes(query) || tags.includes(query)) {
+
       const div = document.createElement("div");
 
       div.innerHTML = `
-        <p>${p.innerText}</p>
-        <small style="color:gray;">tagi: ${p.dataset.subject}</small>
+        <p>${item.innerText}</p>
+        <small>📚 ${item.dataset.subject}</small>
         <hr>
       `;
 
@@ -227,6 +227,8 @@ input.addEventListener("input", () => {
     results.innerHTML = "<p>Brak wyników</p>";
   }
 });
+</script>
+
 </script>
 </body>
 </html>

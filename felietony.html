@@ -193,16 +193,10 @@ Arabskie przysłowie porównuje książkę do przenośnego ogrodu, podkreślają
 </p> 
 
 
-
-
-
-
-
-
- <script>
+<script>
 const input = document.getElementById("search");
 const results = document.getElementById("results");
-const poems = document.querySelectorAll(".poem");
+const poems = document.querySelectorAll("p[data-subject]");
 
 input.addEventListener("input", () => {
   const query = input.value.toLowerCase().trim();
@@ -210,18 +204,18 @@ input.addEventListener("input", () => {
 
   if (!query) return;
 
-  poems.forEach(poem => {
-    const text = poem.innerText;
+  poems.forEach(p => {
+    const tags = p.dataset.subject.toLowerCase();
 
-    if (text.toLowerCase().includes(query)) {
+    if (tags.includes(query)) {
       const div = document.createElement("div");
 
-      const highlighted = text.replace(
-        new RegExp(query, "gi"),
-        match => `<mark>${match}</mark>`
-      );
+      div.innerHTML = `
+        <p>${p.innerText}</p>
+        <small style="color:gray;">tagi: ${p.dataset.subject}</small>
+        <hr>
+      `;
 
-      div.innerHTML = highlighted.split("\n").join("<br>");
       results.appendChild(div);
     }
   });
@@ -232,5 +226,6 @@ input.addEventListener("input", () => {
 });
 </script>
 
-</body>
-</html>
+
+
+

@@ -71,6 +71,8 @@ h1{
 
     z-index: -1;
 }
+
+#alphabetical-index	
   background:#f7f7f7;
   padding:20px;
   border-radius:8px;
@@ -98,7 +100,7 @@ h1{
 </style>
 </head>
   <body>
-<body>
+
   <input type="text" id="search" placeholder="Szukaj w poezji...">
 <div id="results"></div>
 
@@ -455,7 +457,7 @@ Podaje mi, nie wiadomo skąd, księgę oprawioną w płótno. Z obojętnym błog
  <script>
 const input = document.getElementById("search");
 const results = document.getElementById("results");
-const poems = document.querySelectorAll(".poem");
+const poems = document.querySelectorAll(".page");
 
 input.addEventListener("input", () => {
   const query = input.value.toLowerCase().trim();
@@ -486,9 +488,8 @@ input.addEventListener("input", () => {
 </script>
 <script>
 /* POBIERZ WSZYSTKIE H2 */
-const titles = [
-  ...document.querySelectorAll(
-    "h2:not(#alphabetical-index h3)"
+
+  const titles = [...document.querySelectorAll("h3")];
   )
 ];
 /* LISTA */

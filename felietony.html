@@ -102,7 +102,7 @@ h1{
 </style>
 </head>
   <body>
-<body>
+
   <input type="text" id="search" placeholder="Szukaj">
 <div id="results"></div>
 
@@ -286,7 +286,41 @@ titles
     list.appendChild(li);
   });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+  const titles = [
+    ...document.querySelectorAll(
+      "h2:not(#alphabetical-index h2)"
+    )
+  ];
+
+  const list = document.getElementById("title-list");
+
+  titles
+    .sort((a, b) =>
+      a.innerText.localeCompare(b.innerText, 'pl')
+    )
+    .forEach((title, index) => {
+
+      const id = "post-" + index;
+      title.id = id;
+
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        <a href="#${id}">
+          ${title.innerText}
+        </a>
+      `;
+
+      list.appendChild(li);
+    });
+
+});
+</script>
+</body>
+</html>
 
 
 

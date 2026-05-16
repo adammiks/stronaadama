@@ -71,7 +71,31 @@ h1{
 
     z-index: -1;
 }
+#alphabetical-index	
+  background:#f7f7f7;
+  padding:20px;
+  border-radius:8px;
+  margin-bottom:40px;
+	{
+}
 
+#alphabetical-index ul{
+  list-style:none;
+  padding:0;
+}
+
+#alphabetical-index li{
+  margin:6px 0;
+}
+
+#alphabetical-index a{
+  text-decoration:none;
+  color:#222;
+}
+
+#alphabetical-index a:hover{
+  text-decoration:underline;
+}
   
 </style>
 </head>
@@ -84,7 +108,10 @@ h1{
  
   <h1>Wydanie internetowe, 2026</h1>
 
-
+<div id="alphabetical-index">
+  <h3>Katalog alfabetyczny</h3>
+  <ul id="title-list"></ul>
+</div>
 
     <div class="poem poetry-bg">
 <h2>NASTOLATEK</h2>
@@ -357,6 +384,33 @@ input.addEventListener("input", () => {
   }
 });
 </script>
+    <script>
+const titles = [...document.querySelectorAll("h3")];
+/* LISTA */
+const list = document.getElementById("title-list");
+
+/* SORTOWANIE ALFABETYCZNE */
+titles
+  .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
+  .forEach((title, index) => {
+
+    /* ID DLA LINKU */
+    const id = "post-" + index;
+    title.id = id;
+
+    /* ELEMENT LISTY */
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <a href="#${id}">
+        ${title.innerText}
+      </a>
+    `;
+
+    list.appendChild(li);
+  });
+</script>
+    
 
 </body>
 </html>

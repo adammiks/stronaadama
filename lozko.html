@@ -77,6 +77,7 @@ h1{
   padding:20px;
   border-radius:8px;
   margin-bottom:40px;
+	{
 }
 
 #alphabetical-index ul{
@@ -109,7 +110,7 @@ h1{
   <h1>Wydanie internetowe, 2026</h1> 
  <!-- KATALOG ALFABETYCZNY -->
 <div id="alphabetical-index">
-  <h2>Katalog alfabetyczny</h3>
+  <h3>Katalog alfabetyczny</h3>
   <ul id="title-list"></ul>
 </div>
 
@@ -489,9 +490,7 @@ input.addEventListener("input", () => {
 <script>
 /* POBIERZ WSZYSTKIE H2 */
 
-  const titles = [...document.querySelectorAll("h3")];
-  )
-];
+const titles = [...document.querySelectorAll("h3")];
 /* LISTA */
 const list = document.getElementById("title-list");
 

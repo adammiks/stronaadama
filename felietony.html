@@ -73,6 +73,31 @@ h1{
     z-index: -1;
 }
 
+/* KATALOG */
+#alphabetical-index{
+  background:#f7f7f7;
+  padding:20px;
+  border-radius:8px;
+  margin-bottom:40px;
+}
+
+#alphabetical-index ul{
+  list-style:none;
+  padding:0;
+}
+
+#alphabetical-index li{
+  margin:6px 0;
+}
+
+#alphabetical-index a{
+  text-decoration:none;
+  color:#222;
+}
+
+#alphabetical-index a:hover{
+  text-decoration:underline;
+}
 
 </style>
 </head>
@@ -85,7 +110,11 @@ h1{
 <h1>Felieton czyli ...</h1>
   <h1>Wydanie internetowe, 2026</h1>
 
-
+<!-- KATALOG ALFABETYCZNY -->
+<div id="alphabetical-index">
+  <h2>Katalog alfabetyczny</h2>
+  <ul id="title-list"></ul>
+</div>
 
     <h3>DA CAPO</h3>
 
@@ -224,6 +253,38 @@ input.addEventListener("input", () => {
     results.innerHTML = "<p>Brak wyników</p>";
   }
 });
+</script>
+
+<script>
+/* POBIERZ WSZYSTKIE H2 */
+const titles = [
+  ...document.querySelectorAll(
+    "h2:not(#alphabetical-index h2)"
+  )
+];
+/* LISTA */
+const list = document.getElementById("title-list");
+
+/* SORTOWANIE ALFABETYCZNE */
+titles
+  .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
+  .forEach((title, index) => {
+
+    /* ID DLA LINKU */
+    const id = "post-" + index;
+    title.id = id;
+
+    /* ELEMENT LISTY */
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <a href="#${id}">
+        ${title.innerText}
+      </a>
+    `;
+
+    list.appendChild(li);
+  });
 </script>
 
 

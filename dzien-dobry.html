@@ -102,6 +102,11 @@ h1{
   <body>
   <input type="text" id="search" placeholder="Szukaj w poezji...">
 <div id="results"></div>
+<div id="alphabetical-index">
+  <h3>Katalog A–Z</h3>
+  <ul id="title-list"></ul>
+</div>
+	  
     
 <h1>Adam Miks</h1> 
 <h1>Dzień dobry, do widzenia i spacery pomiędzy</h1>
@@ -383,35 +388,42 @@ input.addEventListener("input", () => {
     results.innerHTML = "<p>Brak wyników</p>";
   }
 });
-</script>
-    <script>
-const titles = [...document.querySelectorAll("h3")];
-/* LISTA */
-const list = document.getElementById("title-list");
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
-/* SORTOWANIE ALFABETYCZNE */
-titles
-  .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
-  .forEach((title, index) => {
+  const poems = document.querySelectorAll(".poem");
+  const list = document.getElementById("title-list");
 
-    /* ID DLA LINKU */
-    const id = "post-" + index;
-    title.id = id;
+  // 1. nadaj ID wszystkim wierszom
+  poems.forEach((poem, i) => {
+    poem.id = "poem-" + i;
+  });
 
-    /* ELEMENT LISTY */
+  // 2. zbierz tytuły
+  const items = [...poems].map(poem => {
+    const titleEl = poem.querySelector("h2");
+    return {
+      title: titleEl ? titleEl.innerText.trim() : "Bez tytułu",
+      id: poem.id
+    };
+  });
+
+  // 3. sortowanie A-Z PL
+  items.sort((a, b) =>
+    a.title.localeCompare(b.title, 'pl', { sensitivity: 'base' })
+  );
+
+  // 4. budowa listy
+  list.innerHTML = "";
+
+  items.forEach(item => {
     const li = document.createElement("li");
-
-    li.innerHTML = `
-      <a href="#${id}">
-        ${title.innerText}
-      </a>
-    `;
-
+    li.innerHTML = `<a href="#${item.id}">${item.title}</a>`;
     list.appendChild(li);
   });
-</script>
-    
 
+});
+</script>
 </body>
 </html>
     

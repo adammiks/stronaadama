@@ -1,1 +1,193 @@
 
+<!DOCTYPE html>
+<html lang="pl">  
+<head>
+<meta charset="UTF-8"> 
+<title>Blogowisko anegdot</title>
+
+<style>
+body{
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+  font-family: Georgia, serif;
+  line-height: 1.8;
+  background: #fff;
+  color: #111;
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2{
+  margin-top: 40px;
+}
+
+/* WYSZUKIWARKA */
+#search{
+  width: 50%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* WYNIKI WYSZUKIWANIA */
+#results{
+  background: #f7f7f7;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+}
+
+/* SEPARATOR */
+.separator{
+  width: 60px;
+  height: 1px;
+  background: #ccc;
+  margin: 60px auto;
+}
+
+/* TAGI (opcjonalnie wizualnie) */
+.tag{
+  display: inline-block;
+  background: #eee;
+  padding: 3px 7px;
+  margin: 2px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+/* KATALOG */
+#alphabetical-index{
+  background:#f7f7f7;
+  padding:20px;
+  border-radius:8px;
+  margin-bottom:40px;
+}
+
+#alphabetical-index ul{
+  list-style:none;
+  padding:0;
+}
+
+#alphabetical-index li{
+  margin:6px 0;
+}
+
+#alphabetical-index a{
+  text-decoration:none;
+  color:#222;
+}
+
+#alphabetical-index a:hover{
+  text-decoration:underline;
+}
+  
+</style>
+</head>
+
+<body>
+
+<!-- 🔎 WYSZUKIWARKA -->
+<input type="text" id="search" placeholder="Szukaj">
+<div id="results"></div>
+
+<h1>Adam Miks</h1>
+<h1> Miks recenzji</h1>
+
+  <!-- KATALOG ALFABETYCZNY -->
+<div id="alphabetical-index">
+  <h2>Katalog alfabetyczny</h2>
+  <ul id="title-list"></ul>
+</div>
+
+    <h2>Graham Greene "Podróże z moją ciotką</h2>
+
+
+ <p style="text-align: justify;"
+   data-subject="podróże; ciotka; obserwacja; świadomość">
+   Graham Greene, Podróże z moją ciotką, Biblioteka Konesera, Prószyński i s-ka, Warszawa, 1994, s.324 </p>
+
+ <p style="text-align: justify;"
+   data-subject="podróże; ciotka; obserwacja; świadomość">Ciotka Augusta opowiada narratorowi powieści historie ze swojego życia.
+   Głównym bohaterem tych opowieści jest pan Visconti, kochanek i spirytus movens wszelkich starań ( działań) Augusty. 
+ </p>
+ <p style="text-align: justify;"
+   data-subject="podróże; ciotka; obserwacja; świadomość">Ciotka zaprasza siostrzeńca do podróży. Henry, stary kawaler, emeryt, hodowca dalii, niezbyt dobrze przyjmuje nowe wyzwania. W liczbie mnogiej -  podróż jest jedynie początkiem zmian, które czekają mężczyznę. 
+ </p>  
+   
+ <p style="text-align: justify;"
+   data-subject="podróże; ciotka; obserwacja; świadomość">Bardzo zabawna powieść, w stylu serialu "Co ludzie powiedzą".</p>
+<script>
+const input = document.getElementById("search");
+const results = document.getElementById("results");
+const items = document.querySelectorAll("p[data-subject]");
+
+input.addEventListener("input", () => {
+  const q = input.value.toLowerCase().trim();
+  results.innerHTML = "";
+
+  if (!q) return;
+
+  items.forEach(item => {
+    const text = item.innerText.toLowerCase();
+    const tags = (item.dataset.subject || "").toLowerCase();
+
+    if (text.includes(q) || tags.includes(q)) {
+      const div = document.createElement("div");
+
+      div.innerHTML = `
+        <p>${item.innerText}</p>
+        <small>${item.dataset.subject}</small>
+        <hr>
+      `;
+
+      results.appendChild(div);
+    }
+  });
+
+  if (results.innerHTML === "") {
+    results.innerHTML = "<p>Brak wyników</p>";
+  }
+});
+</script>
+
+
+<script>
+/* POBIERZ WSZYSTKIE H2 */
+const titles = [
+  ...document.querySelectorAll(
+    "h2:not(#alphabetical-index h2)"
+  )
+];
+/* LISTA */
+const list = document.getElementById("title-list");
+
+/* SORTOWANIE ALFABETYCZNE */
+titles
+  .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
+  .forEach((title, index) => {
+
+    /* ID DLA LINKU */
+    const id = "post-" + index;
+    title.id = id;
+
+    /* ELEMENT LISTY */
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <a href="#${id}">
+        ${title.innerText}
+      </a>
+    `;
+
+    list.appendChild(li);
+  });
+</script>
+
+
+</body>
+</html>

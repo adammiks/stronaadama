@@ -1,1 +1,190 @@
 
+<!DOCTYPE html>  
+<html lang="pl">  
+<head>
+<meta charset="UTF-8"> 
+<title>Blogowisko anegdot</title>
+
+<style>
+body{
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+  font-family: Georgia, serif;
+  line-height: 1.8;
+  background: #fff;
+  color: #111;
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2{
+  margin-top: 40px;
+}
+
+/* WYSZUKIWARKA */
+#search{
+  width: 50%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* WYNIKI WYSZUKIWANIA */
+#results{
+  background: #f7f7f7;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+}
+
+/* SEPARATOR */
+.separator{
+  width: 60px;
+  height: 1px;
+  background: #ccc;
+  margin: 60px auto;
+}
+
+/* TAGI (opcjonalnie wizualnie) */
+.tag{
+  display: inline-block;
+  background: #eee;
+  padding: 3px 7px;
+  margin: 2px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+/* KATALOG */
+#alphabetical-index{
+  background:#f7f7f7;
+  padding:20px;
+  border-radius:8px;
+  margin-bottom:40px;
+}
+
+#alphabetical-index ul{
+  list-style:none;
+  padding:0;
+}
+
+#alphabetical-index li{
+  margin:6px 0;
+}
+
+#alphabetical-index a{
+  text-decoration:none;
+  color:#222;
+}
+
+#alphabetical-index a:hover{
+  text-decoration:underline;
+}
+  
+</style>
+</head>
+
+<body>
+
+<!-- 🔎 WYSZUKIWARKA -->
+<input type="text" id="search" placeholder="Szukaj">
+<div id="results"></div>
+
+<h1>Adam Miks</h1>
+<h1> Miks blogowiska</h1>
+
+  <!-- KATALOG ALFABETYCZNY -->
+<div id="alphabetical-index">
+  <h2>Katalog alfabetyczny</h2>
+  <ul id="title-list"></ul>
+</div>
+ 
+    
+<div class="publication">
+  <h3>„ 13.02.2023, okolice trzęsienia ziemi w Turcji”</h3>
+  <p><strong>Czasopismo:</strong>HELIKOPTER</p>
+  <p><strong>Rok:</strong> 2023, nr 4</p>
+
+  <blockquote>
+  Zapałka, choć przełamana, tli się
+  </blockquote>
+
+  <a href="link-do-pdf.pdf" target="_blank">https://opt-art.net/helikopter/4-2023/adam-miks-cztery-wiersze/?fbclid=IwY2xjawR4TahleHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEemG2mZB-vtSdyuR2fx31hAjlGx9-D3q0Gv1ROdhn6hJhMbtGOxObU_kH-exw_aem_ggNdK15ZDToe8LlZGZIt3Q </a>
+</div>
+
+
+<script>
+const input = document.getElementById("search");
+const results = document.getElementById("results");
+const items = document.querySelectorAll("p[data-subject]");
+
+input.addEventListener("input", () => {
+  const q = input.value.toLowerCase().trim();
+  results.innerHTML = "";
+
+  if (!q) return;
+
+  items.forEach(item => {
+    const text = item.innerText.toLowerCase();
+    const tags = (item.dataset.subject || "").toLowerCase();
+
+    if (text.includes(q) || tags.includes(q)) {
+      const div = document.createElement("div");
+
+      div.innerHTML = `
+        <p>${item.innerText}</p>
+        <small>${item.dataset.subject}</small>
+        <hr>
+      `;
+
+      results.appendChild(div);
+    }
+  });
+
+  if (results.innerHTML === "") {
+    results.innerHTML = "<p>Brak wyników</p>";
+  }
+});
+</script>
+
+
+<script>
+/* POBIERZ WSZYSTKIE H2 */
+const titles = [
+  ...document.querySelectorAll(
+    "h2:not(#alphabetical-index h2)"
+  )
+];
+/* LISTA */
+const list = document.getElementById("title-list");
+
+/* SORTOWANIE ALFABETYCZNE */
+titles
+  .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
+  .forEach((title, index) => {
+
+    /* ID DLA LINKU */
+    const id = "post-" + index;
+    title.id = id;
+
+    /* ELEMENT LISTY */
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <a href="#${id}">
+        ${title.innerText}
+      </a>
+    `;
+
+    list.appendChild(li);
+  });
+</script>
+
+
+</body>
+</html>

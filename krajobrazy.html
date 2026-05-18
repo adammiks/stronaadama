@@ -88,7 +88,11 @@ h1{
 <div class="separator"></div>
   <p>Wydanie internetowe, 2026</p>
     
-
+   <div id="results"></div>
+<div id="alphabetical-index">
+  <h3>Katalog alfabetyczny</h3>
+  <ul id="title-list"></ul>
+</div>
 
 
    <div class="poem poetry-bg" data-tags="adam-miks poranek poezja kuchnia sniadanie">
@@ -655,6 +659,42 @@ input.addEventListener("input", () => {
   }
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+  const poems = document.querySelectorAll(".poem");
+  const list = document.getElementById("title-list");
+
+  // 1. nadaj ID wszystkim wierszom
+  poems.forEach((poem, i) => {
+    poem.id = "poem-" + i;
+  });
+
+  // 2. zbierz tytuły
+  const items = [...poems].map(poem => {
+    const titleEl = poem.querySelector("h2");
+    return {
+      title: titleEl ? titleEl.innerText.trim() : "Bez tytułu",
+      id: poem.id
+    };
+  });
+
+  // 3. sortowanie A-Z PL
+  items.sort((a, b) =>
+    a.title.localeCompare(b.title, 'pl', { sensitivity: 'base' })
+  );
+
+  // 4. budowa listy
+  list.innerHTML = "";
+
+  items.forEach(item => {
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="#${item.id}">${item.title}</a>`;
+    list.appendChild(li);
+  });
+
+});
+</script>
+  
 </body>
 </html>

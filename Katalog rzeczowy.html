@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Katalog rzeczowy - Strona Adama</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f0f2f5;
+    color:#222;
+}
+
+/* HEADER */
+
+header{
+    background:#1e3a5f;
+    color:white;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.2);
+}
+
+header h1{
+    margin:0;
+    font-size:36px;
+}
+
+/* MENU */
+
+nav{
+    background:#162b45;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ffd54f;
+}
+
+/* SEARCH */
+
+.search-box{
+    text-align:center;
+    margin:30px;
+}
+
+.search-box input{
+    width:80%;
+    max-width:500px;
+    padding:15px;
+    border-radius:10px;
+    border:none;
+    font-size:18px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* KATALOG */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.katalog{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:25px;
+    margin-bottom:50px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.12);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.18);
+}
+
+.card h2{
+    margin-top:0;
+    color:#1e3a5f;
+    border-bottom:2px solid #ddd;
+    padding-bottom:10px;
+}
+
+.card ul{
+    list-style:none;
+    padding:0;
+}
+
+.card li{
+    margin:12px 0;
+}
+
+.card a{
+    text-decoration:none;
+    color:#1565c0;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.card a:hover{
+    color:#e65100;
+}
+
+/* FOOTER */
+
+footer{
+    background:#1e3a5f;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+@media(max-width:700px){
+
+    header h1{
+        font-size:28px;
+    }
+
+    .search-box input{
+        width:95%;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>📚 Katalog Rzeczowy</h1>
+    <p>Indeks wszystkich działów strony</p>
+</header>
+
+<nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="katalog.html">📚 Katalog</a>
+    <a href="kontakt.html">📞 Kontakt</a>
+</nav>
+
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Szukaj działu lub strony...">
+</div>
+
+<div class="container">
+
+    <div class="katalog" id="katalog">
+
+        <!-- STRONA GŁÓWNA -->
+
+        <div class="card">
+            <h2>🏠 Strona główna</h2>
+            <ul>
+                <li><a href="index.html">Start strony</a></li>
+            </ul>
+        </div>
+
+        <!-- O MNIE -->
+
+        <div class="card">
+            <h2>👤 O mnie</h2>
+            <ul>
+                <li><a href="omnie.html">Informacje o autorze</a></li>
+                <li><a href="cv.html">CV</a></li>
+            </ul>
+        </div>
+
+        <!-- PROJEKTY -->
+
+        <div class="card">
+            <h2>💻 Projekty</h2>
+            <ul>
+                <li><a href="projekty.html">Lista projektów</a></li>
+                <li><a href="aplikacje.html">Aplikacje</a></li>
+                <li><a href="www.html">Strony WWW</a></li>
+            </ul>
+        </div>
+
+        <!-- GALERIA -->
+
+        <div class="card">
+            <h2>🖼️ Galeria</h2>
+            <ul>
+                <li><a href="galeria.html">Galeria zdjęć</a></li>
+                <li><a href="grafika.html">Grafika</a></li>
+            </ul>
+        </div>
+
+        <!-- BLOG -->
+
+        <div class="card">
+            <h2>📰 Blog</h2>
+            <ul>
+                <li><a href="blog.html">Wpisy blogowe</a></li>
+                <li><a href="artykuly.html">Artykuły</a></li>
+            </ul>
+        </div>
+
+        <!-- DOWNLOAD -->
+
+        <div class="card">
+            <h2>📥 Download</h2>
+            <ul>
+                <li><a href="pliki.html">Pliki do pobrania</a></li>
+                <li><a href="pdf.html">Dokumenty PDF</a></li>
+            </ul>
+        </div>
+
+        <!-- KONTAKT -->
+
+        <div class="card">
+            <h2>📞 Kontakt</h2>
+            <ul>
+                <li><a href="kontakt.html">Formularz kontaktowy</a></li>
+                <li><a href="socialmedia.html">Social Media</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Strona Adama | Katalog rzeczowy
+</footer>
+
+<script>
+
+/* WYSZUKIWARKA */
+
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+searchInput.addEventListener("keyup", function(){
+
+    let filter = searchInput.value.toLowerCase();
+
+    cards.forEach(card => {
+
+        let text = card.innerText.toLowerCase();
+
+        if(text.includes(filter)){
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

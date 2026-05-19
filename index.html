@@ -199,27 +199,29 @@ nav a:hover {
   font-size: 3.5rem;
   margin-bottom: 60px;
 }
-
 .shelf {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 60px 0;
+    padding-bottom: 25px;
+}
 
-  background: linear-gradient(180deg, #8b5e3c, #6b4f3a);
+.shelf::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    height: 18px;
+    background: #6b4226;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
 
-  padding: 25px 20px 35px;
-
-  border-radius: 6px;
-
-  border-bottom: 12px solid #4a3323;
-
-  box-shadow:
-    0 12px 25px rgba(0,0,0,0.35),
-    inset 0 -6px 10px rgba(0,0,0,0.25),
-    inset 0 6px 10px rgba(255,255,255,0.08);
-
-  margin-bottom: 60px;
+.book {
+    position: relative;
+    z-index: 2;
 }
 
 .book-card {

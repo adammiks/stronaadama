@@ -401,23 +401,24 @@ section {
   }
 
 }
+@media (max-width: 900px) {
 
-@media (max-width: 640px) {
-
-  .hero h2 {
-    font-size: 3rem;
+  nav {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
   }
 
-  .quote p {
-    font-size: 2rem;
+  .navbar {
+    flex-direction: column;
   }
 
-  .book-card {
-    width: 120px;
-  }
-
-  .book img {
-    height: 180px;
+  .hero-grid,
+  .author-card {
+    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
 }

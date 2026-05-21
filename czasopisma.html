@@ -204,7 +204,9 @@ ze zdumienia<br>
 
   <img src="https://atunispoetry.com/2025/10/03/adam-miks-poland-translated-into-english-by-anna-maria-stepien/?fbclid=IwY2xjawR5I2lleHRuA2FlbQIxMQBicmlkETFMNTRNZ01JcDlYTTIxb3h5c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHr-5ZzpecYdreWULYi3mjw5W5MpAi8PMHgH62KSmdAIqvBUR7l2I12vO5ZNT_aem_ITB1JNRJqpzRRdwvC196Bg
 
+
 <script>
+/* 🔎 WYSZUKIWARKA */
 const input = document.getElementById("search");
 const results = document.getElementById("results");
 const items = document.querySelectorAll("p[data-subject]");
@@ -238,6 +240,7 @@ input.addEventListener("input", () => {
 });
 </script>
 <script>
+/* 📚 KATALOG ALFABETYCZNY */
 const titles = [
   ...document.querySelectorAll("h2:not(#alphabetical-index h2)")
 ];
@@ -245,7 +248,7 @@ const titles = [
 const list = document.getElementById("title-list");
 
 titles
-  .filter(title => title.id) // tylko te, które mają ID
+  .filter(title => title.id) // tylko nagłówki z ID
   .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
   .forEach((title) => {
 
@@ -259,24 +262,7 @@ titles
 
     list.appendChild(li);
   });
-
-
-    
-
-    /* ELEMENT LISTY */
-    const li = document.createElement("li");
-
-    li.innerHTML = `
-      <a href="#${id}">
-        ${title.innerText}
-      </a>
-    `;
-
-    list.appendChild(li);
-  });
 </script>
-
-
 
 
 </body>

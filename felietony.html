@@ -272,19 +272,32 @@ input.addEventListener("input", () => {
 });
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+const titles = [
+  ...document.querySelectorAll("h2:not(#alphabetical-index h2)")
+];
 
-  const titles = [...document.querySelectorAll("h2")];
+const list = document.getElementById("title-list");
 
-  const list = document.getElementById("title-list");
+titles
+  .filter(title => title.id) // tylko te, które mają ID
+  .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
+  .forEach((title) => {
 
-  list.innerHTML = ""; // ważne: czyści listę
+    const li = document.createElement("li");
 
-  titles.forEach((title, index) => {
+    li.innerHTML = `
+      <a href="#${title.id}">
+        ${title.innerText}
+      </a>
+    `;
 
-    const id = "post-" + index;
-    title.id = id;
+    list.appendChild(li);
+  });
 
+
+    
+
+    /* ELEMENT LISTY */
     const li = document.createElement("li");
 
     li.innerHTML = `
@@ -295,10 +308,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     list.appendChild(li);
   });
-
-});
 </script>
 
+
+
+    
 </body>
 </html>
 

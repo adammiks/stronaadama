@@ -100,14 +100,25 @@ h2{
   <h1>Adam Miks</h1>
 <h1>Miks czasopism</h1>
 
+<h2>🆕 Nowości</h2>
 
+<ul>
+  <li>
+    <a  href="czasopima.html #helikopter">
+  Helikopter
+</a>
+
+  </li>
+</ul>
+
+<hr>
 
   <!-- KATALOG ALFABETYCZNY -->
 <div id="alphabetical-index">
   <h2>Katalog alfabetyczny</h2>
   <ul id="title-list"></ul>
 </div>
-<h2>Helikopter</h2>
+<h2 id="<h2 id="helikopter">Helikopter</h2>
   <div class="publication">
   <p><strong>Czasopismo:</strong>HELIKOPTER</p>
   <p><strong>Rok:</strong> 2022, nr 4</p>
@@ -231,25 +242,31 @@ input.addEventListener("input", () => {
 });
 </script>
 
-
 <script>
-/* POBIERZ WSZYSTKIE H2 */
 const titles = [
-  ...document.querySelectorAll(
-    "h2:not(#alphabetical-index h2)"
-  )
+  ...document.querySelectorAll("h2:not(#alphabetical-index h2)")
 ];
-/* LISTA */
+
 const list = document.getElementById("title-list");
 
-/* SORTOWANIE ALFABETYCZNE */
 titles
+  .filter(title => title.id) // tylko te, które mają ID
   .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
-  .forEach((title, index) => {
+  .forEach((title) => {
 
-    /* ID DLA LINKU */
-    const id = "post-" + index;
-    title.id = id;
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <a href="#${title.id}">
+        ${title.innerText}
+      </a>
+    `;
+
+    list.appendChild(li);
+  });
+
+
+    
 
     /* ELEMENT LISTY */
     const li = document.createElement("li");
@@ -263,6 +280,7 @@ titles
     list.appendChild(li);
   });
 </script>
+
 
 
 </body>

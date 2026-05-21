@@ -205,42 +205,8 @@ ze zdumienia<br>
   <img src="https://atunispoetry.com/2025/10/03/adam-miks-poland-translated-into-english-by-anna-maria-stepien/?fbclid=IwY2xjawR5I2lleHRuA2FlbQIxMQBicmlkETFMNTRNZ01JcDlYTTIxb3h5c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHr-5ZzpecYdreWULYi3mjw5W5MpAi8PMHgH62KSmdAIqvBUR7l2I12vO5ZNT_aem_ITB1JNRJqpzRRdwvC196Bg
 
 
+
 <script>
-/* 🔎 WYSZUKIWARKA */
-const input = document.getElementById("search");
-const results = document.getElementById("results");
-const items = document.querySelectorAll("p[data-subject]");
-
-input.addEventListener("input", () => {
-  const q = input.value.toLowerCase().trim();
-  results.innerHTML = "";
-
-  if (!q) return;
-
-  items.forEach(item => {
-    const text = item.innerText.toLowerCase();
-    const tags = (item.dataset.subject || "").toLowerCase();
-
-    if (text.includes(q) || tags.includes(q)) {
-      const div = document.createElement("div");
-
-      div.innerHTML = `
-        <p>${item.innerText}</p>
-        <small>${item.dataset.subject}</small>
-        <hr>
-      `;
-
-      results.appendChild(div);
-    }
-  });
-
-  if (results.innerHTML === "") {
-    results.innerHTML = "<p>Brak wyników</p>";
-  }
-});
-</script>
-<script>
-/* 📚 KATALOG ALFABETYCZNY */
 const titles = [
   ...document.querySelectorAll("h2:not(#alphabetical-index h2)")
 ];
@@ -248,7 +214,7 @@ const titles = [
 const list = document.getElementById("title-list");
 
 titles
-  .filter(title => title.id) // tylko nagłówki z ID
+  .filter(title => title.id) // tylko te, które mają ID
   .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
   .forEach((title) => {
 
@@ -256,6 +222,21 @@ titles
 
     li.innerHTML = `
       <a href="#${title.id}">
+        ${title.innerText}
+      </a>
+    `;
+
+    list.appendChild(li);
+  });
+
+
+    
+
+    /* ELEMENT LISTY */
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <a href="#${id}">
         ${title.innerText}
       </a>
     `;

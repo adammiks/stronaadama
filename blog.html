@@ -268,26 +268,31 @@ input.addEventListener("input", () => {
   }
 });
 </script>
-
-
 <script>
-/* POBIERZ WSZYSTKIE H2 */
 const titles = [
-  ...document.querySelectorAll(
-    "h2:not(#alphabetical-index h2)"
-  )
+  ...document.querySelectorAll("h2:not(#alphabetical-index h2)")
 ];
-/* LISTA */
+
 const list = document.getElementById("title-list");
 
-/* SORTOWANIE ALFABETYCZNE */
 titles
+  .filter(title => title.id) // tylko te, które mają ID
   .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
-  .forEach((title, index) => {
+  .forEach((title) => {
 
-    /* ID DLA LINKU */
-    const id = "post-" + index;
-    title.id = id;
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <a href="#${title.id}">
+        ${title.innerText}
+      </a>
+    `;
+
+    list.appendChild(li);
+  });
+
+
+    
 
     /* ELEMENT LISTY */
     const li = document.createElement("li");

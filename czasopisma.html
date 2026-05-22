@@ -101,26 +101,8 @@ h2{
 <h1>Miks czasopism</h1>
 
 <h2>🆕 Nowości</h2>
+<ul id="news-list"></ul>
 
-<ul>
-  <li>
-    <a href="czasopisma.html#helikopter">
-      Helikopter
-    </a>
-  </li>
-</ul>
-
-
-  <ul>
-  <li>
-    <a  href="czasopisma.html#wymiana">
-  Punkt wymiany poezji
-</a>
-
-  </li>
-</ul>
-
-<hr>
 
   <!-- KATALOG ALFABETYCZNY -->
 <div id="alphabetical-index">
@@ -129,8 +111,7 @@ h2{
 </div>
 
 
-
- <h2 id="helikopter">HELIKOPTER</h2>
+<h2 id="helikopter" data-new="true">HELIKOPTER</h2>
   <p>„Helikopter” to polski internetowy magazyn artystyczno-literacki związany z Ośrodkiem Postaw Twórczych (OPT) we Wrocławiu. Powstał w 2003 roku początkowo jako czasopismo drukowane, a później przeniósł się do internetu. Redaktorem magazynu był Krzysztof Śliwka.  </p>
   <h3>„NIC”</h3>
   <blockquote>
@@ -171,7 +152,7 @@ a dopiero na końcu<br><br>
 
 ludzie.
   </blockquote>
-
+  </div>
    
   <img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/helikopter3.jpg"
        alt="Skan publikacji"
@@ -198,7 +179,7 @@ ze zdumienia<br>
   <img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/helikopter2.jpg"
        alt="Skan publikacji"
        style="max-width:100%; height:auto; border:1px solid #ddd;">
-    
+</div>  
 <div class="publication">
   <p><strong>Czasopismo:</strong>HELIKOPTER</p>
   <p><strong>Rok:</strong> 2023, nr 4</p>
@@ -207,13 +188,13 @@ ze zdumienia<br>
   Zapałka,<br><br> choć przełamana,<br><br> tli się<br>
   </blockquote>
 
-  <img src=" https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/helikopter1.jpg"
+  <img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/helikopter1.jpg"
        alt="Skan publikacji"
        style="max-width:100%; height:auto; border:1px solid #ddd;">
 
+</div>
 
- 
-<h2 id="wymiana">Punkt wymiany poezji</h2>
+  <h2 id="wymiana" data-new="true">Punkt wymiany poezji</h2>
   <div class="publication">
   <p><strong>Inicjatywa:</strong>Anna Maria Łubkowska</p>
   <p style="text-align: justify;">     Koleżanki i Koledzy, Poetki i Poeci!
@@ -227,7 +208,7 @@ Jeśli ktoś z Was chciałby, aby jego wiersz/wiersze został(y) opublikowany(e)
      <p style="text-align: justify;">  ➡️ Madeleine23@interia.pl </p>
 
   <img src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/ADAM.jpg" width="50%" height="50%">
-  
+  </div>
  
   
 
@@ -253,23 +234,19 @@ titles
 
     list.appendChild(li);
   });
-
-
-    
-
-    /* ELEMENT LISTY */
-    const li = document.createElement("li");
-
-    li.innerHTML = `
-      <a href="#${id}">
-        ${title.innerText}
-      </a>
-    `;
-
-    list.appendChild(li);
-  });
 </script>
+<ul id="news-list"></ul>
 
+<script>
+const newsList = document.getElementById("news-list");
+
+document.querySelectorAll("[data-new='true']").forEach(el => {
+  const li = document.createElement("li");
+
+  li.innerHTML = `<a href="#${el.id}">${el.innerText}</a>`;
+  newsList.appendChild(li);
+});
+</script>
 
 </body>
 </html>

@@ -33,30 +33,37 @@
         <span class="artwork-number">05· Z wyobraźni</span>
         <h2 class="artwork-title">Modlitwa zawsze wskazana</h2>
     </figcaption>
-  ```html
-<div class="artwork-image" onclick="openLightbox(this)">
-  <img
-    src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/magnific_humorystyczna-satyryczna-_tCsn0MnmZJ.png"
-    alt="Nie dla smoka kiełbasa"
-    loading="lazy"
->
-</div>
+<figure class="artwork">
+  <div class="artwork-image" onclick="openLightbox(this)">
+    <img
+      src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/magnific_humorystyczna-satyryczna-_tCsn0MnmZJ.png"
+      alt="Nie dla smoka kiełbasa"
+      loading="lazy"
+    >
+  </div>
+
+  <figcaption>
+    <span class="artwork-number">06. Z wyobraźni</span>
+    <h2 class="artwork-title">Nie dla smoka kiełbasa</h2>
+  </figcaption>
+</figure>
 
 
-<div class="artwork-image" onclick="openLightbox(this)">
-  <img
-    src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/muszla%20koncertowa.png"
-    alt="Muszla koncertowa"
-    loading="lazy"
->
-</div>
+<figure class="artwork">
+  <div class="artwork-image" onclick="openLightbox(this)">
+    <img
+      src="https://raw.githubusercontent.com/adammiks/stronaadama/refs/heads/main/muszla%20koncertowa.png"
+      alt="Muszla koncertowa"
+      loading="lazy"
+    >
+  </div>
 
-<figcaption>
+  <figcaption>
     <span class="artwork-number">07. Z wyobraźni</span>
     <h2 class="artwork-title">Muszla koncertowa</h2>
-</figcaption>
-```
+  </figcaption>
 </figure>
+
 <footer><div class="container"><p>Biblioteka Adama Miksa</p><p>© 2026 · Wszelkie prawa zastrzeżone</p></div></footer>
 <script>function openLightbox(e){const i=e.querySelector('img');document.getElementById('lightbox-image').src=i.src;document.getElementById('lightbox-image').alt=i.alt;document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});</script>
 </body></html>

@@ -1111,42 +1111,28 @@ Poszczególne historie różnią się tematyką i nastrojem, dlatego lekturę mo
 </section>
 
 
-nst titles = [
+
+const titles = [
   ...document.querySelectorAll("h2:not(#alphabetical-index h2)")
 ];
 
 const list = document.getElementById("title-list");
 
-titles
-  .filter(title => title.id) // tylko te, które mają ID
-  .sort((a, b) => a.innerText.localeCompare(b.innerText, 'pl'))
-  .forEach((title) => {
+if (list) {
+  titles
+    .filter(title => title.id)
+    .sort((a, b) => a.innerText.localeCompare(b.innerText, "pl"))
+    .forEach(title => {
+      const li = document.createElement("li");
+      const link = document.createElement("a");
 
-    const li = document.createElement("li");
+      link.href = `#${title.id}`;
+      link.textContent = title.innerText;
 
-    li.innerHTML = `
-      <a href="#${title.id}">
-        ${title.innerText}
-      </a>
-    `;
-
-    list.appendChild(li);
-  });
-
-
-    
-
-    /* ELEMENT LISTY */
-    const li = document.createElement("li");
-
-    li.innerHTML = `
-      <a href="#${id}">
-        ${title.innerText}
-      </a>
-    `;
-
-    list.appendChild(li);
-  });
+      li.appendChild(link);
+      list.appendChild(li);
+    });
+}
 </script>
 
 
